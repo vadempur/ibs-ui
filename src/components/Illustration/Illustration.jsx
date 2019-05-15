@@ -1,17 +1,31 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import "./Illustration.css";
+import { TweenLite } from "gsap/all";
 
 import Sun from "./Sun";
 import Gears from "./Gears";
 import Clouds from "./Clouds";
 
 function Illustration() {
+
+  const shadow = useRef(null);
+  const floor_shadow = useRef(null);
+
+  useEffect( ()=>{    
+    TweenLite.set(shadow.current, {transformOrigin:"50% 50%",scaleX:0.8});
+    TweenLite.to(shadow.current, 2, {delay:0.6,x:70,scaleX:1});
+    TweenLite.set(floor_shadow.current, {transformOrigin:"50% 0%",scaleY:0.3});
+    TweenLite.to(floor_shadow.current, 1, {delay:0.6,transformOrigin:"50% 0%",scaleY:1});
+  } );
+
+
   return (
     <svg viewBox="0 0 712.08 893.97">
       {/* the sun */}
       <Sun/>
       {/* the shadow */}
       <path
+        ref = {shadow}
         className="st26"
         d="M629.5 851.6c0 .46-.22.92-.65 1.37-3.23 3.43-18.56 6.61-42.85 9.31-.05.01-.11.01-.18.02-3.67.41-7.54.8-11.61 1.19-47.58 4.5-121.54 7.39-204.61 7.39s-157.03-2.89-204.61-7.39c-.26-.02-.52-.05-.78-.07-3.86-.37-7.53-.75-11.02-1.14-.21-.02-.42-.05-.62-.07-27.1-3.04-42.88-6.69-42.88-10.61 0-10.65 116.37-19.28 259.91-19.28 44.16 0 85.75.82 122.16 2.26 76.86 3.04 130.69 8.86 137.09 15.66.43.45.65.91.65 1.36z"
       />
@@ -203,8 +217,9 @@ function Illustration() {
 
       {/* floor */}
       <path
+        ref = {floor_shadow}
         d="M575.39 745.92v8.51c-.71.95-1.44 1.89-2.18 2.83a260.697 260.697 0 0 1-33.73 35.54H197.72a260.697 260.697 0 0 1-33.73-35.54c-.26-.33-.52-.67-.78-1a247.73 247.73 0 0 1-7.62-10.34h419.8z"
-        opacity=".1"
+        opacity=".3"
         fill="#272d7a"
       />
       <path

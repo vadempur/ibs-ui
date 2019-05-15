@@ -1,3 +1,38 @@
+:root {
+  --primary:#0747A6;
+  --gray:#262626;
+  --light-gray:#666666;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+ul,p {
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  list-style-type: none;
+}
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}
+
+img{
+  vertical-align: middle;
+}
+
+b, strong {
+  font-weight: 600;
+}
+
+
 body {
   margin: 0;
   padding: 0;
