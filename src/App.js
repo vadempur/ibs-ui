@@ -3,6 +3,7 @@ import "./App.css";
 import Illustration from "./components/Illustration/Illustration";
 import Header from "./components/Header/Header";
 import hat from "./hard-hat.svg";
+import DiagonalFloor from "./components/DiagonalFloor";
 
 class App extends Component {
   render() {
@@ -10,6 +11,9 @@ class App extends Component {
       <div className="App">
         <Header/>
         <div className="container">
+          
+          <DiagonalFloor/>
+
           <div className="section1-left">
             <h1>Présentation du Savoir-Faire</h1>
             <p>

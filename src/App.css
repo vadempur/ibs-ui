@@ -2,8 +2,9 @@
 }
 
 .container{
+  position: relative;
   display: flex;
-  padding: 40px 10%;
+  padding: 0px 10%;
   flex-wrap: wrap;
 }
 
@@ -42,7 +43,7 @@ p{
 
 .illustration{
   min-width: 300px;
-  padding:40px;
+  padding:5px;
   flex-basis: 40%;
   flex-grow: 1;
   align-content: center;

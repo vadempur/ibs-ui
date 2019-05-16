@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import { TimelineMax, Power0 } from "gsap/all";
+import React, { useRef, useEffect } from 'react';
+import { TimelineMax, Power0 } from 'gsap';
 function Gears() {
   const orange_gear = useRef(null);
   const blue_gear = useRef(null);

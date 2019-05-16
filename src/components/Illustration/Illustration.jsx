@@ -1,31 +1,69 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import "./Illustration.css";
-import { TweenLite } from "gsap/all";
+import { TweenLite, TimelineMax, Sine } from "gsap";
 
 import Sun from "./Sun";
 import Gears from "./Gears";
 import Clouds from "./Clouds";
+import Person from "./Person";
 
 function Illustration() {
-
   const shadow = useRef(null);
   const floor_shadow = useRef(null);
 
-  useEffect( ()=>{    
-    TweenLite.set(shadow.current, {transformOrigin:"50% 50%",scaleX:0.8});
-    TweenLite.to(shadow.current, 2, {delay:0.6,x:70,scaleX:1});
-    TweenLite.set(floor_shadow.current, {transformOrigin:"50% 0%",scaleY:0.3});
-    TweenLite.to(floor_shadow.current, 1, {delay:0.6,transformOrigin:"50% 0%",scaleY:1});
-  } );
+  useEffect(() => {
+    TweenLite.set(shadow.current, { transformOrigin: "50% 50%", scaleX: 0.8 });
+    TweenLite.to(shadow.current, 2, { delay: 0.6, x: 70, scaleX: 1 });
+    TweenLite.set(floor_shadow.current, { transformOrigin: "50% 0%", scaleY: 0.3 });
+    TweenLite.to(floor_shadow.current, 1, { delay: 0.6, transformOrigin: "50% 0%", scaleY: 1 });
 
+    const t1 = new TimelineMax({ delay: 2 });
+    const t2 = new TimelineMax({ delay: 2 });
+
+    t1.to(shadow.current, 1.5, {
+      repeat: -1,
+      yoyo: true,
+      scaleX: "-=0.05",
+      transformOrigin: "30% 50%",
+      ease: Sine.easeInOut
+    }).to(shadow.current, 1.5, {
+      repeat: -1,
+      yoyo: true,
+      scaleX: "+=0.05",
+      transformOrigin: "30% 50%",
+      ease: Sine.easeInOut
+    });
+
+    t2.to(floor_shadow.current, 1.5, {
+      repeat: -1,
+      yoyo: true,
+      scaleY: "-=0.09",
+      transformOrigin: "50% 0%",
+      ease: Sine.easeInOut
+    }).to(floor_shadow.current, 1.5, {
+      repeat: -1,
+      yoyo: true,
+      scaleY: "+=0.09",
+      transformOrigin: "50% 0%",
+      ease: Sine.easeInOut
+    });
+  });
 
   return (
     <svg viewBox="0 0 712.08 893.97">
+      {/* main circle clip definition */}
+      <clipPath id="a">
+        <use href="#e" />
+      </clipPath>
+      <defs>
+        <circle id="e" cx="368.59" cy="596.98" r="259.9" />
+      </defs>
+
       {/* the sun */}
-      <Sun/>
+      <Sun />
       {/* the shadow */}
       <path
-        ref = {shadow}
+        ref={shadow}
         className="st26"
         d="M629.5 851.6c0 .46-.22.92-.65 1.37-3.23 3.43-18.56 6.61-42.85 9.31-.05.01-.11.01-.18.02-3.67.41-7.54.8-11.61 1.19-47.58 4.5-121.54 7.39-204.61 7.39s-157.03-2.89-204.61-7.39c-.26-.02-.52-.05-.78-.07-3.86-.37-7.53-.75-11.02-1.14-.21-.02-.42-.05-.62-.07-27.1-3.04-42.88-6.69-42.88-10.61 0-10.65 116.37-19.28 259.91-19.28 44.16 0 85.75.82 122.16 2.26 76.86 3.04 130.69 8.86 137.09 15.66.43.45.65.91.65 1.36z"
       />
@@ -47,117 +85,7 @@ function Illustration() {
       <path className="st31" d="M276.93 575.36v165.92" />
       {/*  */}
 
-      {/* chair white */}
-      <path
-        className="st1"
-        d="M344.41 631.33s-21.89-4.97-25.2 9.28c-2.84 12.24 26.94 11.76 26.94 11.76l65.49.4s24.67 2.84 36.87-25.61c12.19-28.45 23.94-102.97 23.94-102.97s1.76-10.25-6.77-11.74c-10.04-1.75-12.01 19.93-12.01 19.93s-15.18 91.99-37.2 96.48c-3.39.69-6.1 3.26-9.56 3.22l-62.5-.75z"
-      />
-
-      {/* back hand */}
-      <path
-        className="st32"
-        d="M302.05 551.07l-20.63-2.1c-1.67-.17-3.31.55-4.32 1.89l-12.14 17.09 9.81.79 5.83-8.34s15.84 4.52 21.87.72l-.42-10.05z"
-      />
-      <path
-        className="st2"
-        d="M387.18 497.22l-29.32 50.4-57.45-.07-.63 18.88 60.52 4.66c7.99.62 15.73-2.97 20.44-9.46l29.23-48.59-22.79-15.82z"
-      />
-      <path fill="#f7e5da" d="M300.42 547.55l-.63 18.87 6.41.5.64-19.36z" />
-      {/*  */}
-
-      {/* leg skin */}
-      <path className="st34" d="M314.55 705.79l-3.25 22.7-16.34-1.01 2.36-23.45z" />
-
-      {/* shoe */}
-      <path
-        className="st35"
-        d="M314.96 726.19c-.36-1.06-1.63-1.5-2.54-.85-1.79 1.28-4.96 2.78-9.52 2.21-4.73-.6-6.4-3.12-6.99-4.9-.31-.94-1.31-1.45-2.22-1.09l-29.44 11.55a7.21 7.21 0 0 0-3.99 3.85c-.72 1.66.48 3.51 2.28 3.54l49.87.73c1.96.03 3.55-1.59 3.47-3.55l-.36-9.63c-.01-.16-.03-.32-.09-.47l-.47-1.39z"
-      />
-
-      {/* face */}
-      <path className="st36" d="M386.01 489.56l-6.29 6.24c-.46.63-.98 2.28.14 3.2l1.47 1.7 5.17-4.91-.49-6.23z" />
-      <path
-        className="st34"
-        d="M392.66 499.3l1.6-.36c5.29-1.2 8.6-6.45 7.41-11.74l-7.94-35.14-19.06 4.31 9.46 39.49c.98 4.35 4.18 4.42 8.53 3.44z"
-      />
-      <path
-        className="st34"
-        d="M360.47 459.58c2.59 11.44 13.95 18.62 25.39 16.03s18.62-13.95 16.03-25.39c-2.58-11.44-13.95-18.62-25.39-16.03-11.44 2.58-18.61 13.95-16.03 25.39z"
-      />
-      <path
-        className="st34"
-        d="M380.61 485.86c5.43-1.23 8.84-6.63 7.61-12.06l-4.48-19.83-23.34 5.28 3.65 16.16c1.69 7.46 9.1 12.14 16.56 10.45z"
-      />
-      <path className="st34" d="M362.12 464.07l-3.02 7.69c-.4 1.23.74 2.38 2.06 2.08l5.47-.19-4.51-9.58z" />
-      {/*  */}
-
-      {/* head */}
-      <defs>
-        <path
-          id="d"
-          d="M360.47 459.58c2.59 11.44 13.95 18.62 25.39 16.03s18.62-13.95 16.03-25.39c-2.58-11.44-13.95-18.62-25.39-16.03-11.44 2.58-18.61 13.95-16.03 25.39z"
-        />
-      </defs>
-      <clipPath id="c">
-        <use href="#d" />
-      </clipPath>
-      <path
-        d="M381.18 464.37s-7.35-1.24-5.89-12.69c0 0-14.48 5.06-18.84.65 0 0 5.9-31.99 31.76-24.69 25.87 7.29 21.23 35.97 21.23 35.97l-17.79 9.76-10.47-9z"
-        clipPath="url(#c)"
-        fill="#1C2226"
-      />
-      <path className="st32" d="M381.66 485.56s6.01-1.87 7.56-8.43c0 0 1.6 7.88-6.57 12.56l-.99-4.13z" />
-
-      {/* ear */}
-      <path
-        className="st34"
-        d="M380.03 464.58a5.84 5.84 0 0 0 6.98 4.41c3.14-.71 5.11-3.84 4.4-6.98s-3.83-5.12-6.98-4.4c-3.14.7-5.11 3.83-4.4 6.97z"
-      />
-
-      {/* front hair */}
-      <path
-        className="st38"
-        d="M396.97 464.15l1.74 9.98s-10.15 4.82-12.37-5l6.61-.28 4.02-4.7zM375.29 451.67s-20.17 9.14-24.27-3.48c-3.28-10.08 4.03-14.37 12.31-10.9 3.58 1.5 6.01-.59 9.39-1.87l2.57 16.25z"
-      />
-      {/*  */}
-
-      {/* body shirt */}
-      <path
-        className="st39"
-        d="M379.11 503.89s2.29-7.95 5.5-10.14 18.63-6.67 18.63-6.67 18.22 10.29 24.95 35.48c5.25 19.63 3.63 65.78 3.63 65.78l-58.38 4.8c2.93-34.08-2.66-61.2 5.67-89.25z"
-      />
-      <path
-        className="st36"
-        d="M402.46 486.19l2.09 1.61c.76.58.66 1.75-.18 2.2l-18.05 9.74c-.73.4-1.65.02-1.89-.78l-1-3.3c-.19-.62.11-1.29.7-1.57l16.95-8.05c.45-.21.98-.15 1.38.15z"
-      />
-      {/*  */}
-
-      {/* pants */}
-      <path
-        className="st26"
-        d="M431.48 582.5L317.4 599.04a19.143 19.143 0 0 0-16.31 17.13l-8.5 97.17 25.48 1.65 12.24-84.22 71.64 1.86c19.45 0 34.36-17.27 31.53-36.51l-2-13.62z"
-      />
-
-      {/* pc */}
-      <path className="st40" d="M289.43 571.81h-60.18v-3.9h60.18z" />
-      <path className="st40" d="M229.26 571.8l-19.48-56.86 4.09-.98 19.09 54.62z" />
-
-      {/* table */}
-      <path className="st41" d="M298.97 582.6H143.08v-10.81h155.89z" />
-      <path className="st31" d="M276.93 595.88H162.81" />
-
-      {/* front hand */}
-      <path
-        className="st34"
-        d="M307.3 552.41l-20.57-2.55c-1.67-.21-3.32.47-4.36 1.79L268.98 568l11.79-.05 4.89-6.69s15.74 4.86 21.85 1.2l-.21-10.05z"
-      />
-      <path
-        className="st39"
-        d="M398.89 501.46l-34.05 50.87-59.2-1.62-.93 17 63.62 6.28c5.98.59 11.84-1.97 15.47-6.76l37.53-49.48-22.44-16.29z"
-      />
-      <path className="st36" d="M305.64 550.71l-.93 17 6.39.63.95-17.27z" />
-      <path className="st42" d="M375.01 535.94l18.63-26.64M384.71 567.29l19.31-25.46" />
-      {/*  */}
+      <Person />
 
       {/* lamps */}
       <path className="st26" d="M232.49 270.06h4.53v109.01h-4.53z" />
@@ -172,56 +100,31 @@ function Illustration() {
       <path className="st26" d="M350.09 342.07l-36.64.58 18.32-30.49z" />
       {/*  */}
 
-      {/* main circle */}
-      <clipPath id="a">
-        <use href="#e" />
-      </clipPath>
-      <defs>
-        <circle id="e" cx="368.59" cy="596.98" r="259.9" />
-      </defs>
-
-      <Gears/>
-      <Clouds/>
+      <Gears />
+      <Clouds />
 
       {/* circle trees */}
-      <circle className="st1" cx="521.09" cy="714.19" r="16.42" />
+      {/* <circle className="st1" cx="521.09" cy="714.19" r="16.42" />
       <path className="st1" d="M519.17 729.07h3.84v11.9h-3.84z" />
       <circle className="st1" cx="564.64" cy="694.09" r="28.74" />
-      <path className="st1" d="M561.28 720.14H568v20.83h-6.72z" />
+      <path className="st1" d="M561.28 720.14H568v20.83h-6.72z" /> */}
       <circle className="st29" cx="521.09" cy="714.19" r="16.42" />
       <path className="st29" d="M519.17 729.07h3.84v11.9h-3.84z" />
       <circle className="st48" cx="564.64" cy="694.09" r="28.74" />
       <path className="st29" d="M561.28 720.14H568v20.83h-6.72z" />
-     
-      {/*  */}
 
-      {/* chair foot */}
-      <path
-        className="st35"
-        d="M447.84 744.05c-.91 0-1.73-.61-1.96-1.53l-29.79-117.44a21.877 21.877 0 0 0-21.22-16.52c-9.74 0-18.4 6.54-21.06 15.91-10.41 36.7-34.66 116.77-34.91 117.57a2.028 2.028 0 0 1-3.88-1.18c.24-.8 24.49-80.84 34.89-117.5 3.15-11.11 13.42-18.87 24.97-18.87 11.89 0 22.24 8.05 25.16 19.58l29.78 117.44c.28 1.09-.38 2.19-1.47 2.47-.18.05-.34.07-.51.07z"
-      />
-      {/*  */}
-
-      {/* tree one */}
-      <path className="st1" d="M399.47 740.97l22.7-89.51 22.7 89.51z" />
+      {/* triangle trees */}
+      {/* <path className="st1" d="M399.47 740.97l22.7-89.51 22.7 89.51z" />
       <path className="st1" d="M426.64 740.97l32.49-128.13 32.49 128.13z" />
-      <path className="st1" d="M456.15 740.97l25.99-102.48 25.99 102.48z" />
+      <path className="st1" d="M456.15 740.97l25.99-102.48 25.99 102.48z" /> */}
       <path fill="#d9e021" d="M399.47 740.97l22.7-89.51 22.7 89.51z" />
-      {/*  */}
       <path className="st29" d="M426.64 740.97l32.49-128.13 32.49 128.13z" />
       <path className="st48" d="M456.15 740.97l25.99-102.48 25.99 102.48z" />
 
-      
-      
-      
-
       {/* floor */}
-      <path
-        ref = {floor_shadow}
-        d="M575.39 745.92v8.51c-.71.95-1.44 1.89-2.18 2.83a260.697 260.697 0 0 1-33.73 35.54H197.72a260.697 260.697 0 0 1-33.73-35.54c-.26-.33-.52-.67-.78-1a247.73 247.73 0 0 1-7.62-10.34h419.8z"
-        opacity=".3"
-        fill="#272d7a"
-      />
+      <g clipPath="url(#a)">
+        <rect ref={floor_shadow} x={150.95} y={745.92} width="430" height="50" fill="#272d7a" opacity=".3" />
+      </g>
       <path
         className="st26"
         d="M584.82 740.23a258.27 258.27 0 0 1-11.61 16.03h-410c-3.86-4.96-7.53-10.06-11.02-15.3-.21-.31-.42-.62-.62-.94l433.25.21z"

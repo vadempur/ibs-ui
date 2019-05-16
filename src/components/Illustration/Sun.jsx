@@ -1,6 +1,6 @@
 
-import React,{useRef , useEffect } from "react";
-import { TimelineMax,Sine } from "gsap/all";
+import React,{useRef , useEffect } from 'react';
+import { TimelineMax,Sine } from 'gsap';
 function Sun() {
   const sun = useRef(null);
   useEffect( ()=>{
