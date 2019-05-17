@@ -14,7 +14,7 @@ function DiagonalFloor() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  },[]);
+  });
 
   const handleScroll = () => {
     let new_rotation = rotation + (window.scrollY - lastScrollY) / 20;

@@ -12,15 +12,18 @@ let lastScrollY = 0;
 function Illustration() {
   const shadow = useRef(null);
   const floor_shadow = useRef(null);
-  const [translate, setTranslate] = useState(-10);
+  const [translate, setTranslate] = useState(0);
 
   useEffect(() => {
     animate();
+  }, []);
+
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  });
 
   function animate(){
     TweenLite.set(shadow.current, { transformOrigin: "50% 50%", scaleX: 0.8 });
@@ -62,9 +65,9 @@ function Illustration() {
 
   
   const handleScroll = () => {
-    let new_translate = translate + (window.scrollY - lastScrollY) / 20;
-    if (new_translate < -10) new_translate = -10;
-    if (new_translate > 0) new_translate = 0;
+    let new_translate = translate + (window.scrollY - lastScrollY);
+    if (new_translate < 0) new_translate = 0;
+    if (new_translate > 90) new_translate = 90;
     
     setTranslate(new_translate);
     
@@ -74,7 +77,7 @@ function Illustration() {
   console.log(translate);  
 
   return (
-    <div className="illustration" style={{transform:"translate(4px,"+translate+"%)"}} >
+    <div className="illustration" style={{transform:"translate(4px,"+translate+"px)"}} >
       <svg style={{ display: "block" }} viewBox="0 0 712.08 893.97">
         {/* main circle clip definition */}
         <clipPath id="a">

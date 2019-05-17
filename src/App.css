@@ -29,6 +29,8 @@
 }
 
 .section1-left{
+  
+z-index: 5;
   flex:1;
   flex-basis: 60%;
   display:flex;
