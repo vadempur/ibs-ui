@@ -9,7 +9,7 @@ function Sun() {
     t1.from(sun.current, 2, {rotation:180, svgOrigin:"250 500"});
     t1.to(sun.current,1.5,{repeat:-1, yoyo:true, y:-10, ease: Sine.easeInOut})
       .to(sun.current,1.5,{repeat:-1,yoyo:true, y:+10, ease: Sine.easeInOut});
-  } );
+  },[] );
 
   return (
       <path 

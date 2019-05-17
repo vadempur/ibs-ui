@@ -9,7 +9,7 @@ function Gears() {
     t1.from(blue_gear.current, 10, { ease: Power0.easeNone, repeat: -1, rotation: -360, transformOrigin: "50% 50%" });
     let t2 = new TimelineMax();
     t2.from(orange_gear.current, 6, { ease: Power0.easeNone, repeat: -1, rotation: 360, transformOrigin: "50% 50%" });
-  });
+  },[]);
 
   return (
     <>

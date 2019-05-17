@@ -1,11 +1,20 @@
 .App{
 }
 
+.banner-container{
+  display: flex;
+  position: relative;
+  padding: 0px 10%;
+  flex-wrap: wrap;
+  height:550px;
+}
+
 .container{
   position: relative;
   display: flex;
   padding: 0px 10%;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .content{
@@ -39,13 +48,4 @@ p{
   font-size: 18px;
   line-height: 30px;
   letter-spacing: 2px;
-}
-
-.illustration{
-  min-width: 300px;
-  padding:5px;
-  flex-basis: 40%;
-  flex-grow: 1;
-  align-content: center;
-  justify-content: center;
 }

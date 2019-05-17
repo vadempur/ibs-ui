@@ -2,15 +2,14 @@ import React, { useRef, useEffect } from 'react';
 import { TimelineMax } from 'gsap';
 
 function Person() {
-  const orange_gear = useRef(null);
-  const blue_gear = useRef(null);
+  const shoe = useRef(null);
 
   useEffect(() => {
-    // let t1 = new TimelineMax();
-    // t1.from(blue_gear.current, 10, { ease: Power0.easeNone, repeat: -1, rotation: -360, transformOrigin: "50% 50%" });
+    let t1 = new TimelineMax();
+    t1.from(shoe.current, 10, {  repeat: -1 });
     // let t2 = new TimelineMax();
     // t2.from(orange_gear.current, 6, { ease: Power0.easeNone, repeat: -1, rotation: 360, transformOrigin: "50% 50%" });
-  });
+  },[]);
 
   return (
     <>
@@ -36,6 +35,7 @@ function Person() {
 
       {/* shoe */}
       <path
+        ref={shoe}
         className="st35"
         d="M314.96 726.19c-.36-1.06-1.63-1.5-2.54-.85-1.79 1.28-4.96 2.78-9.52 2.21-4.73-.6-6.4-3.12-6.99-4.9-.31-.94-1.31-1.45-2.22-1.09l-29.44 11.55a7.21 7.21 0 0 0-3.99 3.85c-.72 1.66.48 3.51 2.28 3.54l49.87.73c1.96.03 3.55-1.59 3.47-3.55l-.36-9.63c-.01-.16-.03-.32-.09-.47l-.47-1.39z"
       />

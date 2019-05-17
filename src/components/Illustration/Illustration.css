@@ -1,3 +1,16 @@
+.illustration{
+  position:absolute;
+  z-index: 2;
+  right:10%;
+  bottom:0;
+  width:46%;
+  max-width: 410px;
+  flex-basis: 40%;
+  flex-grow: 1;
+  align-content: center;
+  justify-content: center;
+}
+
 .st1 {
   fill: #fff;
 }
@@ -25,7 +38,7 @@
   stroke-miterlimit: 10;
 }
 .st31 {
-  stroke: #2a272d;
+  stroke: #2d2727;
   stroke-width: 5;
 }
 .st32 {

@@ -18,7 +18,7 @@ function Clouds() {
     t3.to(cloud3.current,1.5,{repeat:-1, yoyo:true, y:-10, ease: Sine.easeInOut})
       .to(cloud3.current,1.5,{repeat:-1,yoyo:true, y:+10, ease: Sine.easeInOut});
     // TweenLite.from(sun.current, 1, {autoAlpha:1,rotation:180, svgOrigin:"250 500"});
-  });
+  },[]);
 
   return (
     <>
