@@ -5,7 +5,7 @@ let lastScrollY = 0;
 
 function DiagonalFloor() {
   
-  const [rotation, setRotation] = useState(-10);
+  const [rotation, setRotation] = useState(-6);
 
   const diago = useRef(null);
 
@@ -18,7 +18,7 @@ function DiagonalFloor() {
 
   const handleScroll = () => {
     let new_rotation = rotation + (window.scrollY - lastScrollY) / 20;
-    if (new_rotation < -10) new_rotation = -10;
+    if (new_rotation < -6) new_rotation = -6;
     if (new_rotation > 0) new_rotation = 0;
     setRotation(new_rotation);
 

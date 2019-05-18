@@ -1,33 +1,22 @@
 import React, { Component } from "react";
 import "./App.css";
-import Illustration from "./components/Illustration/Illustration";
 import Header from "./components/Header/Header";
-import hat from "./hard-hat.svg";
-import DiagonalFloor from "./components/DiagonalFloor";
+import Banner from "./components/Banner/Banner";
+import Page1 from "./components/Page1/Page1";
+
+// import hat from "./hard-hat.svg";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Header />
-
-        <div className="banner-container">          
-          <DiagonalFloor />
-          <div className="section1-left">
-            <h1>Présentation du Savoir-Faire</h1>
-            <p>
-              En 2009, IB Solutions atteint le statut GOLD CERTIFIED PARTNER <br />
-              Microsoft Business Solutions (Dynamics NAV et AX) <br />
-              Data Management solutions pour la spécialisation BI
-            </p>
-          </div>
-          <Illustration />
-        </div>
-
-        <div className="container content">
+        <Banner />
+        <Page1 />
+        {/* <div className="on-construction">
           <img width="100px" src={hat} alt="hat" />
           <p>Site en construction</p>
-        </div>
+        </div> */}
       </div>
     );
   }

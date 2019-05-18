@@ -1,4 +1,4 @@
-import React, { useEffect, useRef,useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Illustration.css";
 import { TweenLite, TimelineMax, Sine } from "gsap";
 
@@ -25,7 +25,7 @@ function Illustration() {
     };
   });
 
-  function animate(){
+  function animate() {
     TweenLite.set(shadow.current, { transformOrigin: "50% 50%", scaleX: 0.8 });
     TweenLite.to(shadow.current, 2, { delay: 0.6, x: 70, scaleX: 1 });
     TweenLite.set(floor_shadow.current, { transformOrigin: "50% 0%", scaleY: 0.3 });
@@ -63,21 +63,20 @@ function Illustration() {
     });
   }
 
-  
   const handleScroll = () => {
     let new_translate = translate + (window.scrollY - lastScrollY);
     if (new_translate < 0) new_translate = 0;
     if (new_translate > 90) new_translate = 90;
-    
+
     setTranslate(new_translate);
-    
+
     lastScrollY = window.scrollY;
   };
-  
-  console.log(translate);  
+
+  // console.log(translate);
 
   return (
-    <div className="illustration" style={{transform:"translate(4px,"+translate+"px)"}} >
+    <div className="illustration" style={{ transform: "translate(4px," + translate + "px)" }}>
       <svg style={{ display: "block" }} viewBox="0 0 712.08 893.97">
         {/* main circle clip definition */}
         <clipPath id="a">
@@ -85,6 +84,11 @@ function Illustration() {
         </clipPath>
         <defs>
           <circle id="e" cx="368.59" cy="596.98" r="259.9" />
+
+          <filter id="spotlight">
+            <feBlend in="SourceGraphic" in2="floodFill" mode="multiply" />
+          </filter>
+
         </defs>
 
         {/* the sun */}
@@ -106,10 +110,10 @@ function Illustration() {
         {/*  */}
 
         {/* green wall */}
-        <path className="st29" d="M212.83 270.06h182.93v470.91H212.83z" />
+        <path className="st29 multiply" d="M212.83 270.06h182.93v470.91H212.83z" />
 
         {/* two lines */}
-        <path className="st30" d="M298.86 270.06v577.1M633.47 584.28H38.98" />
+        <path className="st30 overlay" d="M298.86 270.06v577.1M633.47 584.28H38.98" />
         {/* table */}
         <path className="st31" d="M276.93 575.36v165.92" />
 
