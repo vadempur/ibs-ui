@@ -7,6 +7,15 @@
   overflow: hidden;
 }
 
+.diagonal-container>i{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width:5px;
+  height: 100px;
+  background-color: white;
+}
+
 .diagonal-svg {
   vertical-align: bottom;
   position: absolute;
