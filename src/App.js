@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Banner from "./components/Banner/Banner";
 import Page1 from "./components/Page1/Page1";
 
-// import hat from "./hard-hat.svg";
+import hat from "./hard-hat.svg";
 
 class App extends Component {
   render() {
@@ -13,10 +13,10 @@ class App extends Component {
         <Header />
         <Banner />
         <Page1 />
-        {/* <div className="on-construction">
+        <div id="constraction" className="on-construction" >
           <img width="100px" src={hat} alt="hat" />
           <p>Site en construction</p>
-        </div> */}
+        </div> 
       </div>
     );
   }

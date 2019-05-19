@@ -7,12 +7,10 @@ import Gears from "./Gears";
 import Clouds from "./Clouds";
 import Person from "./Person";
 
-let lastScrollY = 0;
-
 function Illustration() {
   const shadow = useRef(null);
   const floor_shadow = useRef(null);
-  const [translate, setTranslate] = useState(0);
+  const [translate, setTranslate] = useState(-30);
 
   useEffect(() => {
     animate();
@@ -64,31 +62,30 @@ function Illustration() {
   }
 
   const handleScroll = () => {
-    let new_translate = translate + (window.scrollY - lastScrollY);
-    if (new_translate < 0) new_translate = 0;
-    if (new_translate > 90) new_translate = 90;
-
-    setTranslate(new_translate);
-
-    lastScrollY = window.scrollY;
+    if (window.scrollY < 300) {
+      let new_translate = 0;
+      new_translate = map(window.scrollY, 0, 300, -30, 90);
+      setTranslate(new_translate);
+    }
   };
+
+  function map(value, start1, stop1, start2, stop2) {
+    return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
+  }
 
   // console.log(translate);
 
   return (
-    <div className="illustration" style={{ transform: "translate(4px," + translate + "px)" }}>
+    <div className="illustration" style={{ transform: "translate(0px," + translate + "px)" }}>
       <svg style={{ display: "block" }} viewBox="0 0 712.08 893.97">
         {/* main circle clip definition */}
         <clipPath id="a">
-          <use href="#e" />
+          <circle cx="368.59" cy="596.98" r="259.9" />
         </clipPath>
         <defs>
-          <circle id="e" cx="368.59" cy="596.98" r="259.9" />
-
           <filter id="spotlight">
             <feBlend in="SourceGraphic" in2="floodFill" mode="multiply" />
           </filter>
-
         </defs>
 
         {/* the sun */}

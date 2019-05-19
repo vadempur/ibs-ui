@@ -30,12 +30,13 @@ function Banner() {
     <div className="banner-container">
       <DiagonalFloor />
       <div className="section1-left">
-        <h1>Présentation du Savoir-Faire</h1>
+        <h1>Integrated Business Solutions</h1>
         <p>
-          En 2009, IB Solutions atteint le statut <b>GOLD CERTIFIED PARTNER</b> <br />
+          En 2009, IB Solutions atteint le statut <b className='golden'>GOLD CERTIFIED PARTNER</b> <br />
           Microsoft Business Solutions (Dynamics NAV et AX) <br />
           Data Management solutions pour la spécialisation BI
         </p>
+        <h2>ET SI SOLUTIONS RIMAIENT AVEC INTEGRATION.</h2>
       </div>
       <Illustration />
     </div>

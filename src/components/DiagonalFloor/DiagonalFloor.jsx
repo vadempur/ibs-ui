@@ -1,13 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./DiagonalFloor.css";
 
-let lastScrollY = 0;
-
 function DiagonalFloor() {
-  
   const [rotation, setRotation] = useState(-6);
 
   const diago = useRef(null);
+  const container = useRef(null);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -17,30 +15,37 @@ function DiagonalFloor() {
   });
 
   const handleScroll = () => {
-    let new_rotation = rotation + (window.scrollY - lastScrollY) / 20;
-    if (new_rotation < -6) new_rotation = -6;
-    if (new_rotation > 0) new_rotation = 0;
-    setRotation(new_rotation);
+    if (window.scrollY < 300) {
+      // let new_rotation = rotation + (window.scrollY - lastScrollY) / 20;
+      let new_rotation = 0;
+     
+      new_rotation = map(window.scrollY, 0, 300, -6, 0);
+     
+      setRotation(new_rotation);
+    }
 
-    lastScrollY = window.scrollY;
   };
+
+  function map(value, start1, stop1, start2, stop2) {
+    return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
+  }
 
   // console.log(rotation);
 
   return (
     <div className="diagonal-container">
-      <svg viewBox="0 0 100 50" className="diagonal-svg">
+      <svg ref={container} viewBox="0 0 100 30" className="diagonal-svg">
         <rect
           ref={diago}
           fill="var(--primary)"
           x="0"
-          y="50"
+          y="30"
           width="120"
-          height="50"
-          transform={"rotate(" + rotation + ", 0, 50)"}
+          height="30"
+          transform={"rotate(" + rotation + ", 0, 30)"}
         />
       </svg>
-      <i/>
+      <i />
     </div>
   );
 }
