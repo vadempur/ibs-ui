@@ -1,68 +1,42 @@
 import React from "react";
-import { TimelineMax } from "gsap";
+import { TimelineMax, TweenMax } from "gsap";
 
-const tl = new TimelineMax();
-const sparke_tl = new TimelineMax();
-const sparke2_tl = new TimelineMax();
+const tl = new TimelineMax({ delay: 1 });
 
 class NumberOneIcon extends React.Component {
   componentDidMount() {
-    tl.to(this.light, 0.8, { repeat: -1, repeatDelay: 1, onRepeat: this.checkShouldStop, y: 160 });
-    // tl.to(this.light, 0.8, { onComplete: this.checkShouldStop, y: 160 });
-    this.animateSparkle();
+    tl.to(this.light, .7, { y: -160 })
+      .to(this.sparkle, 0.2, { transformOrigin: "50% 50%", scale: 1 }, "-=.3")
+      .to(this.sparkle, 0.2, {
+        transformOrigin: "50% 50%",
+        onComplete: this.checkShouldStop,
+        scale: 0
+      });
   }
 
   checkShouldStop = () => {
-    if (!this.props.shouldPlay) {
+    if (this.props.shouldPlay) {
+      tl.restart(true);
+    } else {
       tl.stop();
     }
   };
 
-  animateSparkle() {
-    if (this.props.shouldPlay) {
-      this.srkl( this.sparkle , sparke_tl );
-      this.srkl( this.sparkle2 , sparke2_tl );
-    } else {
-      this.init(this.sparkle, sparke_tl);
-      this.init(this.sparkle2 , sparke2_tl);
-    }
-  }
-
-  srkl(sprkl , sparke_tl ){
-    sparke_tl.set(sprkl, {
-      x: getRndInteger(20, 150),
-      y: getRndInteger(20, 150),
-      scaleX: 0.0,
-      scaleY: 0.0,
-      opacity: 0.0
-    });
-    sparke_tl.to(sprkl, 0.8, {
-      onComplete: this.animateSparkle.bind(this),
-      transformOrigin: "50% 50%",
-      scaleX: .8,
-      scaleY: .8,
-      opacity: 1.0
-    });
-  }
-  init(sprkl, sparke_tl){
-    // sparke_tl.to(sprkl, 0.3, { scaleX: 1.0, scaleY: 1.0, opacity: 0.0 });
-    sparke_tl.set(sprkl, { scaleX: 1.0, scaleY: 1.0, opacity: 0.0 });
-  }
-
   render() {
     if (this.props.shouldPlay) {
       tl.restart();
-      this.animateSparkle();
     }
     return (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
-        <g>
+        <path
+          ref={ref => (this.border_right = ref)}
+          style={styles.cls2}
+          d="M137.11 94.56l47.76 89.98-43.37-4-20.99 38.17-47.77-89.99 64.37-34.16z"
+        />
+        <g ref={ref => (this.border_left = ref)}>
           <path style={styles.cls2} d="M47.76 94.56L0 184.54l43.37-4 21 38.17 47.76-89.99-64.37-34.16z" />
           <path style={styles.cls3} d="M112.12 128.71L64.36 218.7l-16.8-47.58 32.97-59.17.02.01 31.57 16.75z" />
         </g>
-        
-        <path style={styles.cls2} d="M137.11 94.56l47.76 89.98-43.37-4-20.99 38.17-47.77-89.99 64.37-34.16z" />
-
         <circle cx="92.44" cy="79.81" r="79.81" fill="#fdbd29" />
         <circle cx="92.44" cy="79.81" r="60" style={styles.cls3} />
 
@@ -75,23 +49,20 @@ class NumberOneIcon extends React.Component {
           <circle cx="92.44" cy="79.81" r="79.81" fill="#f00" />
         </clipPath>
 
-        <g clipPath="url(#circle)" style={{ fill: "#fff", opacity: 0.3, mixBlendMode: "overlay" }}>
+        <g clipPath="url(#circle)" style={{ fill: "#fff", opacity: 0.6, mixBlendMode: "overlay" }}>
           <rect
             ref={ref => {
               this.light = ref;
             }}
             width="300"
             height="30"
-            transform="rotate(20,0,0),translate(-30,-140)"
+            transform="rotate(20,0,0),translate(-40,140)"
           />
         </g>
+
         <path
           ref={ref => (this.sparkle = ref)}
-          d="M36.93 18.94c-13.37 2.23-15.76 4.62-18 18a.34.34 0 0 1-.67 0c-2.24-13.37-4.62-15.76-18-18a.34.34 0 0 1 0-.67C13.65 16 16 13.65 18.27.28a.34.34 0 0 1 .67 0c2.23 13.37 4.62 15.75 18 18a.34.34 0 0 1-.01.66z"
-          fill="#fff"
-        />
-        <path
-          ref={ref => (this.sparkle2 = ref)}
+          transform="matrix(0, 0, 0, 0, 130, 20)"
           d="M36.93 18.94c-13.37 2.23-15.76 4.62-18 18a.34.34 0 0 1-.67 0c-2.24-13.37-4.62-15.76-18-18a.34.34 0 0 1 0-.67C13.65 16 16 13.65 18.27.28a.34.34 0 0 1 .67 0c2.23 13.37 4.62 15.75 18 18a.34.34 0 0 1-.01.66z"
           fill="#fff"
         />
@@ -99,6 +70,20 @@ class NumberOneIcon extends React.Component {
     );
   }
 }
+
+const styles = {
+  cls2: {
+    fill: "#2e3192"
+  },
+  cls3: {
+    fill: "#fff",
+    opacity: 0.6,
+    mixBlendMode: "overlay"
+  },
+  cls5: {
+    fill: "#0747a6"
+  }
+};
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -143,19 +128,5 @@ function getRndInteger(min, max) {
 //     </svg>
 //   );
 // }
-
-const styles = {
-  cls2: {
-    fill: "#2e3192"
-  },
-  cls3: {
-    fill: "#fff",
-    opacity: 0.6,
-    mixBlendMode: "overlay"
-  },
-  cls5: {
-    fill: "#0747a6"
-  }
-};
 
 export default NumberOneIcon;

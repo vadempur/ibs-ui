@@ -14,6 +14,7 @@ function Illustration() {
 
   useEffect(() => {
     animate();
+    handleScroll();
   }, []);
 
   useEffect(() => {
@@ -66,6 +67,8 @@ function Illustration() {
       let new_translate = 0;
       new_translate = map(window.scrollY, 0, 300, -30, 90);
       setTranslate(new_translate);
+    }else{
+      setTranslate(90);
     }
   };
 

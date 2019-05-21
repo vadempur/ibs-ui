@@ -11,8 +11,8 @@ function Page1() {
   }
   return (
     <div className="page1-container">
-      <div className="page1-column border-right"  onMouseEnter={handlePlay} onMouseLeave={handlePlay} >
-        <div className="column-container">
+      <div className="page1-column border-right"   >
+        <div className="column-container" onMouseEnter={handlePlay} onMouseLeave={handlePlay}>
           <NumberOneIcon shouldPlay={play} />
           <p>
             N°1 en qualité d’intégrateur des solutions <b>DYNAMICS AX</b> sur le plan national parmi les partenaires

@@ -8,6 +8,9 @@ function DiagonalFloor() {
   const container = useRef(null);
 
   useEffect(() => {
+    handleScroll();
+  },[]);
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -22,6 +25,8 @@ function DiagonalFloor() {
       new_rotation = map(window.scrollY, 0, 300, -6, 0);
      
       setRotation(new_rotation);
+    }else{
+      setRotation(0);
     }
 
   };
