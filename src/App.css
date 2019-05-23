@@ -1,15 +1,6 @@
 .App {
 }
 
-.banner-container {
-  display: flex;
-  position: relative;
-  padding: 0px 10%;
-  flex-wrap: wrap;
-  height: 550px;
-}
-
-
 a{
   color:inherit;
   text-decoration: none;

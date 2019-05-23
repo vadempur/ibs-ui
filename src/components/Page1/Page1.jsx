@@ -9,6 +9,7 @@ function Page1() {
   const handlePlay = ()=>{
     setPlay(!play);
   }
+  
   return (
     <div className="page1-container">
       <div className="page1-column border-right"   >

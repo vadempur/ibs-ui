@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "./Banner.css";
 
-import DiagonalFloor from '../DiagonalFloor/DiagonalFloor'
-import Illustration from '../Illustration/Illustration'
+import DiagonalFloor from './DiagonalFloor/DiagonalFloor'
+import Illustration from './Illustration/Illustration'
+import "./Banner.css";
+import {useMobile} from '../../customHooks'
 
 let lastScrollY = 0;
-
 function Banner() {
-
+  
+  const isMobile = useMobile(1080);
   const [rotation, setRotation] = useState(-10);
 
   useEffect(() => {
@@ -28,8 +29,8 @@ function Banner() {
 
   return (
     <div className="banner-container">
-      <DiagonalFloor />
-      <div className="section1-left">
+      { !isMobile &&  <DiagonalFloor />}
+      <div className="banner-left">
         <h1>Integrated Business Solutions</h1>
         <p>
           En 2009, IB Solutions atteint le statut <b className='golden'>GOLD CERTIFIED PARTNER</b> <br />

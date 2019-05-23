@@ -1,5 +1,5 @@
 import React from "react";
-import { TimelineMax, TweenMax } from "gsap";
+import { TimelineMax } from "gsap";
 
 const tl = new TimelineMax({ delay: 1 });
 
@@ -85,9 +85,9 @@ const styles = {
   }
 };
 
-function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+// function getRndInteger(min, max) {
+//   return Math.floor(Math.random() * (max - min)) + min;
+// }
 
 // function NumberOneIcon({ shouldPlay }) {
 //   const light = useRef(null);

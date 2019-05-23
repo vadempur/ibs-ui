@@ -4,6 +4,7 @@
   background-color: var(--primary);
 }
 
+
 .page1-column{
   display: flex;
   justify-content: center;
@@ -41,4 +42,11 @@
 
 .border-right{
   box-shadow: 5px 0px 0px 0px rgb(255, 255, 255) , 0px 5px 0px 0px rgb(255, 255, 255);
+}
+
+
+@media screen and (max-width: 1080px){
+  .page1-column{
+    flex-basis: 100%;
+  }  
 }

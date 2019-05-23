@@ -1,27 +1,20 @@
-import React, { useState,useEffect } from "react";
+import React, { useState , useEffect } from "react";
 import logo from "./logo.svg";
 import "./Header.css";
-
+import {useMobile} from '../../customHooks'
 function Header() {
-  const [isMobileSize, setIsMobileSize] = useState(false);
-  const [showMenu, setShowMenu] = useState(true);
-  const [toggleSubMenu, setToggleSubMenu] = useState(-1);
   
-  useEffect(()=>{
-    window.addEventListener("resize", resize);
-    resize();
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-  });
+  const isMobile = useMobile(1080);
+  const [showMenu, setShowMenu] = useState(false);
+  const [toggleSubMenu, setToggleSubMenu] = useState(-1);
 
-  function resize() {
-    let innerWidth = window.innerWidth <= 1080;
-    if (innerWidth !== isMobileSize) {
-      setIsMobileSize(innerWidth);
-      setShowMenu(!innerWidth);
+  useEffect(()=>{
+    if(!isMobile){
+      setShowMenu(true);
+    }else{
+      setShowMenu(false);
     }
-  }
+  }, [isMobile] );
 
   function handleShowMenu() {
     setShowMenu(!showMenu);
@@ -36,36 +29,59 @@ function Header() {
 
   return (
     <header className="header-container">
-
       <img width="150px" src={logo} alt={"logo"} style={{ cursor: "pointer" }} />
-      
-      {isMobileSize && (
+
+      {isMobile && (
         <div className="nav-toggle" onClick={handleShowMenu}>
-            <i />
-            <i />
-            <i />
+          <i />
+          <i />
+          <i />
         </div>
       )}
-      {showMenu &&
-
-      <ul className="header-menu">
-        <li className="selected" onMouseEnter={handleEnter} onMouseLeave={handleExit}>
-          <a href='#constraction'>Accueil</a>
-          {toggleSubMenu === 1 && (
-            <SubMenu>
-              <li> Lorem Ipsum </li>
-              <li> Lorem Ipsum </li>
-              <li> Lorem Ipsum </li>
-            </SubMenu>
-          )}
-        </li>
-        <li><a href='#constraction'>Produits et Services</a></li>
-        <li><a href='#constraction'>Equipes</a></li>
-        <li><a href='#constraction'>Méthodologie</a></li>
-        <li><a href='#constraction'>Références</a></li>
-        <li><a href='#constraction'>Partenaires</a></li>
-      </ul>
-      }
+      { (showMenu || !isMobile) && (
+        <ul className="header-menu">
+          <svg
+            style={{
+              position: "absolute",
+              top: -5,
+              right:18,
+              zIndex: -1,
+              transform: "rotate(-45deg)",
+              boxShadow: "2px -2px 3px 0px rgba(0,0,0,.1)"
+            }}
+            width="15px"
+            height="15px"
+          >
+            <path d="M0,0 20,0 20,20" fill="#fff" />
+            {/* <rect width='20px' height='20px' fill='#f00' stroke='black' /> */}
+          </svg>
+          <li className="selected" onMouseEnter={handleEnter} onMouseLeave={handleExit}>
+            <a href="#constraction">Accueil</a>
+            {toggleSubMenu === 1 && (
+              <SubMenu>
+                <li> Lorem Ipsum </li>
+                <li> Lorem Ipsum </li>
+                <li> Lorem Ipsum </li>
+              </SubMenu>
+            )}
+          </li>
+          <li>
+            <a href="#constraction">Produits et Services</a>
+          </li>
+          <li>
+            <a href="#constraction">Equipes</a>
+          </li>
+          <li>
+            <a href="#constraction">Méthodologie</a>
+          </li>
+          <li>
+            <a href="#constraction">Références</a>
+          </li>
+          <li>
+            <a href="#constraction">Partenaires</a>
+          </li>
+        </ul>
+      )}
     </header>
   );
 }
@@ -75,16 +91,17 @@ function SubMenu(props) {
     <ul className="sub-home-menu">
       {props.children}
       <svg
-        style={{ 
+        style={{
           position: "absolute",
-          top: -10, zIndex: -1, 
-          transform: "rotate(-45deg)", 
+          top: -5,
+          zIndex: -1,
+          transform: "rotate(-45deg)",
           boxShadow: "2px -2px 3px 0px rgba(0,0,0,.1)"
         }}
-        width="20px"
-        height="20px"
+        width="15px"
+        height="15px"
       >
-        <path d="M0,0 20,0 20,20" fill="#fff"  />
+        <path d="M0,0 20,0 20,20" fill="#fff" />
         {/* <rect width='20px' height='20px' fill='#f00' stroke='black' /> */}
       </svg>
     </ul>

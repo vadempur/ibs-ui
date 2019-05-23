@@ -11,11 +11,23 @@
   justify-content: center;
 }
 
+
+@media screen and (max-width: 1080px){
+  .illustration{
+    order: 1;
+    position: relative;
+    min-width: 350px;
+  }
+}
+
 .multiply{
   mix-blend-mode: multiply;
 }
 .overlay{
   mix-blend-mode: overlay;
+}
+.shadow{
+  fill: rgba(0, 0, 0,0.1);
 }
 .st1 {
   fill: #fff;
