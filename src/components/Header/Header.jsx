@@ -1,9 +1,31 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import logo from "./logo.svg";
 import "./Header.css";
 
 function Header() {
+  const [isMobileSize, setIsMobileSize] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
   const [toggleSubMenu, setToggleSubMenu] = useState(-1);
+  
+  useEffect(()=>{
+    window.addEventListener("resize", resize);
+    resize();
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  });
+
+  function resize() {
+    let innerWidth = window.innerWidth <= 1080;
+    if (innerWidth !== isMobileSize) {
+      setIsMobileSize(innerWidth);
+      setShowMenu(!innerWidth);
+    }
+  }
+
+  function handleShowMenu() {
+    setShowMenu(!showMenu);
+  }
 
   const handleEnter = () => {
     setToggleSubMenu(1);
@@ -13,8 +35,19 @@ function Header() {
   };
 
   return (
-    <div className="header-container">
+    <header className="header-container">
+
       <img width="150px" src={logo} alt={"logo"} style={{ cursor: "pointer" }} />
+      
+      {isMobileSize && (
+        <div className="nav-toggle" onClick={handleShowMenu}>
+            <i />
+            <i />
+            <i />
+        </div>
+      )}
+      {showMenu &&
+
       <ul className="header-menu">
         <li className="selected" onMouseEnter={handleEnter} onMouseLeave={handleExit}>
           <a href='#constraction'>Accueil</a>
@@ -32,7 +65,8 @@ function Header() {
         <li><a href='#constraction'>Références</a></li>
         <li><a href='#constraction'>Partenaires</a></li>
       </ul>
-    </div>
+      }
+    </header>
   );
 }
 
