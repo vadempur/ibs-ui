@@ -14,9 +14,11 @@
 
 @media screen and (max-width: 1080px){
   .illustration{
+    margin-top:30px;
     order: 1;
     position: relative;
-    min-width: 350px;
+    min-width: 300px;
+    transform: translate(30px,0);
   }
 }
 

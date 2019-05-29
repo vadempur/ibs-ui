@@ -29,7 +29,7 @@ function Header() {
 
   return (
     <header className="header-container">
-      <img width="150px" src={logo} alt={"logo"} style={{ cursor: "pointer" }} />
+      <img width="130px" src={logo} alt={"logo"} style={{ cursor: "pointer" }} />
 
       {isMobile && (
         <div className="nav-toggle" onClick={handleShowMenu}>
@@ -44,10 +44,10 @@ function Header() {
             style={{
               position: "absolute",
               top: -5,
-              right:18,
+              right:15,
               zIndex: -1,
               transform: "rotate(-45deg)",
-              boxShadow: "2px -2px 3px 0px rgba(0,0,0,.1)"
+              boxShadow: "2px -2px 3px 0px rgba(0,0,0,.15)"
             }}
             width="15px"
             height="15px"

@@ -3,7 +3,7 @@
   position: relative;
   padding: 0px 10%;
   flex-wrap: wrap;
-  height: 550px;
+  height: 580px;
 }
 
 .banner-left {
@@ -46,17 +46,23 @@ p {
     margin: 0 0 50px 0;
   }
   .banner-left{
-    min-width: 400px;
     order: 2;
     flex: 1;
     text-align: center;
   }
+  .banner-left>h1 {
+    font-size: 30px;
+  }
   .banner-left>p>b{
+    margin-top:30px;
     display: block;
   }
-  .illustration{
-    order: 1;
-    position: relative;
-    min-width: 350px;
+  .banner-left>h2 {
+    font-size: 15px;
+    letter-spacing: 2px;
   }
+  p{
+    font-size: 16px;
+  }
+
 }

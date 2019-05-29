@@ -48,5 +48,17 @@
 @media screen and (max-width: 1080px){
   .page1-column{
     flex-basis: 100%;
-  }  
+    border-right: none;
+  }
+  .column-container{
+    flex-direction: column;
+  }
+  .column-container>p{
+    font-size: 14px;
+    margin: 40px 25px 0 25px;
+  }
+  
+  .border-right{
+    box-shadow: 2px 0px 0px 0px rgb(255, 255, 255) , 0px 2px 0px 0px rgb(255, 255, 255);
+  }
 }
