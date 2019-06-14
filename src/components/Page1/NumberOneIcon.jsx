@@ -1,31 +1,36 @@
 import React from "react";
 import { TimelineMax } from "gsap";
 
-const tl = new TimelineMax({ delay: 1 });
+const tl = new TimelineMax({paused:true});
+const borders_tl = new TimelineMax();
 
 class NumberOneIcon extends React.Component {
+  
   componentDidMount() {
-    tl.to(this.light, .7, { y: -160 })
-      .to(this.sparkle, 0.2, { transformOrigin: "50% 50%", scale: 1 }, "-=.3")
+    tl.to(this.light_line, .7, { y: -160 })
+      .to(this.sparkle, 0.2, { transformOrigin: "50% 50%", scale: 1.5 }, "-=.3")
       .to(this.sparkle, 0.2, {
         transformOrigin: "50% 50%",
-        onComplete: this.checkShouldStop,
         scale: 0
       });
+
+      borders_tl.to( this.border_left, .7 , { transformOrigin: "50% 0%", rotation:-30 })
+      .to( this.border_right, .7 , { transformOrigin: "50% 0%", rotation:30 },"-=.7" );
   }
 
-  checkShouldStop = () => {
+  manageAnimation(){
     if (this.props.shouldPlay) {
-      tl.restart(true);
-    } else {
-      tl.stop();
+      tl.play();
+      borders_tl.play();
+    }else{
+      tl.reverse();
+      borders_tl.reverse();
     }
-  };
+  }
+
 
   render() {
-    if (this.props.shouldPlay) {
-      tl.restart();
-    }
+    this.manageAnimation();
     return (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
         <path
@@ -52,7 +57,7 @@ class NumberOneIcon extends React.Component {
         <g clipPath="url(#circle)" style={{ fill: "#fff", opacity: 0.6, mixBlendMode: "overlay" }}>
           <rect
             ref={ref => {
-              this.light = ref;
+              this.light_line = ref;
             }}
             width="300"
             height="30"
@@ -62,7 +67,7 @@ class NumberOneIcon extends React.Component {
 
         <path
           ref={ref => (this.sparkle = ref)}
-          transform="matrix(0, 0, 0, 0, 130, 20)"
+          transform="matrix(0, 0, 0, 0, 130, 30)"
           d="M36.93 18.94c-13.37 2.23-15.76 4.62-18 18a.34.34 0 0 1-.67 0c-2.24-13.37-4.62-15.76-18-18a.34.34 0 0 1 0-.67C13.65 16 16 13.65 18.27.28a.34.34 0 0 1 .67 0c2.23 13.37 4.62 15.75 18 18a.34.34 0 0 1-.01.66z"
           fill="#fff"
         />

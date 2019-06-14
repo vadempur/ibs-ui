@@ -22,4 +22,5 @@ b{
 }
 .on-construction > p {
   color: var(--gray);
+  text-align: center;
 }

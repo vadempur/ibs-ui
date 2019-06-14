@@ -1,31 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import DiagonalFloor from './DiagonalFloor/DiagonalFloor'
 import Illustration from './Illustration/Illustration'
 import "./Banner.css";
 import {useMobile} from '../../customHooks'
 
-let lastScrollY = 0;
 function Banner() {
   
   const isMobile = useMobile(1080);
-  const [rotation, setRotation] = useState(-10);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
-
-  const handleScroll = () => {
-    let new_rotation = rotation + (window.scrollY - lastScrollY) / 20;
-    if (new_rotation < -10) new_rotation = -10;
-    if (new_rotation > 0) new_rotation = 0;
-    setRotation(new_rotation);
-
-    lastScrollY = window.scrollY;
-  };
 
   return (
     <div className="banner-container">

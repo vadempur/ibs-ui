@@ -14,7 +14,12 @@
 }
 .header-menu > li {
   position: relative;
-  margin-inline-end: 40px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: background 0.4s ease-in-out;
+}
+.header-menu > li:hover {
+  background: var(--very-light-gray);
 }
 
 .header-menu > li > a{

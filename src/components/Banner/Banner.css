@@ -49,6 +49,7 @@ p {
     order: 2;
     flex: 1;
     text-align: center;
+    align-items: center;
   }
   .banner-left>h1 {
     font-size: 30px;

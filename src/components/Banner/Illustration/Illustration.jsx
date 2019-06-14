@@ -7,7 +7,7 @@ import Gears from "./Gears";
 import Clouds from "./Clouds";
 import Person from "./Person";
 
-import {useMobile} from '../../../customHooks'
+import { useMobile } from "../../../customHooks";
 
 function Illustration() {
   const shadow = useRef(null);
@@ -70,7 +70,7 @@ function Illustration() {
       let new_translate = 0;
       new_translate = map(window.scrollY, 0, 300, -30, 90);
       setTranslate(new_translate);
-    }else{
+    } else {
       setTranslate(90);
     }
   };
@@ -82,7 +82,7 @@ function Illustration() {
   // console.log(translate);
 
   return (
-    <div className="illustration" style={!isMobile? { transform: "translate(0px," + translate + "px)" } : {} }>
+    <div className="illustration" style={!isMobile ? { transform: "translate(0px," + translate + "px)" } : {}}>
       <svg style={{ display: "block" }} viewBox="0 0 712.08 893.97">
         {/* main circle clip definition */}
         <clipPath id="a">

@@ -6,7 +6,7 @@ function Header() {
   
   const isMobile = useMobile(1080);
   const [showMenu, setShowMenu] = useState(false);
-  const [toggleSubMenu, setToggleSubMenu] = useState(-1);
+  // const [toggleSubMenu, setToggleSubMenu] = useState(-1);
 
   useEffect(()=>{
     if(!isMobile){
@@ -20,12 +20,12 @@ function Header() {
     setShowMenu(!showMenu);
   }
 
-  const handleEnter = () => {
-    setToggleSubMenu(1);
-  };
-  const handleExit = () => {
-    setToggleSubMenu(-1);
-  };
+  // const handleEnter = () => {
+  //   setToggleSubMenu(1);
+  // };
+  // const handleExit = () => {
+  //   setToggleSubMenu(-1);
+  // };
 
   return (
     <header className="header-container">
@@ -55,15 +55,19 @@ function Header() {
             <path d="M0,0 20,0 20,20" fill="#fff" />
             {/* <rect width='20px' height='20px' fill='#f00' stroke='black' /> */}
           </svg>
-          <li className="selected" onMouseEnter={handleEnter} onMouseLeave={handleExit}>
+          <li 
+            className="selected" 
+            // onMouseEnter={handleEnter} 
+            // onMouseLeave={handleExit}
+          >
             <a href="#constraction">Accueil</a>
-            {toggleSubMenu === 1 && (
+            {/* {toggleSubMenu === 1 && (
               <SubMenu>
                 <li> Lorem Ipsum </li>
                 <li> Lorem Ipsum </li>
                 <li> Lorem Ipsum </li>
               </SubMenu>
-            )}
+            )} */}
           </li>
           <li>
             <a href="#constraction">Produits et Services</a>
@@ -86,26 +90,26 @@ function Header() {
   );
 }
 
-function SubMenu(props) {
-  return (
-    <ul className="sub-home-menu">
-      {props.children}
-      <svg
-        style={{
-          position: "absolute",
-          top: -5,
-          zIndex: -1,
-          transform: "rotate(-45deg)",
-          boxShadow: "2px -2px 3px 0px rgba(0,0,0,.1)"
-        }}
-        width="15px"
-        height="15px"
-      >
-        <path d="M0,0 20,0 20,20" fill="#fff" />
-        {/* <rect width='20px' height='20px' fill='#f00' stroke='black' /> */}
-      </svg>
-    </ul>
-  );
-}
+// function SubMenu(props) {
+//   return (
+//     <ul className="sub-home-menu">
+//       {props.children}
+//       <svg
+//         style={{
+//           position: "absolute",
+//           top: -5,
+//           zIndex: -1,
+//           transform: "rotate(-45deg)",
+//           boxShadow: "2px -2px 3px 0px rgba(0,0,0,.1)"
+//         }}
+//         width="15px"
+//         height="15px"
+//       >
+//         <path d="M0,0 20,0 20,20" fill="#fff" />
+//         {/* <rect width='20px' height='20px' fill='#f00' stroke='black' /> */}
+//       </svg>
+//     </ul>
+//   );
+// }
 
 export default Header;
