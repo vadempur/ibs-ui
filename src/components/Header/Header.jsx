@@ -1,22 +1,28 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import logo from "./logo.svg";
 import "./Header.css";
-import {useMobile} from '../../customHooks'
+import { useMobile, useEventListener } from "../../customHooks";
 function Header() {
-  
   const isMobile = useMobile(1080);
   const [showMenu, setShowMenu] = useState(false);
   // const [toggleSubMenu, setToggleSubMenu] = useState(-1);
 
-  useEffect(()=>{
-    if(!isMobile){
+  useEffect(() => {
+    if (!isMobile) {
       setShowMenu(true);
-    }else{
+    } else {
       setShowMenu(false);
     }
-  }, [isMobile] );
+  }, [isMobile]);
 
-  function handleShowMenu() {
+  const handleOutSideClick = useCallback(e => {
+    if (e.target.className !== "hamburger" && e.target.className !== "hamburger-piece")
+      if (showMenu) setShowMenu(false);
+  });
+
+  useEventListener("click", handleOutSideClick, document.getElementById("root"));
+
+  function handleShowMenu(e) {
     setShowMenu(!showMenu);
   }
 
@@ -32,19 +38,19 @@ function Header() {
       <img width="130px" src={logo} alt={"logo"} style={{ cursor: "pointer" }} />
 
       {isMobile && (
-        <div className="nav-toggle" onClick={handleShowMenu}>
-          <i />
-          <i />
-          <i />
+        <div className="hamburger" onClick={handleShowMenu}>
+          <i className="hamburger-piece" />
+          <i className="hamburger-piece" />
+          <i className="hamburger-piece" />
         </div>
       )}
-      { (showMenu || !isMobile) && (
+      {(showMenu || !isMobile) && (
         <ul className="header-menu">
           <svg
             style={{
               position: "absolute",
               top: -5,
-              right:15,
+              right: 15,
               zIndex: -1,
               transform: "rotate(-45deg)",
               boxShadow: "2px -2px 3px 0px rgba(0,0,0,.15)"
@@ -55,9 +61,9 @@ function Header() {
             <path d="M0,0 20,0 20,20" fill="#fff" />
             {/* <rect width='20px' height='20px' fill='#f00' stroke='black' /> */}
           </svg>
-          <li 
-            className="selected" 
-            // onMouseEnter={handleEnter} 
+          <li
+            className="selected"
+            // onMouseEnter={handleEnter}
             // onMouseLeave={handleExit}
           >
             <a href="#constraction">Accueil</a>

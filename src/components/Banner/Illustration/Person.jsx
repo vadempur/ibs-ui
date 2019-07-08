@@ -1,20 +1,34 @@
-import React, { useRef, useEffect } from 'react';
-import { TimelineMax } from 'gsap';
+import React, { useRef, useEffect } from "react";
+import { TimelineMax, Power0 } from "gsap";
+
+const t1 = new TimelineMax({
+  ease: Power0.easeNone,
+  repeat: -1,
+  repeatDelay: 3,
+  
+});
 
 function Person() {
   const shoe = useRef(null);
 
   useEffect(() => {
-    let t1 = new TimelineMax();
-    t1.from(shoe.current, 10, {  repeat: -1 });
+    t1.to(shoe.current, 0.2, {
+      transformOrigin: "80% 50%",
+      rotation: 15,
+      x: -3,
+    }).to(shoe.current, 0.4, {
+      transformOrigin: "80% 50%",
+      rotation: 0,
+      x: 0
+    });
     // let t2 = new TimelineMax();
     // t2.from(orange_gear.current, 6, { ease: Power0.easeNone, repeat: -1, rotation: 360, transformOrigin: "50% 50%" });
-  },[]);
+  }, []);
 
   return (
     <>
-    {/* chair white */}
-    <path
+      {/* chair white */}
+      <path
         className="st1"
         d="M344.41 631.33s-21.89-4.97-25.2 9.28c-2.84 12.24 26.94 11.76 26.94 11.76l65.49.4s24.67 2.84 36.87-25.61c12.19-28.45 23.94-102.97 23.94-102.97s1.76-10.25-6.77-11.74c-10.04-1.75-12.01 19.93-12.01 19.93s-15.18 91.99-37.2 96.48c-3.39.69-6.1 3.26-9.56 3.22l-62.5-.75z"
       />
@@ -124,8 +138,6 @@ function Person() {
       <path className="st36" d="M305.64 550.71l-.93 17 6.39.63.95-17.27z" />
       <path className="st42" d="M375.01 535.94l18.63-26.64M384.71 567.29l19.31-25.46" />
       {/*  */}
-
-      
     </>
   );
 }

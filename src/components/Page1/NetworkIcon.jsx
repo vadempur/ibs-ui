@@ -1,22 +1,21 @@
 import React, { useRef, useEffect, createRef } from "react";
-import { TimelineMax } from "gsap";
-const tl = new TimelineMax({ paused: true, });
+import { TimelineMax , Power0 } from "gsap";
+const tl = new TimelineMax({ paused: true });
 const DURATION = 1;
-const ease = undefined
+const ease = Power0.easeNone;
 
 function NetworkIcon({ shouldPlay }) {
-  const atoms = useRef([createRef(), createRef(), createRef(), createRef(), createRef()]);
+  const atoms = useRef([createRef(), createRef(), createRef(), createRef(), createRef(), createRef()]);
 
   useEffect(() => {
     const atoms_refs = atoms.current.map(atom_ref => atom_ref.current);
 
-    tl.to(atoms_refs[0], DURATION, { ease: ease, rotation: -30, transformOrigin: "0% 100%" });
-    tl.to(atoms_refs[1], DURATION, { ease: ease, rotation: -30, transformOrigin: "50% 0%" }, "-=" + DURATION);
-    tl.to(atoms_refs[2], DURATION, { ease: ease, rotation: 10, transformOrigin: "100% 0%" }, "-=" + DURATION);
-    tl.to(atoms_refs[3], DURATION, { ease: ease, rotation: -20, transformOrigin: "100% 100%" }, "-=" + DURATION);
-    tl.to(atoms_refs[4], DURATION, { ease: ease, rotation: 50, transformOrigin: "0% 0%" }, "-=" + DURATION);
-
-    
+    tl.to(atoms_refs[0], DURATION, { ease: ease, scale: .7,rotation: -30, transformOrigin: "0% 100%" });
+    tl.to(atoms_refs[1], DURATION, { ease: ease,scale: 1.2, rotation: -30, transformOrigin: "50% 0%" }, "-=" + DURATION);
+    tl.to(atoms_refs[2], DURATION, { ease: ease, scale: 1.1,rotation: 10, transformOrigin: "100% 0%" }, "-=" + DURATION);
+    tl.to(atoms_refs[3], DURATION, { ease: ease,  scale: 1.2,rotation: -20, transformOrigin: "100% 100%" }, "-=" + DURATION);
+    tl.to(atoms_refs[4], DURATION, { ease: ease, scale: 0.7,rotation: 50, transformOrigin: "0% 0%" }, "-=" + DURATION);
+    tl.to(atoms_refs[5], DURATION, { ease: ease, scale: 0.9, x: 5, transformOrigin: "50% 50%" }, "-=" + DURATION);
   }, []);
 
   tl.eventCallback("onComplete", () => {
@@ -33,7 +32,7 @@ function NetworkIcon({ shouldPlay }) {
 
   if (shouldPlay) {
     if (!tl.isActive()) tl.restart();
-  }else{
+  } else {
     tl.reverse();
   }
 
@@ -60,7 +59,7 @@ function NetworkIcon({ shouldPlay }) {
         <circle fill="#57d8ab" cx="14.2" cy="55.7" r="5" />
       </g>
 
-      <circle fill="#FF0066" cx="35.5" cy="35.4" r="7" />
+      <circle ref={atoms.current[5]} fill="#FF0066" cx="35.5" cy="35.4" r="7" />
     </svg>
   );
 }

@@ -37,7 +37,7 @@
 .sub-home-menu {
   cursor: default;
   animation-name: fadein;
-  animation-duration: .5s;
+  animation-duration: .3s;
   z-index: 1000;
   width: 200px;
   transition: width 1s;
@@ -63,7 +63,7 @@
   margin: 15px 0;
 }
 
-.nav-toggle>i{
+.hamburger-piece{
   display: block;
   height: 2px;
   width: 17px;

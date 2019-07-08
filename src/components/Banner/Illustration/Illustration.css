@@ -28,6 +28,9 @@
 .overlay{
   mix-blend-mode: overlay;
 }
+.screen{
+  mix-blend-mode: screen;
+}
 .shadow{
   fill: rgba(0, 0, 0,0.1);
 }

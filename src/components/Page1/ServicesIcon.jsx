@@ -2,23 +2,23 @@ import React, { useRef, useEffect } from "react";
 import { TimelineMax,SteppedEase } from "gsap";
 
 const tl = new TimelineMax({ paused: true });
-
+const DURATION = 1;
 
 function ServicesIcon({ shouldPlay }) {
   const gear = useRef();
   const tool = useRef();
 
   useEffect(() => {
-    tl.to(gear.current, 1.5, {
+    tl.to(gear.current, DURATION, {
       ease: SteppedEase.config(5),
       transformOrigin: "50% 50%",
       rotation: 45
     })
-    .to(tool.current, 1.5, {
+    .to(tool.current, DURATION, {
       // ease: SteppedEase.config(30),
       transformOrigin: "30% 30%",
       rotation: -45
-    },'-=1.5')
+    },'-='+DURATION)
     ;
   }, []);
 

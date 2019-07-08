@@ -16,7 +16,8 @@ function CollabIcon({ shouldPlay }) {
   useEffect(() => {
     tl.to(stars.current, DURATION, {
       transformOrigin: "50% 50%",
-      rotation: 360
+      rotation: 360,
+      scale:0.8
     });
 
     hands_tl
@@ -67,7 +68,7 @@ function CollabIcon({ shouldPlay }) {
   };
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700" style={{ width: "160px" }}>
-      <g transform="translate(100,150)" >
+      <g transform="translate(100,150)">
         <clipPath id="red_hand">
           <path d="M277.76 372.55L172.34 267.14a16.88 16.88 0 0 1 0-23.89 16.67 16.67 0 0 1 9.24-4.72 16.87 16.87 0 0 1 14.65 4.74l-27.15-27.15a16.84 16.84 0 0 1-5-11.94 16.39 16.39 0 0 1 .22-2.7 16.85 16.85 0 0 1 27-10.62L181 180.53a16.85 16.85 0 0 1-5-12 15.67 15.67 0 0 1 .22-2.74 16.82 16.82 0 0 1 14-13.92 16.88 16.88 0 0 1 14.64 4.74l11.83 11.83a16.88 16.88 0 1 1 23.87-23.87l68.51 68.51.19-.27a30.86 30.86 0 0 1 43.7 0l31.94 31.94a32.77 32.77 0 0 1 9.6 23.13v20a35.25 35.25 0 0 0 10.34 24.91L412 320l-81.47 81.48-9.11-9.11a35.3 35.3 0 0 0-22.64-10.25 32.75 32.75 0 0 1-21.02-9.57z" />
         </clipPath>

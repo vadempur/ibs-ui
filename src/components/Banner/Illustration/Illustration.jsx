@@ -8,6 +8,7 @@ import Clouds from "./Clouds";
 import Person from "./Person";
 
 import { useMobile } from "../../../customHooks";
+import SpotLights from "./SpotLights";
 
 function Illustration() {
   const shadow = useRef(null);
@@ -88,11 +89,6 @@ function Illustration() {
         <clipPath id="a">
           <circle cx="368.59" cy="596.98" r="259.9" />
         </clipPath>
-        <defs>
-          <filter id="spotlight">
-            <feBlend in="SourceGraphic" in2="floodFill" mode="multiply" />
-          </filter>
-        </defs>
 
         {/* the sun */}
         <Sun />
@@ -121,37 +117,17 @@ function Illustration() {
         <path className="st31" d="M276.93 575.36v165.92" />
 
         <Person />
-
-        {/* lamps */}
-        <path className="st26" d="M232.49 270.06h4.53v109.01h-4.53z" />
-        <circle className="st2" cx="234.75" cy="406.05" r="11.84" />
-        <path className="st26" d="M277.02 406.24h-84.53l42.26-42.26zM330.15 270.06h3.24v47.89h-3.24z" />
-        <linearGradient id="b" x1="331.55" x2="327.41" y1="644.79" y2="298.06" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#FDBD29" stopOpacity="0" offset="0" />
-          <stop stopColor="#FDBD29" offset="1" />
-        </linearGradient>
-        <path fill="url(#b)" opacity=".53" d="M331.77 312.28L118.91 666.53l425.71-6.7z" />
-        <circle className="st2" cx="331.77" cy="342.07" r="6.93" />
-        <path className="st26" d="M350.09 342.07l-36.64.58 18.32-30.49z" />
-        {/*  */}
-
+        <SpotLights />
         <Gears />
         <Clouds />
 
         {/* circle trees */}
-        {/* <circle className="st1" cx="521.09" cy="714.19" r="16.42" />
-      <path className="st1" d="M519.17 729.07h3.84v11.9h-3.84z" />
-      <circle className="st1" cx="564.64" cy="694.09" r="28.74" />
-      <path className="st1" d="M561.28 720.14H568v20.83h-6.72z" /> */}
+
         <circle className="st29" cx="521.09" cy="714.19" r="16.42" />
         <path className="st29" d="M519.17 729.07h3.84v11.9h-3.84z" />
         <circle className="st48" cx="564.64" cy="694.09" r="28.74" />
         <path className="st29" d="M561.28 720.14H568v20.83h-6.72z" />
 
-        {/* triangle trees */}
-        {/* <path className="st1" d="M399.47 740.97l22.7-89.51 22.7 89.51z" />
-      <path className="st1" d="M426.64 740.97l32.49-128.13 32.49 128.13z" />
-      <path className="st1" d="M456.15 740.97l25.99-102.48 25.99 102.48z" /> */}
         <path fill="#d9e021" d="M399.47 740.97l22.7-89.51 22.7 89.51z" />
         <path className="st29" d="M426.64 740.97l32.49-128.13 32.49 128.13z" />
         <path className="st48" d="M456.15 740.97l25.99-102.48 25.99 102.48z" />
