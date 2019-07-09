@@ -4,8 +4,8 @@ import LetterSvg from "./LetterSvg";
 import { TimelineMax, TweenMax } from "gsap";
 import { useEventListener } from "../../customHooks";
 
-const tl = new TimelineMax();
-
+const tl = new TimelineMax({paused:true});
+let anime;
 function Letter() {
   const circleRef = useRef();
   const [letterVisible, setLetterVisible] = useState(false);
@@ -16,16 +16,27 @@ function Letter() {
     setDimentions([window.innerWidth, window.innerHeight]);
   });
 
+  const showLetter = useCallback(()=>{
+    
+    if(!letterVisible){
+      anime =TweenMax.to(circleRef.current, 1, { x: -dimentions[0]/2, attr:{r:dimentions[0]} } );
+    }
+    else{
+      anime.reverse();
+    }
+
+  });
+
   useEventListener("resize", handleResizeSvg);
 
-  if (dimentions[0] === 0) {
-    
-    setDimentions([window.innerWidth, window.innerHeight]);
-  }
 
   useEffect(()=>{
+    setDimentions([window.innerWidth, window.innerHeight]);
     TweenMax.set(circleRef.current,{ x:"-90px" , y:"-80px" } );
+    // tl.to(circleRef.current, 1, { x: -dimentions[0]/2, attr:{r:dimentions[0]} } );
   },[]);
+
+
 
   return (
     <>
@@ -35,9 +46,7 @@ function Letter() {
         </svg>
       </div>
       <div className="letter-modal" 
-        onClick={()=>{
-          tl.to(circleRef.current, 1, { x:- dimentions[0]/2, attr:{r:dimentions[0]} } );
-        }}
+        onClick={showLetter}
       >
         <div
           className="letter-container"
