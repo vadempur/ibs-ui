@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import { TimelineMax } from "gsap";
+import React, { useEffect } from "react";
+// import { TimelineMax } from "gsap";
 
 function SpotLights() {
 
