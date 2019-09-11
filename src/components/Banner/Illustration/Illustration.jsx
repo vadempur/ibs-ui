@@ -7,7 +7,7 @@ import Gears from "./Gears";
 import Clouds from "./Clouds";
 import Person from "./Person";
 
-import { useMobile } from "../../../customHooks";
+import { useMobile, useEventListener } from "../../../customHooks";
 import SpotLights from "./SpotLights";
 
 function Illustration() {
@@ -21,12 +21,7 @@ function Illustration() {
     handleScroll();
   }, []);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
+  
 
   function animate() {
     TweenLite.set(shadow.current, { transformOrigin: "50% 50%", scaleX: 0.8 });
@@ -67,14 +62,17 @@ function Illustration() {
   }
 
   const handleScroll = () => {
-    if (window.scrollY < 300) {
+
+    if (window.scrollY < 450) {
       let new_translate = 0;
-      new_translate = map(window.scrollY, 0, 300, -30, 90);
+      new_translate = map(window.scrollY, 0, 450, -30, 90);
       setTranslate(new_translate);
     } else {
-      setTranslate(90);
+      setTranslate(90);      
     }
   };
+
+  useEventListener("scroll",handleScroll);
 
   function map(value, start1, stop1, start2, stop2) {
     return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));

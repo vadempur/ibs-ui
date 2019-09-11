@@ -9,11 +9,11 @@ function DiagonalFloor() {
 
   const handleScroll = useCallback(
     () => {
-      if (window.scrollY < 300) {
+      if (window.scrollY < 500) {
         // let new_rotation = rotation + (window.scrollY - lastScrollY) / 20;
         let new_rotation = 0;
   
-        new_rotation = map(window.scrollY, 0, 300, -8, 0);
+        new_rotation = map(window.scrollY, 0, 500, -8, 0);
   
         setRotation(new_rotation);
       }else{

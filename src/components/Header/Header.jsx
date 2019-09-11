@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import logo from "./logo.svg";
+import logo_light from "./logo-light.svg";
 import "./Header.css";
 import { useMobile, useEventListener } from "../../customHooks";
-function Header() {
+function Header({light}) {
+  
   const isMobile = useMobile(1080);
   const [showMenu, setShowMenu] = useState(false);
   // const [toggleSubMenu, setToggleSubMenu] = useState(-1);
@@ -26,6 +28,8 @@ function Header() {
     setShowMenu(!showMenu);
   }
 
+
+
   // const handleEnter = () => {
   //   setToggleSubMenu(1);
   // };
@@ -34,8 +38,8 @@ function Header() {
   // };
 
   return (
-    <header className="header-container">
-      <img width="130px" src={logo} alt={"logo"} style={{ cursor: "pointer" }} />
+    <header className={`header-container ${light&&"header-light-bg"}`}>
+      <img width={light?"180px":"130px"} src={light?logo_light:logo} alt={"logo"} style={{ cursor: "pointer" }} />
 
       {isMobile && (
         <div className="hamburger" onClick={handleShowMenu}>
@@ -45,22 +49,7 @@ function Header() {
         </div>
       )}
       {(showMenu || !isMobile) && (
-        <ul className="header-menu">
-          <svg
-            style={{
-              position: "absolute",
-              top: -5,
-              right: 15,
-              zIndex: -1,
-              transform: "rotate(-45deg)",
-              boxShadow: "2px -2px 3px 0px rgba(0,0,0,.15)"
-            }}
-            width="15px"
-            height="15px"
-          >
-            <path d="M0,0 20,0 20,20" fill="#fff" />
-            {/* <rect width='20px' height='20px' fill='#f00' stroke='black' /> */}
-          </svg>
+        <ul className={`header-menu ${light&&"header-light-txt"}`}>
           <li
             className="selected"
             // onMouseEnter={handleEnter}
