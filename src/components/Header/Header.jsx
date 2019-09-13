@@ -3,9 +3,9 @@ import logo from "./logo.svg";
 import logo_light from "./logo-light.svg";
 import "./Header.css";
 import { useMobile, useEventListener } from "../../customHooks";
-function Header({light}) {
-  
+function Header() {
   const isMobile = useMobile(1080);
+  const [light, setIsLight] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   // const [toggleSubMenu, setToggleSubMenu] = useState(-1);
 
@@ -28,7 +28,23 @@ function Header({light}) {
     setShowMenu(!showMenu);
   }
 
-
+  useEventListener("wheel", e => {
+    if (light) {
+      if (e.deltaY > 0) {
+        setTimeout(() => {
+          setIsLight(false);
+        }, 300);
+      }
+    }
+  });
+  useEventListener("scroll", () => {
+    if (!light) {
+      const top = window.scrollY;
+      if (top < 1) {
+        setIsLight(true);
+      }
+    }
+  });
 
   // const handleEnter = () => {
   //   setToggleSubMenu(1);
@@ -38,8 +54,13 @@ function Header({light}) {
   // };
 
   return (
-    <header className={`header-container ${light&&"header-light-bg"}`}>
-      <img width={light?"180px":"130px"} src={light?logo_light:logo} alt={"logo"} style={{ cursor: "pointer" }} />
+    <header className={`header-container ${light && "header-light-bg"}`}>
+      <img
+        width={light ? "180px" : "130px"}
+        src={light ? logo_light : logo}
+        alt={"logo"}
+        style={{ cursor: "pointer" }}
+      />
 
       {isMobile && (
         <div className="hamburger" onClick={handleShowMenu}>
@@ -49,7 +70,7 @@ function Header({light}) {
         </div>
       )}
       {(showMenu || !isMobile) && (
-        <ul className={`header-menu ${light&&"header-light-txt"}`}>
+        <ul className={`header-menu ${light && "header-light-txt"}`}>
           <li
             className="selected"
             // onMouseEnter={handleEnter}
