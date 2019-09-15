@@ -7,21 +7,20 @@ import Gears from "./Gears";
 import Clouds from "./Clouds";
 import Person from "./Person";
 
-import { useMobile, useEventListener } from "../../../customHooks";
+import { useMobile, useEventListener,map } from "../../../customHooks";
 import SpotLights from "./SpotLights";
 
-function Illustration() {
+function Illustration({replay}) {
   const shadow = useRef(null);
   const floor_shadow = useRef(null);
   const [translate, setTranslate] = useState(-30);
   const isMobile = useMobile(1080);
 
   useEffect(() => {
+    if(!replay) return;
     animate();
     handleScroll();
-  }, []);
-
-  
+  }, [replay]);
 
   function animate() {
     TweenLite.set(shadow.current, { transformOrigin: "50% 50%", scaleX: 0.8 });
@@ -74,13 +73,10 @@ function Illustration() {
 
   useEventListener("scroll",handleScroll);
 
-  function map(value, start1, stop1, start2, stop2) {
-    return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
-  }
-
-  // console.log(translate);
-
+  if(!replay) return null;
+  else 
   return (
+
     <div className="illustration" style={!isMobile ? { transform: "translate(0px," + translate + "px)" } : {}}>
       <svg style={{ display: "block" }} viewBox="0 0 712.08 893.97">
         {/* main circle clip definition */}
@@ -143,5 +139,6 @@ function Illustration() {
     </div>
   );
 }
+
 
 export default Illustration;

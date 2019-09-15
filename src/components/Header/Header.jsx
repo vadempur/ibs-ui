@@ -3,11 +3,10 @@ import logo from "./logo.svg";
 import logo_light from "./logo-light.svg";
 import "./Header.css";
 import { useMobile, useEventListener } from "../../customHooks";
-function Header() {
+function Header({ light }) {
   const isMobile = useMobile(1080);
-  const [light, setIsLight] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
-  // const [toggleSubMenu, setToggleSubMenu] = useState(-1);
+  const [toggleSubMenu, setToggleSubMenu] = useState(-1);
 
   useEffect(() => {
     if (!isMobile) {
@@ -28,39 +27,16 @@ function Header() {
     setShowMenu(!showMenu);
   }
 
-  useEventListener("wheel", e => {
-    if (light) {
-      if (e.deltaY > 0) {
-        setTimeout(() => {
-          setIsLight(false);
-        }, 300);
-      }
-    }
-  });
-  useEventListener("scroll", () => {
-    if (!light) {
-      const top = window.scrollY;
-      if (top < 1) {
-        setIsLight(true);
-      }
-    }
-  });
-
-  // const handleEnter = () => {
-  //   setToggleSubMenu(1);
-  // };
-  // const handleExit = () => {
-  //   setToggleSubMenu(-1);
-  // };
+  const handleEnter = () => {
+    setToggleSubMenu(1);
+  };
+  const handleExit = () => {
+    setToggleSubMenu(-1);
+  };
 
   return (
     <header className={`header-container ${light && "header-light-bg"}`}>
-      <img
-        width={light ? "180px" : "130px"}
-        src={light ? logo_light : logo}
-        alt={"logo"}
-        style={{ cursor: "pointer" }}
-      />
+      <img width={light ? "180px" : "130px"} src={light ? logo_light : logo} alt={"logo"} className={"logo"} />
 
       {isMobile && (
         <div className="hamburger" onClick={handleShowMenu}>
@@ -71,22 +47,18 @@ function Header() {
       )}
       {(showMenu || !isMobile) && (
         <ul className={`header-menu ${light && "header-light-txt"}`}>
-          <li
-            className="selected"
-            // onMouseEnter={handleEnter}
-            // onMouseLeave={handleExit}
-          >
+          <li className="selected">
             <a href="#constraction">Accueil</a>
-            {/* {toggleSubMenu === 1 && (
+          </li>
+          <li onMouseEnter={handleEnter} onMouseLeave={handleExit}>
+            <a href="#constraction">Services</a>
+            {toggleSubMenu === 1 && (
               <SubMenu>
                 <li> Lorem Ipsum </li>
                 <li> Lorem Ipsum </li>
                 <li> Lorem Ipsum </li>
               </SubMenu>
-            )} */}
-          </li>
-          <li>
-            <a href="#constraction">Produits et Services</a>
+            )}
           </li>
           <li>
             <a href="#constraction">Equipes</a>
@@ -106,26 +78,26 @@ function Header() {
   );
 }
 
-// function SubMenu(props) {
-//   return (
-//     <ul className="sub-home-menu">
-//       {props.children}
-//       <svg
-//         style={{
-//           position: "absolute",
-//           top: -5,
-//           zIndex: -1,
-//           transform: "rotate(-45deg)",
-//           boxShadow: "2px -2px 3px 0px rgba(0,0,0,.1)"
-//         }}
-//         width="15px"
-//         height="15px"
-//       >
-//         <path d="M0,0 20,0 20,20" fill="#fff" />
-//         {/* <rect width='20px' height='20px' fill='#f00' stroke='black' /> */}
-//       </svg>
-//     </ul>
-//   );
-// }
+function SubMenu(props) {
+  return (
+    <ul className="sub-home-menu">
+      {props.children}
+      <svg
+        style={{
+          position: "absolute",
+          top: -5,
+          zIndex: -1,
+          transform: "rotate(-45deg)",
+          boxShadow: "2px -2px 3px 0px rgba(0,0,0,.1)"
+        }}
+        width="15px"
+        height="15px"
+      >
+        <path d="M0,0 20,0 20,20" fill="#fff" />
+        {/* <rect width='20px' height='20px' fill='#f00' stroke='black' /> */}
+      </svg>
+    </ul>
+  );
+}
 
 export default Header;

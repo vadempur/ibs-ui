@@ -10,7 +10,12 @@
   z-index: 1000;
   transition: background-color 500ms;
   transition: padding 500ms;
-  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.35);
+  /* box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.35); */
+}
+
+.logo{
+  transition: width 500ms;
+  cursor: pointer;
 }
 
 
