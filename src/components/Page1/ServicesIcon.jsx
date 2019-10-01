@@ -28,6 +28,12 @@ function ServicesIcon({ shouldPlay }) {
     tl.reverse();
   }
 
+  tl.eventCallback("onComplete", () => {
+    if (shouldPlay) {
+      tl.reverse();
+    }
+  });
+
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 433.93">
       <g data-name="Layer 2">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Page1 from "./components/Page1/Page1";
@@ -6,13 +6,15 @@ import Banner from "./components/Banner/Banner";
 import Slide from "./components/Slide";
 import { useEventListener } from "./customHooks";
 import hat from "./hard-hat.svg";
+import Contact from "./components/Contact/Contact";
 
 let startX,
   startY,
   dist,
   threshold = 80; //required min distance traveled to be considered swipe
+
 function App() {
-  const [slideVisible, setSlideVisible] = useState(true);
+  const [slideVisible, setSlideVisible] = useState(false);
   const slide_container = useRef();
   const banner_container = useRef();
 
@@ -71,20 +73,31 @@ function App() {
   });
 
   useEventListener("scroll", () => {
-    if(slideVisible &&  window.scrollY > 0) setSlideVisible(false);
+    if (slideVisible && window.scrollY > 0) setSlideVisible(false);
   });
 
   return (
     <div className="App">
       <Header light={slideVisible} />
-      <Banner getRef={banner_container} replay={!slideVisible}/>
+      <Banner getRef={banner_container} replay={!slideVisible} />
       <Page1 />
       <div id="constraction" className="on-construction">
         <img width="100px" src={hat} alt="hat" />
         <p>Site en construction</p>
+        <br/>
+        <br/>
+        <hr/>
+        <p>Services...</p>
+        <hr/>
+        <br/>
+        <br/>
+        <p>Produits</p>
+        <hr/>
       </div>
       {/* <Letter/> */}
       <Slide getRef={slide_container} isHidden={!slideVisible} />
+      <Contact/>
+
     </div>
   );
 }

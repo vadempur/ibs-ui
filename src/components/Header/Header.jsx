@@ -34,6 +34,13 @@ function Header({ light }) {
     setToggleSubMenu(-1);
   };
 
+  let root = document.documentElement;
+  if (light) {
+    root.style.setProperty("--header-text-color", "white");
+  } else {
+    root.style.setProperty("--header-text-color", "var(--light-gray)");
+  }
+
   return (
     <header className={`header-container ${light && "header-light-bg"}`}>
       <img width={light ? "180px" : "130px"} src={light ? logo_light : logo} alt={"logo"} className={"logo"} />
@@ -50,27 +57,25 @@ function Header({ light }) {
           <li className="selected">
             <a href="#constraction">Accueil</a>
           </li>
-          <li onMouseEnter={handleEnter} onMouseLeave={handleExit}>
+          <li>
             <a href="#constraction">Services</a>
+          </li>
+          <li>
+            <a href="#constraction">Produits</a>
+          </li>
+          <li onMouseEnter={handleEnter} onMouseLeave={handleExit}>
+            <a href="#constraction">Socièté</a>
             {toggleSubMenu === 1 && (
               <SubMenu>
-                <li> Lorem Ipsum </li>
-                <li> Lorem Ipsum </li>
-                <li> Lorem Ipsum </li>
+                <li> Qui sommes nous </li>
+                <li> Mission et Valeurs </li>
+                <li> Nos partenaires </li>
+                <li> Nos clients </li>
               </SubMenu>
             )}
           </li>
           <li>
-            <a href="#constraction">Equipes</a>
-          </li>
-          <li>
-            <a href="#constraction">Méthodologie</a>
-          </li>
-          <li>
-            <a href="#constraction">Références</a>
-          </li>
-          <li>
-            <a href="#constraction">Partenaires</a>
+            <a href="#constraction">Contact</a>
           </li>
         </ul>
       )}

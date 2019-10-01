@@ -79,6 +79,14 @@ function Illustration({replay}) {
 
     <div className="illustration" style={!isMobile ? { transform: "translate(0px," + translate + "px)" } : {}}>
       <svg style={{ display: "block" }} viewBox="0 0 712.08 893.97">
+        
+        <defs>
+          <linearGradient id="main-circle-gradient" x1="0%" y1="50%" x2="100%" y2="50%" gradientTransform="rotate(0 50 50)">
+            <stop offset="0%" style={{ stopColor: "#29abe2" }} />
+            <stop offset="100%" style={{ stopColor: "#29abe2" }} />
+          </linearGradient>
+        </defs>
+
         {/* main circle clip definition */}
         <clipPath id="a">
           <circle cx="368.59" cy="596.98" r="259.9" />
@@ -95,7 +103,8 @@ function Illustration({replay}) {
         {/* back circle */}
         <path
           d="M628.5 596.98c0 6.19-.22 12.34-.65 18.42-3.23 46.24-18.56 89.14-42.85 125.56-.05.09-.11.18-.18.27-3.01 4.51-6.15 8.9-9.43 13.2-.71.95-1.44 1.89-2.18 2.83a260.697 260.697 0 0 1-33.73 35.54c-45.68 39.91-105.45 64.08-170.88 64.08s-125.2-24.17-170.88-64.08a260.697 260.697 0 0 1-33.73-35.54c-.26-.33-.52-.67-.78-1a247.73 247.73 0 0 1-7.62-10.34c-1.16-1.64-2.29-3.29-3.4-4.96-.21-.31-.42-.62-.62-.94-27.1-41.03-42.88-90.19-42.88-143.04 0-143.55 116.37-259.91 259.91-259.91 44.16 0 85.75 11.01 122.16 30.44 76.86 41 130.69 119.49 137.09 211.05.43 6.08.65 12.23.65 18.42z"
-          fill="#29abe2"
+          // fill="#29abe2"
+          fill="url(#main-circle-gradient)"
         />
         {/* building */}
         <path className="st26" d="M491.13 22.19h142.02v734.07H491.13z" />
@@ -106,7 +115,7 @@ function Illustration({replay}) {
         <path className="st29 multiply" d="M212.83 270.06h182.93v470.91H212.83z" />
 
         {/* two lines */}
-        <path className="st30 overlay" d="M298.86 270.06v577.1M633.47 584.28H38.98" />
+        <path className="st30 overlay" d="M298.86 270.06v577.1M633.47 584.28H150" />
         {/* table */}
         <path className="st31" d="M276.93 575.36v165.92" />
 

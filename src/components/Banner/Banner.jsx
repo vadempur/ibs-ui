@@ -4,16 +4,17 @@ import DiagonalFloor from "./DiagonalFloor/DiagonalFloor";
 import Illustration from "./Illustration/Illustration";
 import "./Banner.css";
 import { useMobile } from "../../customHooks";
-
+let timeout;
 function Banner({ getRef, replay }) {
   const [play, setPlay] = useState(true);
   const isMobile = useMobile(1080);
 
   useEffect(() => {
     if (replay) {
+      clearTimeout(timeout);
       setPlay(replay);
     } else {
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         setPlay(replay);
       }, 500);
     }

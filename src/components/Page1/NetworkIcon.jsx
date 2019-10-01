@@ -24,11 +24,11 @@ function NetworkIcon({ shouldPlay }) {
     }
   });
 
-  tl.eventCallback("onReverseComplete", () => {
-    if (shouldPlay) {
-      tl.restart();
-    }
-  });
+  // tl.eventCallback("onReverseComplete", () => {
+  //   if (shouldPlay) {
+  //     tl.restart();
+  //   }
+  // });
 
   if (shouldPlay) {
     if (!tl.isActive()) tl.restart();

@@ -1,28 +1,69 @@
 import React, { useRef, useEffect } from "react";
 import { TimelineMax, Power0 } from "gsap";
 
-const t1 = new TimelineMax({
-  ease: Power0.easeNone,
-  repeat: -1,
-  repeatDelay: 3,
-  
-});
+
 
 function Person() {
   const shoe = useRef(null);
-
+  const front_hand = useRef(null);
+  const back_hand = useRef(null);
   useEffect(() => {
+
+    const t1 = new TimelineMax({
+      ease: Power0.easeNone,
+      repeat: -1,
+      repeatDelay: 7
+    });
+    const t2 = new TimelineMax({
+      // ease: Power0.easeNone,
+      repeat: -1,
+      repeatDelay: 0.01
+    });
+    const t3 = new TimelineMax({
+      // ease: Power0.easeNone,
+      repeat: -1,
+      repeatDelay: 0.01
+    });
+
     t1.to(shoe.current, 0.2, {
       transformOrigin: "80% 50%",
       rotation: 15,
-      x: -3,
+      x: -3
     }).to(shoe.current, 0.4, {
       transformOrigin: "80% 50%",
       rotation: 0,
       x: 0
     });
-    // let t2 = new TimelineMax();
-    // t2.from(orange_gear.current, 6, { ease: Power0.easeNone, repeat: -1, rotation: 360, transformOrigin: "50% 50%" });
+
+    t2.to(front_hand.current, 0.04, {
+      transformOrigin: "80% 50%",
+      rotation: 4,
+      x: -3
+    }).to(front_hand.current, 0.4, {
+      transformOrigin: "80% 50%",
+      rotation: 0,
+      x: 0
+    },"-=0.03");
+
+    t3.to(back_hand.current, 0.05, {
+      transformOrigin: "80% 50%",
+      rotation: 3,
+      x: -3
+    }).to(back_hand.current, 0.4, {
+      transformOrigin: "80% 50%",
+      rotation: 0,
+      x: 0
+    });
+
+    // setInterval( ()=>{
+    //   t2.pause();
+    //   t3.pause();
+    //   setTimeout( ()=>{
+    //     t2.play();
+    //     t3.play();
+    //   },3000 );
+    // },10000 );
+
   }, []);
 
   return (
@@ -33,15 +74,17 @@ function Person() {
         d="M344.41 631.33s-21.89-4.97-25.2 9.28c-2.84 12.24 26.94 11.76 26.94 11.76l65.49.4s24.67 2.84 36.87-25.61c12.19-28.45 23.94-102.97 23.94-102.97s1.76-10.25-6.77-11.74c-10.04-1.75-12.01 19.93-12.01 19.93s-15.18 91.99-37.2 96.48c-3.39.69-6.1 3.26-9.56 3.22l-62.5-.75z"
       />
       {/* back hand */}
-      <path
-        className="st32"
-        d="M302.05 551.07l-20.63-2.1c-1.67-.17-3.31.55-4.32 1.89l-12.14 17.09 9.81.79 5.83-8.34s15.84 4.52 21.87.72l-.42-10.05z"
-      />
-      <path
-        className="st2"
-        d="M387.18 497.22l-29.32 50.4-57.45-.07-.63 18.88 60.52 4.66c7.99.62 15.73-2.97 20.44-9.46l29.23-48.59-22.79-15.82z"
-      />
-      <path fill="#f7e5da" d="M300.42 547.55l-.63 18.87 6.41.5.64-19.36z" />
+      <g ref={back_hand}>
+        <path
+          className="st32"
+          d="M302.05 551.07l-20.63-2.1c-1.67-.17-3.31.55-4.32 1.89l-12.14 17.09 9.81.79 5.83-8.34s15.84 4.52 21.87.72l-.42-10.05z"
+        />
+        <path
+          className="st2"
+          d="M387.18 497.22l-29.32 50.4-57.45-.07-.63 18.88 60.52 4.66c7.99.62 15.73-2.97 20.44-9.46l29.23-48.59-22.79-15.82z"
+        />
+        <path fill="#f7e5da" d="M300.42 547.55l-.63 18.87 6.41.5.64-19.36z" />
+      </g>
       {/*  */}
 
       {/* leg skin */}
@@ -127,16 +170,18 @@ function Person() {
       <path className="st31" d="M276.93 595.88H162.81" />
 
       {/* front hand */}
-      <path
-        className="st34"
-        d="M307.3 552.41l-20.57-2.55c-1.67-.21-3.32.47-4.36 1.79L268.98 568l11.79-.05 4.89-6.69s15.74 4.86 21.85 1.2l-.21-10.05z"
-      />
-      <path
-        className="st39"
-        d="M398.89 501.46l-34.05 50.87-59.2-1.62-.93 17 63.62 6.28c5.98.59 11.84-1.97 15.47-6.76l37.53-49.48-22.44-16.29z"
-      />
-      <path className="st36" d="M305.64 550.71l-.93 17 6.39.63.95-17.27z" />
-      <path className="st42" d="M375.01 535.94l18.63-26.64M384.71 567.29l19.31-25.46" />
+      <g ref={front_hand}>
+        <path
+          className="st34"
+          d="M307.3 552.41l-20.57-2.55c-1.67-.21-3.32.47-4.36 1.79L268.98 568l11.79-.05 4.89-6.69s15.74 4.86 21.85 1.2l-.21-10.05z"
+        />
+        <path
+          className="st39"
+          d="M398.89 501.46l-34.05 50.87-59.2-1.62-.93 17 63.62 6.28c5.98.59 11.84-1.97 15.47-6.76l37.53-49.48-22.44-16.29z"
+        />
+        <path className="st36" d="M305.64 550.71l-.93 17 6.39.63.95-17.27z" />
+        <path className="st42" d="M375.01 535.94l18.63-26.64M384.71 567.29l19.31-25.46" />
+      </g>
       {/*  */}
     </>
   );

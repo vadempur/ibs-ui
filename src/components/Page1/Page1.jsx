@@ -14,7 +14,7 @@ function Page1() {
   const isMobile = useMobile(1080);
 
   const isElementOnViewPort = useCallback(() => {
-    if (!isMobile) return;
+    // if (!isMobile) return;
 
     let new_play = [];
     let changed = false;

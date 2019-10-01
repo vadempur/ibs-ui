@@ -26,6 +26,12 @@ class NumberOneIcon extends React.Component {
       tl.reverse();
       borders_tl.reverse();
     }
+    tl.eventCallback("onComplete", () => {
+      if (this.props.shouldPlay) {        
+        tl.reverse();
+        borders_tl.reverse();
+      }
+    });
   }
 
 
