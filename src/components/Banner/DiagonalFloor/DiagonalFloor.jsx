@@ -73,7 +73,7 @@ function DiagonalFloor() {
           transform={"rotate(" + rotation + ", 0, 30)"}
         />
       </svg>
-      <i />
+      {/* <i /> */}
     </div>
   );
 }

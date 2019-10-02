@@ -6,9 +6,10 @@ import "slick-carousel/slick/slick-theme.css";
 import "./slide.css";
 import img1 from "../../assets/1.jpeg";
 import img2 from "../../assets/2.jpg";
+import scroll_indicator from "../../assets/scroll.svg";
 import { useEventListener } from "../../customHooks";
 
-function Slide({ isHidden, getRef }) {
+function Slide({ isHidden,setHidden, getRef }) {
   const carouselRef = useRef();
   if (isHidden) {
     setTimeout(() => {
@@ -27,6 +28,9 @@ function Slide({ isHidden, getRef }) {
 
   return (
     <div ref={getRef} className={`slide-container ${isHidden && "slide-hidden"}`}>
+      <div onClick={()=>{setHidden(false)}} className="scroll_indicator">
+      <img src={scroll_indicator} alt="scroll_indicator" />
+      </div>
       <Carousel ref={carouselRef} dots={false} accessibility={false} pauseOnHover={false} autoplay autoplaySpeed={6000}>
         <SlideItem
           img={img1}

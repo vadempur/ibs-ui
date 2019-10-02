@@ -14,7 +14,7 @@ let startX,
   threshold = 80; //required min distance traveled to be considered swipe
 
 function App() {
-  const [slideVisible, setSlideVisible] = useState(false);
+  const [slideVisible, setSlideVisible] = useState(true);
   const slide_container = useRef();
   const banner_container = useRef();
 
@@ -28,15 +28,7 @@ function App() {
       if (hideTheSlide) {
         setSlideVisible(false);
       }
-    } else {
-      var scrolledOnTop = dist > 0 && dist >= threshold && not_so_horizontal && window.scrollY <= 0;
-
-      if (scrolledOnTop) {
-        setTimeout(() => {
-          setSlideVisible(true);
-        }, 300);
-      }
-    }
+    } 
   };
   const handleTouchStart = e => {
     var touchobj = e.changedTouches[0];
@@ -58,12 +50,6 @@ function App() {
           setSlideVisible(false);
         }, 300);
       }
-    } else {
-      if (e.deltaY < 0 && window.scrollY <= 0) {
-        setTimeout(() => {
-          setSlideVisible(true);
-        }, 300);
-      }
     }
   });
 
@@ -78,7 +64,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header light={slideVisible} />
+      <Header setSlideVisible={setSlideVisible} light={slideVisible} />
       <Banner getRef={banner_container} replay={!slideVisible} />
       <Page1 />
       <div id="constraction" className="on-construction">
@@ -95,7 +81,7 @@ function App() {
         <hr/>
       </div>
       {/* <Letter/> */}
-      <Slide getRef={slide_container} isHidden={!slideVisible} />
+      <Slide getRef={slide_container} isHidden={!slideVisible} setHidden={setSlideVisible}/>
       <Contact/>
 
     </div>

@@ -37,7 +37,7 @@ function NetworkIcon({ shouldPlay }) {
   }
 
   return (
-    <svg viewBox="0 0 71 70.6" style={{ width: "150px" }}>
+    <svg viewBox="0 0 71 70.6" style={{ width: "150px",height:200 }}>
       <g ref={atoms.current[3]}>
         <path fill="#2E3192" d="M24,25.3l1.4-1.4l11,11L35,36.3L24,25.3z" />
         <circle fill="#d75a4a" cx="23.7" cy="23.6" r="3" />

@@ -38,7 +38,7 @@ class NumberOneIcon extends React.Component {
   render() {
     this.manageAnimation();
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" style={{ width: "100px",height:200 }}>
         <path
           ref={ref => (this.border_right = ref)}
           style={styles.cls2}

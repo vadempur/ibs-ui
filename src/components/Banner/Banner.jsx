@@ -30,7 +30,7 @@ function Banner({ getRef, replay }) {
           Microsoft Business Solutions (Dynamics NAV et AX) <br />
           Data Management solutions pour la spécialisation BI
         </p>
-        <h2>ET SI SOLUTIONS RIMAIENT AVEC INTEGRATION.</h2>
+        {/* <h2>ET SI SOLUTIONS RIMAIENT AVEC INTEGRATION.</h2> */}
       </div>
       <Illustration replay={play} />
     </div>

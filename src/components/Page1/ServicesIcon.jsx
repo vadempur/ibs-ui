@@ -35,7 +35,7 @@ function ServicesIcon({ shouldPlay }) {
   });
 
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 433.93">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 433.93" style={{ width: "110px",height:200 }}>
       <g data-name="Layer 2">
         <g data-name="Layer 3">
           <path

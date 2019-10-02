@@ -3,8 +3,9 @@ import logo from "./logo.svg";
 import logo_light from "./logo-light.svg";
 import "./Header.css";
 import { useMobile, useEventListener } from "../../customHooks";
-function Header({ light }) {
+function Header({ light,setSlideVisible }) {
   const isMobile = useMobile(1080);
+  const [onTop, setOnTop] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const [toggleSubMenu, setToggleSubMenu] = useState(-1);
 
@@ -22,6 +23,18 @@ function Header({ light }) {
   });
 
   useEventListener("click", handleOutSideClick, document.getElementById("root"));
+  
+  
+  const handleHeaderOnTop = useCallback(() => {
+    // console.log( window.scrollY );
+    if(window.scrollY<30){
+      if(!onTop) setOnTop(true);
+    }else{
+      if(onTop) setOnTop(false);
+    }
+  });
+
+  useEventListener("scroll", handleHeaderOnTop);
 
   function handleShowMenu(e) {
     setShowMenu(!showMenu);
@@ -42,8 +55,8 @@ function Header({ light }) {
   }
 
   return (
-    <header className={`header-container ${light && "header-light-bg"}`}>
-      <img width={light ? "180px" : "130px"} src={light ? logo_light : logo} alt={"logo"} className={"logo"} />
+    <header className={`header-container${(light ? " header-light-bg":"")}${(onTop ? " header-on-top":"")}`}>
+      <img width={"130px"} src={light ? logo_light : logo} alt={"logo"} className={"logo"} />
 
       {isMobile && (
         <div className="hamburger" onClick={handleShowMenu}>
@@ -55,7 +68,7 @@ function Header({ light }) {
       {(showMenu || !isMobile) && (
         <ul className={`header-menu ${light && "header-light-txt"}`}>
           <li className="selected">
-            <a href="#constraction">Accueil</a>
+            <a onClick={()=>{window.scrollTo(0,0); setSlideVisible(true)}}>Accueil</a>
           </li>
           <li>
             <a href="#constraction">Services</a>

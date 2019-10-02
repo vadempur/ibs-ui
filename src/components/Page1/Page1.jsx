@@ -10,11 +10,12 @@ import NetworkIcon from "./NetworkIcon";
 
 function Page1() {
   const [iconsToPlay, setIconsToPlay] = useState([]);
+  const [iconsToSlide, setIconsToSlide] = useState([]);
   const refs = useRef([createRef(), createRef(), createRef(), createRef()]);
   const isMobile = useMobile(1080);
 
   const isElementOnViewPort = useCallback(() => {
-    // if (!isMobile) return;
+    if (!isMobile) return;
 
     let new_play = [];
     let changed = false;
@@ -30,6 +31,20 @@ function Page1() {
 
   useEventListener("scroll", isElementOnViewPort);
 
+  const slideIn = useCallback(() => {
+    let new_play = [];
+    let changed = false;
+    refs.current.forEach((e, index) => {
+      const rect = e.current.getBoundingClientRect();
+      const visible = isRectPartiallyOnViewPort(rect);
+      if (setIconsToSlide[index] !== visible) changed = true;
+      new_play[index] = visible;
+    });
+
+    if (changed) setIconsToSlide(new_play);
+  });
+  useEventListener("scroll", slideIn);
+
   const handlePlayOnMouse = index => {
     if (isMobile) return;
     let new_play = [];
@@ -37,71 +52,63 @@ function Page1() {
     setIconsToPlay(new_play);
   };
 
+  function setColumnClass(index){
+    return `column-container ${iconsToSlide[index] === true ? "slide-in-"+ (isMobile?0:index) : ""}` 
+  }
+
   return (
-    <div className="page1-container">
-      <div className="page1-column border-right">
-        <div
-          ref={refs.current[0]}
-          className="column-container"
-          onMouseEnter={() => handlePlayOnMouse(0)}
-          onMouseLeave={() => handlePlayOnMouse(-1)}
-        >
-          <NumberOneIcon shouldPlay={iconsToPlay[0]} />
-          <p>
-            N°1 en qualité d’intégrateur des solutions <b>DYNAMICS AX</b> <br />
-            sur le plan national parmi les partenaires agrées de
-            <b> MICROSOFT</b>
-          </p>
+    <section className="section-1">
+      <h1 className="section-1-title">Et Si Solutions Rimaient Avec Integration</h1>
+      <div className="svg-icons-container">
+        <div className="page1-column">
+          <div
+            className={setColumnClass(0)}
+            ref={refs.current[0]}
+            onMouseEnter={() => handlePlayOnMouse(0)}
+            onMouseLeave={() => handlePlayOnMouse(-1)}
+          >
+            <NumberOneIcon shouldPlay={iconsToPlay[0]} />
+            <h2> Mission et valeurs </h2>
+          </div>
         </div>
-      </div>
 
-      <div className="page1-column border-right">
-        <div
-          ref={refs.current[1]}
-          className="column-container"
-          onMouseEnter={() => handlePlayOnMouse(1)}
-          onMouseLeave={() => handlePlayOnMouse(-1)}
-        >
-          <CollabIcon shouldPlay={iconsToPlay[1]} />
-          <p>
-            Plus de 30 personnes en Algérie <br /> Certifiés dans Microsoft Dynamics <b>ERP & CRM </b> <br /> 12 ans
-            d’expérience sur Microsoft Dynamics
-          </p>
+        <div className="page1-column">
+          <div
+            ref={refs.current[1]}
+            className={setColumnClass(1)}
+            onMouseEnter={() => handlePlayOnMouse(1)}
+            onMouseLeave={() => handlePlayOnMouse(-1)}
+          >
+            <CollabIcon shouldPlay={iconsToPlay[1]} />
+            <h2> Nos Partenaires </h2>
+          </div>
         </div>
-      </div>
 
-      <div className="page1-column border-right">
-        <div
-          ref={refs.current[2]}
-          className="column-container"
-          onMouseEnter={() => handlePlayOnMouse(2)}
-          onMouseLeave={() => handlePlayOnMouse(-1)}
-        >
-          <ServicesIcon shouldPlay={iconsToPlay[2]} />
-          <p>
-            Localisation Algérienne des solutions Microsoft,
-            <br /> Utilisation de la méthodologie de gestion de projet
-            <b> Microsoft Sure Step</b>
-          </p>
+        <div className="page1-column">
+          <div
+            ref={refs.current[2]}
+            className={setColumnClass(2)}
+            onMouseEnter={() => handlePlayOnMouse(2)}
+            onMouseLeave={() => handlePlayOnMouse(-1)}
+          >
+            <ServicesIcon shouldPlay={iconsToPlay[2]} />
+            <h2> Qui sommes nous </h2>
+          </div>
         </div>
-      </div>
 
-      <div className="page1-column border-right">
-        <div
-          ref={refs.current[3]}
-          className="column-container"
-          onMouseEnter={() => handlePlayOnMouse(3)}
-          onMouseLeave={() => handlePlayOnMouse(-1)}
-        >
-          <NetworkIcon shouldPlay={iconsToPlay[3]} />
-          <p>
-            Nos clients évoluent dans des secteurs hétérogènes
-            <br /> comme l’industrie pétrolière, agro-alimentaire, mécanique ou chimique
-            <br /> ainsi que les télécoms, et les services dans le secteur public.
-          </p>
+        <div className="page1-column">
+          <div
+            ref={refs.current[3]}
+            className={setColumnClass(3)}
+            onMouseEnter={() => handlePlayOnMouse(3)}
+            onMouseLeave={() => handlePlayOnMouse(-1)}
+          >
+            <NetworkIcon shouldPlay={iconsToPlay[3]} />
+            <h2> Nos clients </h2>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -114,4 +121,12 @@ function isRectOnViewPort(rect) {
     rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) /*or $(window).height() */ &&
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   ); /*or $(window).width() */
+}
+function isRectPartiallyOnViewPort(bounding) {
+  return (
+    // bounding.top >= 0 &&
+    // bounding.left >= 0 &&
+    // bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+    bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+  );
 }
