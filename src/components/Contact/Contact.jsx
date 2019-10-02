@@ -38,13 +38,13 @@ function Contact({ google }) {
       <div className="rights-reserved">
         <p>© 2019 IBS Solutions. All rights reserved.</p>
         <div>
-          <a href="https://www.facebook.com" target="_blank">
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
             <img className="social-logo" src={facebook_logo} alt="facebook" href="google.com" />
           </a>
-          <a href="https://www.twitter.com" target="_blank">
+          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
             <img className="social-logo" src={twitter_logo} alt="twitter" />
           </a>
-          <a href="https://www.linkedin.com" target="_blank">
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
             <img className="social-logo" src={linkedin_logo} alt="linkedin" />
           </a>
         </div>
