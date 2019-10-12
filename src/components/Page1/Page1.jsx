@@ -31,7 +31,7 @@ function Page1() {
 
   useEventListener("scroll", isElementOnViewPort);
 
-  const slideIn = useCallback(() => {
+  const slideInListener = useCallback(() => {
     let new_play = [];
     let changed = false;
     refs.current.forEach((e, index) => {
@@ -43,7 +43,7 @@ function Page1() {
 
     if (changed) setIconsToSlide(new_play);
   });
-  useEventListener("scroll", slideIn);
+  useEventListener("scroll", slideInListener);
 
   const handlePlayOnMouse = index => {
     if (isMobile) return;

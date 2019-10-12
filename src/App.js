@@ -55,7 +55,7 @@ function App() {
 
   useEventListener("keyup", e => {
     if (e.key === "ArrowDown" && slideVisible) setSlideVisible(false);
-    if (e.key === "ArrowUp" && !slideVisible && window.scrollY <= 0) setSlideVisible(true);
+    // if (e.key === "ArrowUp" && !slideVisible && window.scrollY <= 0) setSlideVisible(true);
   });
 
   useEventListener("scroll", () => {

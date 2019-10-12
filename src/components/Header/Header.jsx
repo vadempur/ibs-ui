@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import logo from "./logo.svg";
+import logo_icon from "../../assets/logo_icon.svg";
 import logo_light from "./logo-light.svg";
 import "./Header.css";
 import { useMobile, useEventListener } from "../../customHooks";
@@ -56,7 +57,10 @@ function Header({ light,setSlideVisible }) {
 
   return (
     <header className={`header-container${(light ? " header-light-bg":"")}${(onTop ? " header-on-top":"")}`}>
-      <img width={"130px"} src={light ? logo_light : logo} alt={"logo"} className={"logo"} />
+      {!onTop ?
+        <img width={"30px"} height={"30px"} src={logo_icon} alt={"logo"} className={"logo"} />
+        :<img width={"130px"} height={"30px"} src={light ? logo_light : logo} alt={"logo"} className={"logo"} />
+      }
 
       {isMobile && (
         <div className="hamburger" onClick={handleShowMenu}>
@@ -68,7 +72,7 @@ function Header({ light,setSlideVisible }) {
       {(showMenu || !isMobile) && (
         <ul className={`header-menu ${light && "header-light-txt"}`}>
           <li className="selected">
-            <a onClick={()=>{window.scrollTo(0,0); setSlideVisible(true)}}>Accueil</a>
+            <a href="#accueil" onClick={()=>{window.scrollTo(0,0); setSlideVisible(true)}}>Accueil</a>
           </li>
           <li>
             <a href="#constraction">Services</a>

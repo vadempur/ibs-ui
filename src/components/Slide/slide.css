@@ -81,7 +81,7 @@
   z-index: 1200;
   cursor: pointer;
   animation-name: ball-bounce;
-  animation-duration: 4s;
+  animation-duration: 3s;
   animation-iteration-count: infinite;
 }
 

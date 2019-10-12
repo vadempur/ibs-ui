@@ -3,7 +3,7 @@ import "./DiagonalFloor.css";
 import { useEventListener, map } from "../../../customHooks";
 
 const init_rotation1 = -10,
-  init_rotation2 = init_rotation1 - 0.5,
+  init_rotation2 = init_rotation1 - 0.8,
   init_rotation3 = init_rotation2 - 2.5;
 
 function DiagonalFloor() {
@@ -41,7 +41,7 @@ function DiagonalFloor() {
       <svg viewBox="0 0 100 30" className="diagonal-svg">
         <defs>
           <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style={{ stopColor: "#FDBD29", stopOpacity: 1 }} />
+            <stop offset="0%" style={{ stopColor: "#FDBD29", stopOpacity: 0 }} />
             <stop offset="100%" style={{ stopColor: "rgb(255,255,255)", stopOpacity: 0 }} />
           </linearGradient>
         </defs>
