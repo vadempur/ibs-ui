@@ -7,7 +7,7 @@ import Gears from "./Gears";
 import Clouds from "./Clouds";
 import Person from "./Person";
 
-import { useMobile, useEventListener,map } from "../../../customHooks";
+import { useMobile, useEventListener,map } from "../../../helpers/customHooks";
 import SpotLights from "./SpotLights";
 
 function Illustration({replay}) {

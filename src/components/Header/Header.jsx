@@ -3,7 +3,10 @@ import logo from "./logo.svg";
 import logo_icon from "../../assets/logo_icon.svg";
 import logo_light from "./logo-light.svg";
 import "./Header.css";
-import { useMobile, useEventListener } from "../../customHooks";
+import { useMobile, useEventListener } from "../../helpers/customHooks";
+import {
+  Link
+} from "react-router-dom";
 function Header({ light,setSlideVisible }) {
   const isMobile = useMobile(1080);
   const [onTop, setOnTop] = useState(true);
@@ -28,7 +31,7 @@ function Header({ light,setSlideVisible }) {
   
   const handleHeaderOnTop = useCallback(() => {
     // console.log( window.scrollY );
-    if(window.scrollY<30){
+    if(window.scrollY<60){
       if(!onTop) setOnTop(true);
     }else{
       if(onTop) setOnTop(false);
@@ -72,16 +75,16 @@ function Header({ light,setSlideVisible }) {
       {(showMenu || !isMobile) && (
         <ul className={`header-menu ${light && "header-light-txt"}`}>
           <li className="selected">
-            <a href="#accueil" onClick={()=>{window.scrollTo(0,0); setSlideVisible(true)}}>Accueil</a>
+            <Link to="/" onClick={()=>{window.scrollTo(0,0); setSlideVisible(true)}}>Accueil</Link>
           </li>
           <li>
-            <a href="#constraction">Services</a>
+            <Link to="/">Services</Link>
           </li>
           <li>
-            <a href="#constraction">Produits</a>
+            <Link to="/">Produits</Link>
           </li>
           <li onMouseEnter={handleEnter} onMouseLeave={handleExit}>
-            <a href="#constraction">Socièté</a>
+            <Link to="/about">Socièté</Link>
             {toggleSubMenu === 1 && (
               <SubMenu>
                 <li> Qui sommes nous </li>

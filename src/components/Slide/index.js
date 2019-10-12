@@ -7,7 +7,7 @@ import "./slide.css";
 import img1 from "../../assets/1.jpeg";
 import img2 from "../../assets/2.jpg";
 import scroll_indicator from "../../assets/scroll.svg";
-import { useEventListener } from "../../customHooks";
+import { useEventListener } from "../../helpers/customHooks";
 
 function Slide({ isHidden,setHidden, getRef }) {
   const carouselRef = useRef();

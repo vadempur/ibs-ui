@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import DiagonalFloor from "./DiagonalFloor/DiagonalFloor";
 import Illustration from "./Illustration/Illustration";
 import "./Banner.css";
-import { useMobile } from "../../customHooks";
+import { useMobile } from "../../helpers/customHooks";
 let timeout;
 function Banner({ getRef, replay }) {
   const [play, setPlay] = useState(true);
