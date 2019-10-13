@@ -10,17 +10,17 @@ export default function Societe() {
           <div className="societe-row">
             <div className="societe-colum-left">
               <ul className="societe-ul">
-                <li>Existe depuis 2005</li>
-                <li>A triplé son CA pendant les quatre dernières années</li>
-                <li>Leader national des solutions Dynamics AX ©</li>
-                <li>Est Gold Partner Microsoft ©</li>
-                <li>
+                <li className="societe-li fade-in">Existe depuis 2005</li>
+                <li className="societe-li fade-in">A triplé son CA pendant les quatre dernières années</li>
+                <li className="societe-li fade-in">Leader national des solutions Dynamics AX ©</li>
+                <li className="societe-li fade-in">Est Gold Partner Microsoft ©</li>
+                <li className="societe-li fade-in">
                   Plus de 43 Collaborateurs en Algérie Certifiés sur Dynamics AX, Navision, CRM, SureStep, Plateformes
                 </li>
-                <li>Expérience internationale, multisectorielle</li>
-                <li>Solutions intégrées totalement ou partiellement</li>
-                <li>Solutions intégrées totalement ou partiellement</li>
-                <li>
+                <li className="societe-li fade-in">Expérience internationale, multisectorielle</li>
+                <li className="societe-li fade-in">Solutions intégrées totalement ou partiellement</li>
+                <li className="societe-li fade-in">Solutions intégrées totalement ou partiellement</li>
+                <li className="societe-li fade-in">
                   Solutions localisées selon la réglementation en vigueur Audits, Conseil, Accompagnement pour des
                   solutions sur-mesure Formations, Assistance et TMA
                 </li>
