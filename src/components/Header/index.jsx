@@ -4,10 +4,8 @@ import logo_icon from "../../assets/logo_icon.svg";
 import logo_light from "./logo-light.svg";
 import "./Header.css";
 import { useMobile, useEventListener } from "../../helpers/customHooks";
-import {
-  Link
-} from "react-router-dom";
-function Header({ light,setSlideVisible }) {
+import { Link } from "react-router-dom";
+function Header({ light }) {
   const isMobile = useMobile(1080);
   const [onTop, setOnTop] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
@@ -27,14 +25,13 @@ function Header({ light,setSlideVisible }) {
   });
 
   useEventListener("click", handleOutSideClick, document.getElementById("root"));
-  
-  
+
   const handleHeaderOnTop = useCallback(() => {
     // console.log( window.scrollY );
-    if(window.scrollY<60){
-      if(!onTop) setOnTop(true);
-    }else{
-      if(onTop) setOnTop(false);
+    if (window.scrollY < 60) {
+      if (!onTop) setOnTop(true);
+    } else {
+      if (onTop) setOnTop(false);
     }
   });
 
@@ -59,11 +56,12 @@ function Header({ light,setSlideVisible }) {
   }
 
   return (
-    <header className={`header-container${(light ? " header-light-bg":"")}${(onTop ? " header-on-top":"")}`}>
-      {!onTop ?
+    <header className={`header-container${light ? " header-light-bg" : ""}${onTop ? " header-on-top" : ""}`}>
+      {!onTop ? (
         <img width={"30px"} height={"30px"} src={logo_icon} alt={"logo"} className={"logo"} />
-        :<img width={"130px"} height={"30px"} src={light ? logo_light : logo} alt={"logo"} className={"logo"} />
-      }
+      ) : (
+        <img width={"130px"} height={"30px"} src={light ? logo_light : logo} alt={"logo"} className={"logo"} />
+      )}
 
       {isMobile && (
         <div className="hamburger" onClick={handleShowMenu}>
@@ -75,13 +73,20 @@ function Header({ light,setSlideVisible }) {
       {(showMenu || !isMobile) && (
         <ul className={`header-menu ${light && "header-light-txt"}`}>
           <li className="selected">
-            <Link to="/" onClick={()=>{window.scrollTo(0,0); setSlideVisible(true)}}>Accueil</Link>
+            <Link
+              to="/"
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+            >
+              Accueil
+            </Link>
           </li>
           <li>
-            <Link to="/">Services</Link>
+            <Link to="/services">Services</Link>
           </li>
           <li>
-            <Link to="/">Produits</Link>
+            <Link to="/products">Produits</Link>
           </li>
           <li onMouseEnter={handleEnter} onMouseLeave={handleExit}>
             <Link to="/about">Socièté</Link>
@@ -95,7 +100,7 @@ function Header({ light,setSlideVisible }) {
             )}
           </li>
           <li>
-            <a href="#constraction">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       )}

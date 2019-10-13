@@ -1,24 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import DiagonalFloor from "./DiagonalFloor/DiagonalFloor";
-import Illustration from "./Illustration/Illustration";
+import DiagonalFloor from "./DiagonalFloor";
+import Illustration from "./Illustration";
 import "./Banner.css";
 import { useMobile } from "../../helpers/customHooks";
-let timeout;
-function Banner({ getRef, replay }) {
-  const [play, setPlay] = useState(true);
-  const isMobile = useMobile(1080);
 
-  useEffect(() => {
-    if (replay) {
-      clearTimeout(timeout);
-      setPlay(replay);
-    } else {
-      timeout = setTimeout(() => {
-        setPlay(replay);
-      }, 500);
-    }
-  }, [replay]);
+function Banner({ getRef }) {  
+  const isMobile = useMobile(1080);
 
   return (
     <div className="banner-container" ref={getRef}>
@@ -32,7 +20,7 @@ function Banner({ getRef, replay }) {
         </p>
         {/* <h2>ET SI SOLUTIONS RIMAIENT AVEC INTEGRATION.</h2> */}
       </div>
-      <Illustration replay={play} />
+      <Illustration />
     </div>
   );
 }
