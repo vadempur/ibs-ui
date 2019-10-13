@@ -58,9 +58,13 @@ function Header({ light }) {
   return (
     <header className={`header-container${light ? " header-light-bg" : ""}${onTop ? " header-on-top" : ""}`}>
       {!onTop ? (
-        <img width={"30px"} height={"30px"} src={logo_icon} alt={"logo"} className={"logo"} />
+        <Link to="/home">
+          <img width={"30px"} height={"30px"} src={logo_icon} alt={"logo"} className={"logo"} />
+        </Link>
       ) : (
-        <img width={"130px"} height={"30px"} src={light ? logo_light : logo} alt={"logo"} className={"logo"} />
+        <Link to="/home">
+          <img width={"130px"} height={"30px"} src={light ? logo_light : logo} alt={"logo"} className={"logo"} />
+        </Link>
       )}
 
       {isMobile && (

@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import { Switch, Route,useLocation } from "react-router-dom";
 import Societe from "./screens/Societe"
 import Accueil from "./screens/Accueil"

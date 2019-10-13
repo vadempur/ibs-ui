@@ -1,15 +1,17 @@
 import React, { useRef, useEffect } from "react";
 import { TimelineMax,SteppedEase } from "gsap";
 
-const tl = new TimelineMax({ paused: true });
+
 const DURATION = 1;
 
 function ServicesIcon({ shouldPlay }) {
   const gear = useRef();
   const tool = useRef();
+  const tl = useRef(new TimelineMax({ paused: true }));
+
 
   useEffect(() => {
-    tl.to(gear.current, DURATION, {
+    tl.current.to(gear.current, DURATION, {
       ease: SteppedEase.config(5),
       transformOrigin: "50% 50%",
       rotation: 45
@@ -23,14 +25,14 @@ function ServicesIcon({ shouldPlay }) {
   }, []);
 
   if (shouldPlay) {
-    tl.play();
+    tl.current.play();
   } else {
-    tl.reverse();
+    tl.current.reverse();
   }
 
-  tl.eventCallback("onComplete", () => {
+  tl.current.eventCallback("onComplete", () => {
     if (shouldPlay) {
-      tl.reverse();
+      tl.current.reverse();
     }
   });
 

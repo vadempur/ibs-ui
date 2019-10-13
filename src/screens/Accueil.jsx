@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import Page1 from "../components/Page1";
 import Banner from "../components/Banner";
 import Contact from "../components/Contact";
