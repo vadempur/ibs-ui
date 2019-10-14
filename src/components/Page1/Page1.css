@@ -1,7 +1,45 @@
-.page1-container{
+.section-1{
+  padding: 200px 0;
+  background-color: var(--primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-1-title{
+  position: relative;
+  text-align: center;
+  margin-bottom: 80px;
+  color: white;
+  font-weight: 400;
+  font-size: 36px;
+}
+.section-1-title::before{
+  content: "\"";
+  position: absolute;
+  left: -50px;
+  top: -10px;
+  color: rgba(255, 255, 255, .23);
+  font-size: 70px;
+}
+.section-1-title::after{
+  content: "''";
+  position: absolute;
+  right: -50px;
+  bottom: -50px;
+  color: rgba(255, 255, 255, .23);
+  font-size: 70px;
+}
+
+.svg-icons-container{
   display:flex;
   flex-wrap: wrap;
-  background-color: var(--primary);
+  flex-basis: 100%;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 7%;
 }
 
 
@@ -9,40 +47,48 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-basis: 50%;
-  padding: 0 5%;
-  height: 450px;
+  padding: 30px;
 }
 
 .column-container{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  width: 200px;
+  flex-direction: column;
+  transform: translate(0,100px);
+  opacity: 0;
+  transition: all .5s;
 }
 
-.column-container>p{
+.slide-in-0{
+  opacity: 1;
+  transform: translate(0,0px);
+}
+.slide-in-1{
+  opacity: 1;
+  transform: translate(0,0px);
+  transition-delay: 100ms;
+}
+.slide-in-2{
+  opacity: 1;
+  transform: translate(0,0px);
+  transition-delay: 200ms;
+}
+.slide-in-3{
+  opacity: 1;
+  transform: translate(0,0px);
+  transition-delay: 300ms;
+}
+
+.column-container>h2{
   letter-spacing: 1px;
   flex-basis: 80%;
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   color: white;
-  line-height: 26px;
+  font-weight: 400;
 }
-
-.column-container>svg{
-  width: 100px;
-  min-width: 100px;
-  transition: width .5s;
-}
-
-/* .column-container:hover>svg{
-  width: 110px;
-} */
-
-.border-right{
-  box-shadow: 5px 0px 0px 0px rgb(255, 255, 255) , 0px 5px 0px 0px rgb(255, 255, 255);
-}
-
 
 @media screen and (max-width: 1080px){
   .page1-column{

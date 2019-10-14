@@ -6,7 +6,7 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(45deg, #29abe2, #48eaf8);
+  background: linear-gradient(45deg,var(--primary), #48eaf8);
   border-radius: 10px;
   overflow: hidden;
   padding: 72px 55px 65px 55px;
@@ -29,8 +29,19 @@
   font-size: 15px;
   color: #fff;
   line-height: 1.2;
-  padding: 0 5px;
+  padding: 5px;
 }
+.field:-webkit-autofill,
+.field:-webkit-autofill:hover,
+.field:-webkit-autofill:focus {
+  /* border: 1px solid green; */
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #3AC6E6 inset;
+  border-radius: 5px;
+  background-color: transparent;
+  transition: background-color 500ms ease-in;
+}
+
 .field-container {
   position: relative;
   width: 100%;

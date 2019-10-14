@@ -7,20 +7,19 @@ import Gears from "./Gears";
 import Clouds from "./Clouds";
 import Person from "./Person";
 
-import { useMobile, useEventListener,map } from "../../../customHooks";
+import { useMobile, useEventListener,map } from "../../../helpers/customHooks";
 import SpotLights from "./SpotLights";
 
-function Illustration({replay}) {
+function Illustration() {
   const shadow = useRef(null);
   const floor_shadow = useRef(null);
   const [translate, setTranslate] = useState(-30);
   const isMobile = useMobile(1080);
 
   useEffect(() => {
-    if(!replay) return;
     animate();
     handleScroll();
-  }, [replay]);
+  }, []);
 
   function animate() {
     TweenLite.set(shadow.current, { transformOrigin: "50% 50%", scaleX: 0.8 });
@@ -73,13 +72,10 @@ function Illustration({replay}) {
 
   useEventListener("scroll",handleScroll);
 
-  if(!replay) return null;
-  else 
   return (
 
     <div className="illustration" style={!isMobile ? { transform: "translate(0px," + translate + "px)" } : {}}>
-      <svg style={{ display: "block" }} viewBox="0 0 712.08 893.97">
-        
+      <svg style={{ display: "block" }} viewBox="0 0 712.08 893.97">        
         <defs>
           <linearGradient id="main-circle-gradient" x1="0%" y1="50%" x2="100%" y2="50%" gradientTransform="rotate(0 50 50)">
             <stop offset="0%" style={{ stopColor: "#29abe2" }} />

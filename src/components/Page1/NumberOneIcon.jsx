@@ -1,35 +1,39 @@
 import React from "react";
 import { TimelineMax } from "gsap";
 
-const tl = new TimelineMax({paused:true});
-const borders_tl = new TimelineMax();
+
+
 
 class NumberOneIcon extends React.Component {
-  
+  constructor(props){
+    super(props);
+    this.tl =  new TimelineMax({paused:true});
+    this.borders_tl = new TimelineMax();
+  }
   componentDidMount() {
-    tl.to(this.light_line, .7, { y: -160 })
+    this.tl.to(this.light_line, .7, { y: -160 })
       .to(this.sparkle, 0.2, { transformOrigin: "50% 50%", scale: 1.5 }, "-=.3")
       .to(this.sparkle, 0.2, {
         transformOrigin: "50% 50%",
         scale: 0
       });
 
-      borders_tl.to( this.border_left, .7 , { transformOrigin: "50% 0%", rotation:-30 })
+      this.borders_tl.to( this.border_left, .7 , { transformOrigin: "50% 0%", rotation:-30 })
       .to( this.border_right, .7 , { transformOrigin: "50% 0%", rotation:30 },"-=.7" );
   }
 
   manageAnimation(){
     if (this.props.shouldPlay) {
-      tl.play();
-      borders_tl.play();
+      this.tl.play();
+      this.borders_tl.play();
     }else{
-      tl.reverse();
-      borders_tl.reverse();
+      this.tl.reverse();
+      this.borders_tl.reverse();
     }
-    tl.eventCallback("onComplete", () => {
+    this.tl.eventCallback("onComplete", () => {
       if (this.props.shouldPlay) {        
-        tl.reverse();
-        borders_tl.reverse();
+        this.tl.reverse();
+        this.borders_tl.reverse();
       }
     });
   }
@@ -38,7 +42,7 @@ class NumberOneIcon extends React.Component {
   render() {
     this.manageAnimation();
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" style={{ width: "100px",height:200 }}>
         <path
           ref={ref => (this.border_right = ref)}
           style={styles.cls2}

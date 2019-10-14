@@ -1,43 +1,44 @@
 import React, { useRef, useEffect, createRef } from "react";
 import { TimelineMax , Power0 } from "gsap";
-const tl = new TimelineMax({ paused: true });
+
 const DURATION = 1;
 const ease = Power0.easeNone;
 
 function NetworkIcon({ shouldPlay }) {
+  const tl = useRef(new TimelineMax({ paused: true })) ;
   const atoms = useRef([createRef(), createRef(), createRef(), createRef(), createRef(), createRef()]);
 
   useEffect(() => {
     const atoms_refs = atoms.current.map(atom_ref => atom_ref.current);
 
-    tl.to(atoms_refs[0], DURATION, { ease: ease, scale: .7,rotation: -30, transformOrigin: "0% 100%" });
-    tl.to(atoms_refs[1], DURATION, { ease: ease,scale: 1.2, rotation: -30, transformOrigin: "50% 0%" }, "-=" + DURATION);
-    tl.to(atoms_refs[2], DURATION, { ease: ease, scale: 1.1,rotation: 10, transformOrigin: "100% 0%" }, "-=" + DURATION);
-    tl.to(atoms_refs[3], DURATION, { ease: ease,  scale: 1.2,rotation: -20, transformOrigin: "100% 100%" }, "-=" + DURATION);
-    tl.to(atoms_refs[4], DURATION, { ease: ease, scale: 0.7,rotation: 50, transformOrigin: "0% 0%" }, "-=" + DURATION);
-    tl.to(atoms_refs[5], DURATION, { ease: ease, scale: 0.9, x: 5, transformOrigin: "50% 50%" }, "-=" + DURATION);
+    tl.current.to(atoms_refs[0], DURATION, { ease: ease, scale: .7,rotation: -30, transformOrigin: "0% 100%" });
+    tl.current.to(atoms_refs[1], DURATION, { ease: ease,scale: 1.2, rotation: -30, transformOrigin: "50% 0%" }, "-=" + DURATION);
+    tl.current.to(atoms_refs[2], DURATION, { ease: ease, scale: 1.1,rotation: 10, transformOrigin: "100% 0%" }, "-=" + DURATION);
+    tl.current.to(atoms_refs[3], DURATION, { ease: ease,  scale: 1.2,rotation: -20, transformOrigin: "100% 100%" }, "-=" + DURATION);
+    tl.current.to(atoms_refs[4], DURATION, { ease: ease, scale: 0.7,rotation: 50, transformOrigin: "0% 0%" }, "-=" + DURATION);
+    tl.current.to(atoms_refs[5], DURATION, { ease: ease, scale: 0.9, x: 5, transformOrigin: "50% 50%" }, "-=" + DURATION);
   }, []);
 
-  tl.eventCallback("onComplete", () => {
+  tl.current.eventCallback("onComplete", () => {
     if (shouldPlay) {
-      tl.reverse();
+      tl.current.reverse();
     }
   });
 
-  // tl.eventCallback("onReverseComplete", () => {
+  // tl.current.eventCallback("onReverseComplete", () => {
   //   if (shouldPlay) {
-  //     tl.restart();
+  //     tl.current.restart();
   //   }
   // });
 
   if (shouldPlay) {
-    if (!tl.isActive()) tl.restart();
+    if (!tl.current.isActive()) tl.current.restart();
   } else {
-    tl.reverse();
+    tl.current.reverse();
   }
 
   return (
-    <svg viewBox="0 0 71 70.6" style={{ width: "150px" }}>
+    <svg viewBox="0 0 71 70.6" style={{ width: "150px",height:200 }}>
       <g ref={atoms.current[3]}>
         <path fill="#2E3192" d="M24,25.3l1.4-1.4l11,11L35,36.3L24,25.3z" />
         <circle fill="#d75a4a" cx="23.7" cy="23.6" r="3" />

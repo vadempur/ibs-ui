@@ -35,19 +35,19 @@ function ContactForm() {
           </h1>
           
           <div className="field-container">
-            <Field className="field" name="name" placeholder="Nom et Prenom"/>
+            <Field className="field" name="name" placeholder="Nom et Prenom" type="text"/>
             <span className="animated-line" />
           </div>
           <ErrorMessage className="error-msg" name="name" component="div" />
 
           <div className="field-container">
-            <Field className="field" name="email"  placeholder="Email"/>
+            <Field className="field" name="email"  placeholder="Email" type="email" />
             <span className="animated-line" />
           </div>
           <ErrorMessage className="error-msg" name="email" component="div" />
           
           <div className="field-container">
-            <Field component="textarea" rows="6" className="field" name="message"  placeholder="Votre message"/>
+            <Field component="textarea" rows="6" className="field" name="message"  placeholder="Votre message" type="text"/>
             <span className="animated-line" />
           </div>
           <ErrorMessage className="error-msg" name="message" component="div" />

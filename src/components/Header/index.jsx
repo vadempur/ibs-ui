@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import logo from "./logo.svg";
+import logo_icon from "../../assets/logo_icon.svg";
 import logo_light from "./logo-light.svg";
 import "./Header.css";
-import { useMobile, useEventListener } from "../../customHooks";
+import { useMobile, useEventListener } from "../../helpers/customHooks";
+import { Link } from "react-router-dom";
 function Header({ light }) {
   const isMobile = useMobile(1080);
+  const [onTop, setOnTop] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const [toggleSubMenu, setToggleSubMenu] = useState(-1);
 
@@ -22,6 +25,17 @@ function Header({ light }) {
   });
 
   useEventListener("click", handleOutSideClick, document.getElementById("root"));
+
+  const handleHeaderOnTop = useCallback(() => {
+    // console.log( window.scrollY );
+    if (window.scrollY < 60) {
+      if (!onTop) setOnTop(true);
+    } else {
+      if (onTop) setOnTop(false);
+    }
+  });
+
+  useEventListener("scroll", handleHeaderOnTop);
 
   function handleShowMenu(e) {
     setShowMenu(!showMenu);
@@ -42,8 +56,16 @@ function Header({ light }) {
   }
 
   return (
-    <header className={`header-container ${light && "header-light-bg"}`}>
-      <img width={light ? "180px" : "130px"} src={light ? logo_light : logo} alt={"logo"} className={"logo"} />
+    <header className={`header-container${light ? " header-light-bg" : ""}${onTop ? " header-on-top" : ""}`}>
+      {!onTop ? (
+        <Link to="/home">
+          <img width={"30px"} height={"30px"} src={logo_icon} alt={"logo"} className={"logo"} />
+        </Link>
+      ) : (
+        <Link to="/home">
+          <img width={"130px"} height={"30px"} src={light ? logo_light : logo} alt={"logo"} className={"logo"} />
+        </Link>
+      )}
 
       {isMobile && (
         <div className="hamburger" onClick={handleShowMenu}>
@@ -55,16 +77,23 @@ function Header({ light }) {
       {(showMenu || !isMobile) && (
         <ul className={`header-menu ${light && "header-light-txt"}`}>
           <li className="selected">
-            <a href="#constraction">Accueil</a>
+            <Link
+              to="/"
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+            >
+              Accueil
+            </Link>
           </li>
           <li>
-            <a href="#constraction">Services</a>
+            <Link to="/services">Services</Link>
           </li>
           <li>
-            <a href="#constraction">Produits</a>
+            <Link to="/products">Produits</Link>
           </li>
           <li onMouseEnter={handleEnter} onMouseLeave={handleExit}>
-            <a href="#constraction">Socièté</a>
+            <Link to="/about">Socièté</Link>
             {toggleSubMenu === 1 && (
               <SubMenu>
                 <li> Qui sommes nous </li>
@@ -75,7 +104,7 @@ function Header({ light }) {
             )}
           </li>
           <li>
-            <a href="#constraction">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       )}
