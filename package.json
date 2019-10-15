@@ -1,8 +1,11 @@
 {
-  "homepage": "https://ibsolutions-dz.com/progress",
   "name": "ibs-website",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.4.1",
+    "node": "10.15.3"
+  },
   "dependencies": {
     "formik": "^1.5.8",
     "google-maps-react": "^2.0.2",
