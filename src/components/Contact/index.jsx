@@ -6,7 +6,7 @@ import ContactInfo from "./ContactInfo";
 import facebook_logo from "../../assets/facebook_logo.svg";
 import linkedin_logo from "../../assets/linkedin_logo.svg";
 import twitter_logo from "../../assets/twitter_logo.svg";
-import { googleMapsKey } from "../../helpers/secret";
+import { googleMapsKey } from "../../helpers/constants";
 function Contact({ google }) {
   function showOnMaps() {
     const url =
