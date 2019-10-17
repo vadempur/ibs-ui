@@ -1,11 +1,11 @@
 import React from "react";
-import { Switch, Route,useLocation } from "react-router-dom";
-import Societe from "./screens/Societe"
-import Accueil from "./screens/Accueil"
-import Header from "./components/Header"
-import Slide from "./screens/Slide"
+import { Switch, Route, useLocation } from "react-router-dom";
+import Societe from "./screens/Societe";
+import Accueil from "./screens/Accueil";
+import Header from "./components/Header";
 import NotFound from "./screens/NotFound";
 import WorkInProgress from "./components/WorkInProgress";
+
 
 function App() {
   const location = useLocation();
@@ -13,34 +13,29 @@ function App() {
 
   return (
     <>
-      <Header light={light}/>
+      <Header light={light} />
       <Switch>
         <Route exact path="/">
-          <Slide/>
-        </Route>
-        <Route path="/home">
-          <Accueil/>
+          <Accueil />
         </Route>
         <Route path="/services">
-          <WorkInProgress/>
+          <WorkInProgress />
         </Route>
         <Route path="/products">
-          <WorkInProgress/>
+          <WorkInProgress />
         </Route>
         <Route path="/contact">
-          <WorkInProgress/>
+          <WorkInProgress />
         </Route>
         <Route path="/about">
-          <Societe/>
+          <Societe />
         </Route>
         <Route path="*">
-          <NotFound/>
+          <NotFound />
         </Route>
       </Switch>
     </>
   );
 }
-
-
 
 export default App;

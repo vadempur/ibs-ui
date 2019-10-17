@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef,useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Carousel from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -10,15 +10,16 @@ import scroll_indicator from "../../assets/scroll.svg";
 import { useEventListener } from "../../helpers/customHooks";
 import SlideItem from "./SlideItem";
 
+
 let startX,
   startY,
   dist,
   threshold = 80; //required min distance traveled to be considered swipe
 
 function Slide() {
-  const history = useHistory();
   const carouselRef = useRef();
   const slide_container = useRef();
+  const [visible,setVisible] = useState(true);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -34,7 +35,7 @@ function Slide() {
 
   /* close slide listeners */
   useEventListener("keyup", e => {
-    if (e.key === "ArrowDown") history.push("/home");
+    if (e.key === "ArrowDown") setVisible(false);
   });
 
   const handleTouchStart = e => {
@@ -49,28 +50,30 @@ function Slide() {
     let not_so_horizontal = Math.abs(touchobj.pageX - startX) <= 100;
     var hideTheSlide = dist < 0 && Math.abs(dist) >= threshold && not_so_horizontal;
     if (hideTheSlide) {
-      history.push("/home");
+      setVisible(false);
     }
   };
   useEventListener("touchstart", handleTouchStart, slide_container.current);
   useEventListener("touchend", handleTouchEnd, slide_container.current);
 
   useEventListener("scroll", () => {
-    if (window.scrollY > 0) history.push("/home");
+    if (window.scrollY > 0) setVisible(false);
   });
   useEventListener("wheel", e => {
     if (e.deltaY > 0) {
       setTimeout(() => {
-        history.push("/home");
+        setVisible(false);
       }, 300);
     }
   });
 
+  if(!visible) return null;
+
   return (
     <div ref={slide_container} className={`slide-container"}`}>
-      <Link to="/home" className="scroll_indicator">
+      <div onClick={()=>{setVisible(false)}} className="scroll_indicator">
         <img src={scroll_indicator} alt="scroll_indicator" />
-      </Link>
+      </div>
       <Carousel ref={carouselRef} dots={false} accessibility={false} pauseOnHover={false} autoplay autoplaySpeed={6000}>
         <SlideItem
           img={img1}
