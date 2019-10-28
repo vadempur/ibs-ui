@@ -1,6 +1,6 @@
 .header-container {
   position: fixed;
-  top:0;
+  top: 0;
   width: 100%;
   background-color: white;
   padding: 5px 10% 5px 10%;
@@ -8,17 +8,15 @@
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  transition: background-color 300ms;
-  transition: padding 300ms;
-  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.35);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.35);
+  transition: all 1s;
 }
 
-.logo{
+.logo {
   opacity: 1;
   transition: opacity 300ms;
   cursor: pointer;
 }
-
 
 .header-menu {
   display: flex;
@@ -29,7 +27,11 @@
 }
 .header-menu > li {
   position: relative;
-  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  padding: 0 20px;
   border-radius: 20px;
   transition: background 0.4s ease-in-out;
 }
@@ -37,12 +39,12 @@
   background: var(--very-light-gray);
 }
 
-.header-menu > li > a{
+.header-menu > li > a {
+  text-align: center;
   font-size: 15px;
-  color:inherit;
+  color: inherit;
   text-decoration: none;
 }
-
 
 .selected {
   color: var(--header-text-color);
@@ -52,7 +54,7 @@
 .sub-home-menu {
   cursor: default;
   animation-name: fadein;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   z-index: 1000;
   width: 200px;
   transition: width 1s;
@@ -70,8 +72,12 @@
   padding: 20px 0px;
 }
 @keyframes fadein {
-  from {opacity: 0; }
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .sub-home-menu > li {
   cursor: pointer;
@@ -80,7 +86,7 @@
   margin: 15px 0;
 }
 
-.hamburger-piece{
+.hamburger-piece {
   display: block;
   height: 2px;
   width: 17px;
@@ -88,9 +94,8 @@
   background: var(--primary);
 }
 
-
-.header-light-bg{
-  background-color: rgba(0,0,0,0.25);
+.header-light-bg {
+  background-color: rgba(0, 0, 0, 0.25);
   padding: 20px 10% 20px 10%;
 }
 
@@ -98,17 +103,16 @@
   background: none;
 }
 
-.is-text-light{
-  color:white;
+.is-text-light {
+  color: white;
 }
 
-.header-on-top{
-  padding-top:40px;
+.header-on-top {
+  padding-top: 40px;
   box-shadow: none;
 }
 
-@media screen and (max-width: 1080px){
-  
+@media screen and (max-width: 1080px) {
   .header-container {
     padding: 40px 30px 0px 30px;
     display: flex;
@@ -116,10 +120,10 @@
     align-items: center;
   }
 
-  .header-menu{
+  .header-menu {
     position: absolute;
     right: 15px;
-    top:80px;
+    top: 80px;
     background: white;
     z-index: 1000;
     flex-direction: column;
@@ -128,7 +132,6 @@
     width: 330px;
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
-    animation: fadein .3s;
+    animation: fadein 0.3s;
   }
-
 }

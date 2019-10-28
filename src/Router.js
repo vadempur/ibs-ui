@@ -6,17 +6,16 @@ import Header from "./components/Header";
 import NotFound from "./screens/NotFound";
 import WorkInProgress from "./components/WorkInProgress";
 
-
 function App() {
   const location = useLocation();
-  const light = location.pathname === "/";
+  const [slideVisible, setSlideVisible] = React.useState(location.pathname === "/");
 
   return (
     <>
-      <Header light={light} />
+      <Header light={slideVisible} />
       <Switch>
         <Route exact path="/">
-          <Accueil />
+          <Accueil slideVisible={slideVisible} setSlideVisible={setSlideVisible} />
         </Route>
         <Route path="/services">
           <WorkInProgress />

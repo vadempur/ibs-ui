@@ -1,25 +1,22 @@
-import React, { useEffect, useRef,useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
 import Carousel from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./slide.css";
+import "./styles.css";
 import img1 from "../../assets/1.jpeg";
 import img2 from "../../assets/2.jpg";
 import scroll_indicator from "../../assets/scroll.svg";
 import { useEventListener } from "../../helpers/customHooks";
 import SlideItem from "./SlideItem";
 
-
 let startX,
   startY,
   dist,
   threshold = 80; //required min distance traveled to be considered swipe
 
-function Slide() {
+function Slide({ visible, setVisible }) {
   const carouselRef = useRef();
   const slide_container = useRef();
-  const [visible,setVisible] = useState(true);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -61,20 +58,31 @@ function Slide() {
   });
   useEventListener("wheel", e => {
     if (e.deltaY > 0) {
-      setTimeout(() => {
-        setVisible(false);
-      }, 300);
+      setVisible(false);
     }
   });
 
-  if(!visible) return null;
-
   return (
-    <div ref={slide_container} className={`slide-container"}`}>
-      <div onClick={()=>{setVisible(false)}} className="scroll_indicator">
-        <img src={scroll_indicator} alt="scroll_indicator" />
-      </div>
-      <Carousel ref={carouselRef} dots={false} accessibility={false} pauseOnHover={false} autoplay autoplaySpeed={6000}>
+    <div ref={slide_container} className={`slide-container ${visible === false && "slide-hidden"}`}>
+      {visible === true && (
+        <div
+          onClick={() => {
+            setVisible(false);
+          }}
+          className="scroll_indicator"
+        >
+          <img src={scroll_indicator} alt="scroll_indicator" />
+        </div>
+      )}
+      <Carousel
+        ref={carouselRef}
+        dots={false}
+        arrows={false}
+        accessibility={false}
+        pauseOnHover={false}
+        autoplay={true}
+        autoplaySpeed={6000}
+      >
         <SlideItem
           img={img1}
           title={"The standard Lorem"}

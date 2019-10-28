@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import logo from "./logo.svg";
 import logo_icon from "../../assets/logo_icon.svg";
 import logo_light from "./logo-light.svg";
-import "./Header.css";
+import "./styles.css";
 import { useMobile, useEventListener } from "../../helpers/customHooks";
 import { Link } from "react-router-dom";
 function Header({ light }) {
