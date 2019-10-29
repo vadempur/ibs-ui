@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
-import logo from "./logo.svg";
+import logo from "../../assets/logo.svg";
 import logo_icon from "../../assets/logo_icon.svg";
-import logo_light from "./logo-light.svg";
+import logo_light from "../../assets/logo-light.svg";
 import "./styles.css";
 import { useMobile, useEventListener } from "../../helpers/customHooks";
 import { Link } from "react-router-dom";
@@ -58,11 +58,11 @@ function Header({ light }) {
   return (
     <header className={`header-container${light ? " header-light-bg" : ""}${onTop ? " header-on-top" : ""}`}>
       {!onTop ? (
-        <Link to="/home">
+        <Link to="/">
           <img width={"30px"} height={"30px"} src={logo_icon} alt={"logo"} className={"logo"} />
         </Link>
       ) : (
-        <Link to="/home">
+        <Link to="/">
           <img width={"130px"} height={"30px"} src={light ? logo_light : logo} alt={"logo"} className={"logo"} />
         </Link>
       )}
