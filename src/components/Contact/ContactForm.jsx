@@ -20,10 +20,11 @@ function ContactForm() {
         },
         body: formData
       });
-      const data = await res.json();
-      console.log(data);
-      setSubmitting(false);     
+      // const data = await res.json();
+      alert("Email envoyé avec succes, Merci pour votre prise de contact");
+      setSubmitting(false);
     } catch (error) {
+      alert("Oups... une erreur est survenue");
       setSubmitting(false);      
     }
 
@@ -74,7 +75,7 @@ function ContactForm() {
           <ErrorMessage className="error-msg" name="message" component="div" />
           
           <div>
-            {isSubmitting && <p>...</p>}
+            
             <button className="contact-form-btn" type="submit" disabled={isSubmitting}  >
               ENVOYER
             </button>

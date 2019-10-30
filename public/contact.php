@@ -17,5 +17,6 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']) 
     // echo json_encode(['status' => 'success']);
 } else {
     header('Content-Type: application/json');
+    http_response_code(400);
     echo json_encode(['status' => 'error']);
 }
