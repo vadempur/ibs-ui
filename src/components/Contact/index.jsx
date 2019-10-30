@@ -20,7 +20,9 @@ function Contact({ google }) {
           google={google}
           zoom={16}
           initialCenter={{ lat: 36.7031033, lng: 3.0954719 }}
-          scrollwheel={false}
+          // scrollwheel={false}
+          gestureHandling='greedy'          
+          mapTypeControl={false}
         >
           <Marker
             onClick={showOnMaps}
