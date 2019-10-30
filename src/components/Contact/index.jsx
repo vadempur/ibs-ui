@@ -20,8 +20,8 @@ function Contact({ google }) {
           google={google}
           zoom={16}
           initialCenter={{ lat: 36.7031033, lng: 3.0954719 }}
-          // scrollwheel={false}
-          gestureHandling='none'          
+          scrollwheel={false}
+          // gestureHandling='none'          
           mapTypeControl={false}
           streetViewControl={false}
         >

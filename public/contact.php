@@ -14,6 +14,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']) 
     mail($to, $subject, $message, $headers);
     header('Content-Type: application/json');
     echo json_encode(['status' => 'success']);
+} else {
+    header('Content-Type: application/json');
+    echo json_encode(['status' => 'error']);
 }
-header('Content-Type: application/json');
-echo json_encode(['status' => 'error']);
