@@ -1,6 +1,7 @@
 .map-container{
   position: relative;
   height: 720px;
+  /* margin: 50px 0; */
 }
 
 .contact-container{
@@ -18,21 +19,4 @@
   flex-wrap: wrap;
 }
 
-.rights-reserved{
-  display: flex;
-  padding: 5px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.rights-reserved>p{
-  font-size: 12px;
-}
-
-.social-logo{
-  width: 16px;
-  margin: 5px 10px;
-  cursor: pointer;
-}
 

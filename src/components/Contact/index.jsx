@@ -3,9 +3,7 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import "./Contact.css";
 import ContactForm from "./ContactForm";
 import ContactInfo from "./ContactInfo";
-import facebook_logo from "../../assets/facebook_logo.svg";
-import linkedin_logo from "../../assets/linkedin_logo.svg";
-import twitter_logo from "../../assets/twitter_logo.svg";
+
 import { googleMapsKey } from "../../helpers/constants";
 function Contact({ google }) {
   function showOnMaps() {
@@ -34,20 +32,6 @@ function Contact({ google }) {
         <div className="contact-container">
           <ContactForm />
           <ContactInfo />
-        </div>
-      </div>
-      <div className="rights-reserved">
-        <p>© 2019 IBS Solutions. All rights reserved.</p>
-        <div>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-            <img className="social-logo" src={facebook_logo} alt="facebook" href="google.com" />
-          </a>
-          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-            <img className="social-logo" src={twitter_logo} alt="twitter" />
-          </a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-            <img className="social-logo" src={linkedin_logo} alt="linkedin" />
-          </a>
         </div>
       </div>
     </section>

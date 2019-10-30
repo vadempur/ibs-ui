@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import logo from "../../assets/logo.svg";
 import logo_icon from "../../assets/logo_icon.svg";
-import logo_light from "../../assets/logo-light.svg";
+import logo_light from "../../assets/logo-footer.svg";
 import "./styles.css";
 import { useMobile, useEventListener } from "../../helpers/customHooks";
 import { Link } from "react-router-dom";

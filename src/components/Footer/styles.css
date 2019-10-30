@@ -1,0 +1,51 @@
+.rights-reserved {
+  display: flex;
+  padding: 5px 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;  
+  align-items: flex-start;
+  height: 70vh;
+  background-color: black;
+}
+.rights-reserved > p {
+  font-size: 12px;
+}
+
+.social-logo {
+  width: 24px;
+  margin: 5px 25px 5px 0;
+  cursor: pointer;
+}
+.footer-title {
+  color: white;
+  margin-bottom: 25px;
+  font-weight: 400;
+}
+.footer-link{
+  margin: 8px 0;
+  cursor: pointer;
+}
+.footer-row {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+}
+.footer-col {
+  padding-inline-end: 50px;
+}
+.footer-logo {
+  width: 150px;
+  margin-bottom: 25px;
+}
+
+.rights-text{
+  text-align: start;
+  color: white;
+  margin-top: 40px;
+  font-size: 15px;
+}
+
+.border-top{
+  border-top: solid .5px rgba(255, 255, 255, 0.3);
+}

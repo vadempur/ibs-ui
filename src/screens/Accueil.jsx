@@ -4,19 +4,18 @@ import Banner from "../components/Banner";
 import Contact from "../components/Contact";
 import Slide from "../components/Slide";
 
-export default function Accueil({slideVisible,setSlideVisible}) {
-  
+export default function Accueil({ slideVisible, setSlideVisible }) {
   const [mountSlide, setMountSlide] = React.useState(true);
-  function setVisible(bool){
+  function setVisible(bool) {
     setSlideVisible(bool);
-    setTimeout(()=>{
+    setTimeout(() => {
       setMountSlide(bool);
-    },1000);
+    }, 1000);
   }
   return (
     <>
-      { mountSlide === true && <Slide visible={slideVisible} setVisible={setVisible} />}
-      <Banner />
+      {mountSlide === true && <Slide visible={slideVisible} setVisible={setVisible} />}
+      {!slideVisible && <Banner />}
       <Page1 />
       <div style={{ padding: "60px 0", display: "flex", alignItems: "center", flexDirection: "column" }}>
         <p>Services...</p>

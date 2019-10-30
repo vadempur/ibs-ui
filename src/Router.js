@@ -5,6 +5,7 @@ import Accueil from "./screens/Accueil";
 import Header from "./components/Header";
 import NotFound from "./screens/NotFound";
 import WorkInProgress from "./components/WorkInProgress";
+import Footer from "./components/Footer";
 
 function App() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function App() {
           <NotFound />
         </Route>
       </Switch>
+      <Footer/>
     </>
   );
 }
