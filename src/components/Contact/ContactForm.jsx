@@ -1,19 +1,19 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./ContactForm.css";
-import { BASE_URL } from "../../helpers/constants";
+import ReCAPTCHA from "react-google-recaptcha";
+import { BASE_URL, RECAPTCHA_SITE_KEY } from "../../helpers/constants";
 
 function ContactForm() {
-
   async function handleSubmit(values, { setSubmitting }) {
     try {
       const formData = new FormData();
-      Object.keys(values).forEach( key=>{
-        formData.append(key+"",values[key]+"");
+      Object.keys(values).forEach(key => {
+        formData.append(key + "", values[key] + "");
       });
       // console.log(formData)
-      const res = await fetch(BASE_URL+"/contact.php",{
-        method: 'POST',
+      const res = await fetch(BASE_URL + "/contact.php", {
+        method: "POST",
         headers: {
           // Accept: 'application/json',
           // "Content-Type": 'application/json',
@@ -25,8 +25,11 @@ function ContactForm() {
       setSubmitting(false);
     } catch (error) {
       alert("Oups... une erreur est survenue");
-      setSubmitting(false);      
+      setSubmitting(false);
     }
+  }
+
+  function recaptchaChange(e){
 
   }
 
@@ -55,32 +58,37 @@ function ContactForm() {
           <h1 className="contact-form-title">
             Contactez <span>Nous</span>
           </h1>
-          
+
           <div className="field-container">
-            <Field className="field" name="name" placeholder="Nom et Prenom" type="text"/>
+            <Field className="field" name="name" placeholder="Nom et Prenom" type="text" />
             <span className="animated-line" />
           </div>
           <ErrorMessage className="error-msg" name="name" component="div" />
 
           <div className="field-container">
-            <Field className="field" name="email"  placeholder="Email" type="email" />
+            <Field className="field" name="email" placeholder="Email" type="email" />
             <span className="animated-line" />
           </div>
           <ErrorMessage className="error-msg" name="email" component="div" />
-          
+
           <div className="field-container">
-            <Field component="textarea" rows="6" className="field" name="message"  placeholder="Votre message" type="text"/>
+            <Field
+              component="textarea"
+              rows="6"
+              className="field"
+              name="message"
+              placeholder="Votre message"
+              type="text"
+            />
             <span className="animated-line" />
           </div>
           <ErrorMessage className="error-msg" name="message" component="div" />
-          
+          <ReCAPTCHA sitekey={RECAPTCHA_SITE_KEY} onChange={recaptchaChange} />
           <div>
-            
-            <button className="contact-form-btn" type="submit" disabled={isSubmitting}  >
-              ENVOYER
+            <button className="contact-form-btn" type="submit" disabled={isSubmitting}>
+              <div> {isSubmitting && <span>loading</span>} ENVOYER</div>
             </button>
           </div>
-
         </Form>
       )}
     </Formik>
