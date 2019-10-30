@@ -1,8 +1,32 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./ContactForm.css";
+import { BASE_URL } from "../../helpers/constants";
 
 function ContactForm() {
+
+  async function handleSubmit(values, { setSubmitting }) {
+    try {
+      const formData = new FormData();
+      Object.keys(values).forEach( key=>{
+        formData.append(key,values[key]);
+      });
+      console.log(formData)
+      const res = await fetch(BASE_URL+"/contact.php",{
+        method: 'POST',
+        // headers: {
+        //   Accept: 'application/json',        
+        // },
+        body:formData 
+      });
+      console.log(res);
+      setSubmitting(false);     
+    } catch (error) {
+      setSubmitting(false);      
+    }
+
+  }
+
   return (
     <Formik
       initialValues={{ email: "", name: "" }}
@@ -21,12 +45,7 @@ function ContactForm() {
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
+      onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
         <Form className="contact-form-container">
@@ -53,7 +72,8 @@ function ContactForm() {
           <ErrorMessage className="error-msg" name="message" component="div" />
           
           <div>
-            <button className="contact-form-btn" type="submit" disabled={isSubmitting}>
+            {isSubmitting && <p>...</p>}
+            <button className="contact-form-btn" type="submit" disabled={isSubmitting}  >
               ENVOYER
             </button>
           </div>

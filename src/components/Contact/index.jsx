@@ -21,8 +21,9 @@ function Contact({ google }) {
           zoom={16}
           initialCenter={{ lat: 36.7031033, lng: 3.0954719 }}
           // scrollwheel={false}
-          gestureHandling='greedy'          
+          gestureHandling='none'          
           mapTypeControl={false}
+          streetViewControl={false}
         >
           <Marker
             onClick={showOnMaps}
