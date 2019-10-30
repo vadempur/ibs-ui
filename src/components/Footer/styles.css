@@ -29,7 +29,7 @@
 .footer-row {
   width: 100%;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .footer-col {
   padding-inline-end: 50px;

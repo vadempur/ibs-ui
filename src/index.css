@@ -8,7 +8,9 @@
   --gold: #fdbd29;
   --header-text-color: var(--light-gray);
 }
-
+a{
+  text-decoration: none;
+}
 *,
 *:before,
 *:after {

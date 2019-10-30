@@ -1,5 +1,4 @@
 import React from "react";
-
 import DiagonalFloor from "./DiagonalFloor";
 import Illustration from "./Illustration";
 import "./Banner.css";

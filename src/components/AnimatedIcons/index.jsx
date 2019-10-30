@@ -1,12 +1,14 @@
 import React, { createRef, useState, useCallback, useRef } from "react";
-import "./Page1.css";
+import "./styles.css";
 import { useEventListener, useMobile } from "../../helpers/customHooks";
 import NumberOneIcon from "./NumberOneIcon";
 import ServicesIcon from "./ServicesIcon";
 import CollabIcon from "./CollabIcon";
 import NetworkIcon from "./NetworkIcon";
+import { Link } from "react-router-dom";
 
-function Page1() {
+
+function AnimatedIcons() {
   const [iconsToPlay, setIconsToPlay] = useState([]);
   const [iconsToSlide, setIconsToSlide] = useState([]);
   const refs = useRef([createRef(), createRef(), createRef(), createRef()]);
@@ -58,7 +60,7 @@ function Page1() {
     <section className="section-1">
       <h1 className="section-1-title">Et Si Solutions Rimaient Avec Integration</h1>
       <div className="svg-icons-container">
-        <div className="page1-column">
+        <Link to="/about" className="page1-column">
           <div
             className={setColumnClass(0)}
             ref={refs.current[0]}
@@ -68,9 +70,9 @@ function Page1() {
             <NumberOneIcon shouldPlay={iconsToPlay[0]} />
             <h2> Mission et valeurs </h2>
           </div>
-        </div>
+        </Link>
 
-        <div className="page1-column">
+        <Link to="/about" className="page1-column">
           <div
             ref={refs.current[1]}
             className={setColumnClass(1)}
@@ -80,9 +82,9 @@ function Page1() {
             <CollabIcon shouldPlay={iconsToPlay[1]} />
             <h2> Nos Partenaires </h2>
           </div>
-        </div>
+        </Link>
 
-        <div className="page1-column">
+        <Link to="/about" className="page1-column">
           <div
             ref={refs.current[2]}
             className={setColumnClass(2)}
@@ -92,9 +94,9 @@ function Page1() {
             <ServicesIcon shouldPlay={iconsToPlay[2]} />
             <h2> Qui sommes nous </h2>
           </div>
-        </div>
+        </Link>
 
-        <div className="page1-column">
+        <Link to="/about" className="page1-column">
           <div
             ref={refs.current[3]}
             className={setColumnClass(3)}
@@ -104,13 +106,13 @@ function Page1() {
             <NetworkIcon shouldPlay={iconsToPlay[3]} />
             <h2> Nos clients </h2>
           </div>
-        </div>
+        </Link>
       </div>
     </section>
   );
 }
 
-export default Page1;
+export default AnimatedIcons;
 
 function isRectOnViewPort(rect) {
   return (

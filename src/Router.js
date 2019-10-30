@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 function App() {
   const location = useLocation();
   const [slideVisible, setSlideVisible] = React.useState(true);
-
+  window.scrollTo(0,0);
   return (
     <>
       <Header light={slideVisible && location.pathname === "/"} />

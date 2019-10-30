@@ -1,4 +1,4 @@
-.section-1{
+.section-1 {
   padding: 200px 0;
   background-color: var(--primary);
   min-height: 100vh;
@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.section-1-title{
+.section-1-title {
   position: relative;
   text-align: center;
   margin-bottom: 80px;
@@ -15,25 +15,25 @@
   font-weight: 400;
   font-size: 36px;
 }
-.section-1-title::before{
-  content: "\"";
+.section-1-title::before {
+  content: '"';
   position: absolute;
   left: -50px;
   top: -10px;
-  color: rgba(255, 255, 255, .23);
+  color: rgba(255, 255, 255, 0.23);
   font-size: 70px;
 }
-.section-1-title::after{
+.section-1-title::after {
   content: "''";
   position: absolute;
   right: -50px;
   bottom: -50px;
-  color: rgba(255, 255, 255, .23);
+  color: rgba(255, 255, 255, 0.23);
   font-size: 70px;
 }
 
-.svg-icons-container{
-  display:flex;
+.svg-icons-container {
+  display: flex;
   flex-wrap: wrap;
   flex-basis: 100%;
   width: 100%;
@@ -42,46 +42,47 @@
   padding: 0 7%;
 }
 
-
-.page1-column{
+.page1-column {
+  cursor: pointer;
+  text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 30px;
 }
 
-.column-container{
+.column-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 200px;
   flex-direction: column;
-  transform: translate(0,100px);
+  transform: translate(0, 100px);
   opacity: 0;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
-.slide-in-0{
+.slide-in-0 {
   opacity: 1;
-  transform: translate(0,0px);
+  transform: translate(0, 0px);
 }
-.slide-in-1{
+.slide-in-1 {
   opacity: 1;
-  transform: translate(0,0px);
+  transform: translate(0, 0px);
   transition-delay: 100ms;
 }
-.slide-in-2{
+.slide-in-2 {
   opacity: 1;
-  transform: translate(0,0px);
+  transform: translate(0, 0px);
   transition-delay: 200ms;
 }
-.slide-in-3{
+.slide-in-3 {
   opacity: 1;
-  transform: translate(0,0px);
+  transform: translate(0, 0px);
   transition-delay: 300ms;
 }
 
-.column-container>h2{
+.column-container > h2 {
   letter-spacing: 1px;
   flex-basis: 80%;
   text-align: center;
@@ -90,20 +91,20 @@
   font-weight: 400;
 }
 
-@media screen and (max-width: 1080px){
-  .page1-column{
+@media screen and (max-width: 1080px) {
+  .page1-column {
     flex-basis: 100%;
     border-right: none;
   }
-  .column-container{
+  .column-container {
     flex-direction: column;
   }
-  .column-container>p{
+  .column-container > p {
     font-size: 14px;
     margin: 40px 25px 0 25px;
   }
-  
-  .border-right{
-    box-shadow: 2px 0px 0px 0px rgb(255, 255, 255) , 0px 2px 0px 0px rgb(255, 255, 255);
+
+  .border-right {
+    box-shadow: 2px 0px 0px 0px rgb(255, 255, 255), 0px 2px 0px 0px rgb(255, 255, 255);
   }
 }
