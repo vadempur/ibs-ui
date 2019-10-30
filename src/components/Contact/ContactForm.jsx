@@ -20,7 +20,8 @@ function ContactForm() {
         },
         body: formData
       });
-      console.log(res);
+      const data = await res.json();
+      console.log(data);
       setSubmitting(false);     
     } catch (error) {
       setSubmitting(false);      
