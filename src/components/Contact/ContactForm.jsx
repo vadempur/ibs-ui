@@ -7,17 +7,17 @@ function ContactForm() {
 
   async function handleSubmit(values, { setSubmitting }) {
     try {
-      const formData = new FormData();
-      Object.keys(values).forEach( key=>{
-        formData.append(key,values[key]);
-      });
-      console.log(formData)
+      // const formData = new FormData();
+      // Object.keys(values).forEach( key=>{
+      //   formData.append(key,values[key]);
+      // });
+      // console.log(formData)
       const res = await fetch(BASE_URL+"/contact.php",{
         method: 'POST',
-        // headers: {
-        //   Accept: 'application/json',        
-        // },
-        body:formData 
+        headers: {
+          Accept: 'application/json',        
+        },
+        body: JSON.stringify(values)
       });
       console.log(res);
       setSubmitting(false);     
