@@ -9,14 +9,14 @@ function ContactForm() {
     try {
       const formData = new FormData();
       Object.keys(values).forEach( key=>{
-        formData.append(key,values[key]);
+        formData.append(key+"",values[key]+"");
       });
       // console.log(formData)
       const res = await fetch(BASE_URL+"/contact.php",{
         method: 'POST',
         headers: {
-          Accept: 'application/json',
-          "Content-Type": 'application/json',
+          // Accept: 'application/json',
+          // "Content-Type": 'application/json',
         },
         body: formData
       });
