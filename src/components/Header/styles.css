@@ -1,7 +1,7 @@
 .header-container {
   position: fixed;
   top: 0;
-  width: 100%;  
+  width: 100%;
   padding: 5px 10% 5px 10%;
   display: flex;
   justify-content: space-between;
@@ -9,15 +9,17 @@
   z-index: 1000;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.35);
   background-color: white;
-  transition: all 1s;
+  transition: all 400ms;
 }
-
-.logo {
-  opacity: 1;
-  transition: opacity 300ms;
-  cursor: pointer;
+.header-on-top {
+  padding-top: 40px;
+  box-shadow: none;
+  background-color: transparent;
 }
-
+.header-container-light {
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 20px 10% 20px 10%;
+}
 .header-menu {
   display: flex;
   flex: 1;
@@ -35,8 +37,17 @@
   border-radius: 20px;
   transition: background 0.4s ease-in-out;
 }
+.header-menu-light > li {
+  color: white;
+  opacity: 0.8;
+  transition: opacity 300ms;
+}
 .header-menu > li:hover {
   background: var(--very-light-gray);
+}
+.header-menu-light > li:hover {
+  background: none;
+  opacity: 1;
 }
 
 .header-menu > li > a {
@@ -94,23 +105,10 @@
   background: var(--primary);
 }
 
-.header-light-bg {
-  background-color: rgba(0, 0, 0, 0.25);
-  padding: 20px 10% 20px 10%;
-}
-
-.header-light-txt > li:hover {
-  background: none;
-}
-
-.is-text-light {
-  color: white;
-}
-
-.header-on-top {
-  padding-top: 40px;
-  box-shadow: none;
-  background-color: transparent;
+.logo {
+  opacity: 1;
+  transition: opacity 300ms;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1080px) {

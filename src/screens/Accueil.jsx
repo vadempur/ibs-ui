@@ -2,7 +2,7 @@ import React from "react";
 import Page1 from "../components/Page1";
 import Banner from "../components/Banner";
 import Contact from "../components/Contact";
-import Slide from "./Slide";
+import Slide from "../components/Slide";
 
 export default function Accueil({slideVisible,setSlideVisible}) {
   

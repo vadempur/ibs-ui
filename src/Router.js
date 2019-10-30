@@ -8,11 +8,11 @@ import WorkInProgress from "./components/WorkInProgress";
 
 function App() {
   const location = useLocation();
-  const [slideVisible, setSlideVisible] = React.useState(location.pathname === "/");
+  const [slideVisible, setSlideVisible] = React.useState(true);
 
   return (
     <>
-      <Header light={slideVisible} />
+      <Header light={slideVisible && location.pathname === "/"} />
       <Switch>
         <Route exact path="/">
           <Accueil slideVisible={slideVisible} setSlideVisible={setSlideVisible} />

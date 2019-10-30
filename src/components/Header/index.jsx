@@ -5,6 +5,9 @@ import logo_light from "../../assets/logo-light.svg";
 import "./styles.css";
 import { useMobile, useEventListener } from "../../helpers/customHooks";
 import { Link } from "react-router-dom";
+import classNames from "classnames";
+
+
 function Header({ light }) {
   const isMobile = useMobile(1080);
   const [onTop, setOnTop] = useState(true);
@@ -48,15 +51,10 @@ function Header({ light }) {
     setToggleSubMenu(-1);
   };
 
-  let root = document.documentElement;
-  if (light) {
-    root.style.setProperty("--header-text-color", "white");
-  } else {
-    root.style.setProperty("--header-text-color", "var(--light-gray)");
-  }
-
   return (
-    <header className={`header-container${light ? " header-light-bg" : ""}${onTop ? " header-on-top" : ""}`}>
+    <header
+      className={classNames({ "header-container": true, "header-container-light": light, "header-on-top": onTop })}
+    >
       {!onTop ? (
         <Link to="/">
           <img width={"30px"} height={"30px"} src={logo_icon} alt={"logo"} className={"logo"} />
@@ -75,7 +73,7 @@ function Header({ light }) {
         </div>
       )}
       {(showMenu || !isMobile) && (
-        <ul className={`header-menu ${light && "header-light-txt"}`}>
+        <ul className={classNames({ "header-menu": true, "header-menu-light": light })}>
           <li className="selected">
             <Link
               to="/"

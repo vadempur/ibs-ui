@@ -1,4 +1,4 @@
-{  
+{
   "name": "ibs-website",
   "version": "0.1.0",
   "private": true,
@@ -7,6 +7,7 @@
     "node": "10.15.3"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "formik": "^1.5.8",
     "google-maps-react": "^2.0.2",
     "gsap": "^2.1.2",
