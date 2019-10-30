@@ -6,14 +6,16 @@ import Header from "./components/Header";
 import NotFound from "./screens/NotFound";
 import WorkInProgress from "./components/WorkInProgress";
 import Footer from "./components/Footer";
+import Contact from "./components/Contact";
 
 function App() {
   const location = useLocation();
   const [slideVisible, setSlideVisible] = React.useState(true);
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
   return (
     <>
       <Header light={slideVisible && location.pathname === "/"} />
+
       <Switch>
         <Route exact path="/">
           <Accueil slideVisible={slideVisible} setSlideVisible={setSlideVisible} />
@@ -25,7 +27,8 @@ function App() {
           <WorkInProgress />
         </Route>
         <Route path="/contact">
-          <WorkInProgress />
+          <div style={{ background: "white", height: "95px" }} />
+          <Contact />
         </Route>
         <Route path="/about">
           <Societe />
@@ -34,7 +37,7 @@ function App() {
           <NotFound />
         </Route>
       </Switch>
-      <Footer/>
+      <Footer />
     </>
   );
 }

@@ -44,7 +44,7 @@
 
 .page1-column {
   cursor: pointer;
-  text-decoration: none;
+  
   display: flex;
   justify-content: center;
   align-items: center;
