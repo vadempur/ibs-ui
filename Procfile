@@ -1,1 +1,1 @@
-web:vendor/bin/heroku-php-apache2 build/contact.php
+web:vendor/bin/heroku-php-apache2 build/
