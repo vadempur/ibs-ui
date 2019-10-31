@@ -12,7 +12,7 @@ function ContactForm() {
         formData.append(key + "", values[key] + "");
       });
       // console.log(formData)
-      const res = await fetch(BASE_URL + "/contact.php", {
+      await fetch(BASE_URL + "/contact.php", {
         method: "POST",
         headers: {
           // Accept: 'application/json',
