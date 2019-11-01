@@ -1,11 +1,11 @@
 .contact-form-container {
   width: 450px;
   box-shadow: 0px 20px 15px 0px rgba(0, 0, 0, 0.4);
-  background-color: white;  
+  background-color: white;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(45deg,var(--primary), #48eaf8);
+  background: linear-gradient(45deg, var(--primary), #48eaf8);
   border-radius: 10px;
   overflow: hidden;
   padding: 20px 20px 20px 20px;
@@ -22,40 +22,11 @@
   font-weight: 300;
 }
 
-.field {
-  display: block;
-  width: 100%;
-  background: transparent;
-  font-size: 15px;
-  color: #fff;
-  line-height: 1.2;
-  padding: 5px;
-}
-.field:-webkit-autofill,
-.field:-webkit-autofill:hover,
-.field:-webkit-autofill:focus {
-  /* border: 1px solid green; */
-  -webkit-text-fill-color: white;
-  -webkit-box-shadow: 0 0 0px 1000px #3AC6E6 inset;
-  border-radius: 5px;
-  background-color: transparent;
-  transition: background-color 500ms ease-in;
-}
-
-.field-container {
-  position: relative;
-  width: 100%;
-  position: relative;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.24);
-  margin-bottom: 27px;
-}
-
 .error-msg {
-  margin-top: -20px;
-  margin-bottom: 27px;
   font-size: 12px;
-  color: #272d7a;
+  color: #ffffff81;
   padding: 0 5px;
+  margin-top: 3px;
 }
 
 .contact-form-btn {
@@ -73,4 +44,44 @@
   position: relative;
   background: white;
   transition: all 0.4s;
+}
+
+.field-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.field {
+  display: block;
+  width: 100%;
+  background: transparent;
+  font-size: 15px;
+  color: #fff;
+  line-height: 1.2;
+  padding: 5px;
+  border-bottom: solid 2px #ffffff77;
+}
+.border {
+  margin-top: -2px;
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: rgb(0, 238, 255);
+  transform: scaleX(0);
+  transition: transform 0.5s;
+  transform-origin:  0% 50%;
+}
+.field:focus + .border {
+  transform: scaleX(1);
+}
+
+/* Change Autocomplete styles in Chrome*/
+.field:-webkit-autofill,
+.field:-webkit-autofill:hover,
+.field:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--primary);
+  color: var(--primary);
+  border-radius: 5px;
+  transition: background-color 500ms ease-in;
 }

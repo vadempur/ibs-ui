@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
+  z-index: 10;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.35);
   background-color: white;
   transition: all 400ms;
@@ -66,7 +66,7 @@
   cursor: default;
   animation-name: fadein;
   animation-duration: 0.3s;
-  z-index: 1000;
+  z-index: 9;
   width: 200px;
   transition: width 1s;
   display: flex;
@@ -124,7 +124,7 @@
     right: 15px;
     top: 80px;
     background: white;
-    z-index: 1000;
+    z-index: 9;
     flex-direction: column;
     justify-content: space-around;
     height: 400px;

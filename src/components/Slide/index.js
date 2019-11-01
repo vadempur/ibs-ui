@@ -8,7 +8,7 @@ import img2 from "../../assets/2.jpg";
 import scroll_indicator from "../../assets/scroll.svg";
 import { useEventListener } from "../../helpers/customHooks";
 import SlideItem from "./SlideItem";
-
+import classNames from "classnames";
 let startX,
   startY,
   dist,
@@ -63,7 +63,7 @@ function Slide({ visible, setVisible }) {
   });
 
   return (
-    <div ref={slide_container} className={`slide-container ${visible === false && "slide-hidden"}`}>
+    <div ref={slide_container} className={classNames({ "slide-container": true, "slide-hidden": !visible })}>
       {visible === true && (
         <div
           onClick={() => {
