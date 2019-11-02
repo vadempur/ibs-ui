@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
-import { useEventListener } from '../../../helpers/customHooks';
-
+import { useEventListener } from '../../../../helpers/customHooks';
+import "./styles.css"
 
 export default function SlideItem ({ img, title, description }) {
   const [width, setWidth] = useState(window.innerWidth);

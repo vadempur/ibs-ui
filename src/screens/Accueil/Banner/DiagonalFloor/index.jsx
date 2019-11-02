@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback } from "react";
-import "./DiagonalFloor.css";
-import { useEventListener, map } from "../../../helpers/customHooks";
+import "./styles.css";
+import { useEventListener, map } from "../../../../helpers/customHooks";
 
 const init_rotation1 = -10,
   init_rotation2 = init_rotation1 - 0.8,

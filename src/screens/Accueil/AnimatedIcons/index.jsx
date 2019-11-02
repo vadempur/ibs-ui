@@ -1,6 +1,6 @@
 import React, { createRef, useState, useCallback, useRef } from "react";
 import "./styles.css";
-import { useEventListener, useMobile } from "../../helpers/customHooks";
+import { useEventListener, useMobile } from "../../../helpers/customHooks";
 import NumberOneIcon from "./NumberOneIcon";
 import ServicesIcon from "./ServicesIcon";
 import CollabIcon from "./CollabIcon";

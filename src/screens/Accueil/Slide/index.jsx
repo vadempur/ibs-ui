@@ -3,10 +3,10 @@ import Carousel from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles.css";
-import img1 from "../../assets/1.jpeg";
-import img2 from "../../assets/2.jpg";
-import scroll_indicator from "../../assets/scroll.svg";
-import { useEventListener } from "../../helpers/customHooks";
+import img1 from "../../../assets/1.jpeg";
+import img2 from "../../../assets/2.jpg";
+import scroll_indicator from "../../../assets/scroll.svg";
+import { useEventListener } from "../../../helpers/customHooks";
 import SlideItem from "./SlideItem";
 import classNames from "classnames";
 let startX,

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./Illustration.css";
+import "./styles.css";
 import { TweenLite, TimelineMax, Sine } from "gsap";
 
 import Sun from "./Sun";
@@ -7,7 +7,7 @@ import Gears from "./Gears";
 import Clouds from "./Clouds";
 import Person from "./Person";
 
-import { useMobile, useEventListener,map } from "../../../helpers/customHooks";
+import { useMobile, useEventListener,map } from "../../../../helpers/customHooks";
 import SpotLights from "./SpotLights";
 
 function Illustration() {

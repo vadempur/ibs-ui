@@ -2,7 +2,7 @@ import React from "react";
 import DiagonalFloor from "./DiagonalFloor";
 import Illustration from "./Illustration";
 import "./Banner.css";
-import { useMobile } from "../../helpers/customHooks";
+import { useMobile } from "../../../helpers/customHooks";
 
 function Banner({ getRef }) {
   const isMobile = useMobile(1080);

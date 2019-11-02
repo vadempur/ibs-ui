@@ -53,7 +53,7 @@ function ContactForm() {
       onSubmit={handleSubmit}
     >
       {({ isSubmitting, setFieldValue }) => (
-        <Form className="contact-form-container">
+        <Form className="contact-form-container"  data-aos='fade-up'>
           
           <h1 className="contact-form-title">
             Contactez <span>Nous</span>
