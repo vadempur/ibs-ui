@@ -1,5 +1,5 @@
 .about-container{
-  padding-top:50px;
+  padding-top:100px;
   position:relative;
 }
 .diagoo{
@@ -7,10 +7,15 @@
   top:0px;
   right: 0;
   z-index: -1;
+  width: 100%;
+}
+
+.about-section{
+  padding: 20px 10%;
 }
 
 .societe-container {
-  padding: 30px 5%;
+  padding: 20px 3%;
   transition: all 500ms;
 }
 .societe-container:hover {

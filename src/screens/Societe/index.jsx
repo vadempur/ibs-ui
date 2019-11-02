@@ -10,7 +10,7 @@ export default function Societe() {
 
       <img src={bg} className="diagoo" />
 
-      <section className="section-container">
+      <section className="about-section">
         <div className="societe-container">
           <h1>Qui sommes nous</h1>
           <div className="societe-row">
@@ -38,14 +38,14 @@ export default function Societe() {
         </div>
       </section>
       
-      <section className="section-container">
+      <section className="about-section">
         <div className="societe-container">
-          <h1>Mission et valeurs</h1>
           <div className="societe-row">
           <div className="societe-colum-right">
               <img src={arrow_mission} alt="arrow" />
             </div>
             <div className="societe-colum-left">
+          <h1>Mission et valeurs</h1>
               <ul className="societe-ul">
                 <li className="societe-li">Existe depuis 2005</li>
                 <li className="societe-li">Est Gold Partner Microsoft ©</li>

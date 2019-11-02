@@ -26,13 +26,8 @@
     <linearGradient id="linear-gradient-2" x1="281.4" y1="474.24" x2="155.78" y2="187.77" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#5e9eff"/>
       <stop offset="1" stop-color="#0747a6" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="linear-gradient-3" x1="184.35" y1="367.89" x2="150.65" y2="415.38" gradientUnits="userSpaceOnUse">
-      <stop offset="0"/>
-      <stop offset="1" stop-color="#0747a6" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="linear-gradient-4" x1="466.38" y1="138.29" x2="262.64" y2="502.12" xlink:href="#linear-gradient-2"/>
-    <linearGradient id="linear-gradient-5" x1="384.66" y1="367.95" x2="422.96" y2="426.93" xlink:href="#linear-gradient-3"/>
+    </linearGradient>    
+    <linearGradient id="linear-gradient-4" x1="466.38" y1="138.29" x2="262.64" y2="502.12" xlink:href="#linear-gradient-2"/>   
     <linearGradient id="linear-gradient-6" x1="294.78" y1="-55.75" x2="289.06" y2="218.64" xlink:href="#linear-gradient-2"/>
     <linearGradient id="linear-gradient-7" x1="284.35" y1="401.23" x2="199.28" y2="207.25" xlink:href="#linear-gradient-2"/>
     <linearGradient id="linear-gradient-8" x1="395.91" y1="197.99" x2="320.33" y2="333.29" xlink:href="#linear-gradient-2"/>
@@ -53,8 +48,7 @@
         <path class="cls-8" d="M220.89 274.26l-.12-.67h139.52v.67h-139.4z"/>
         <path class="cls-8" d="M229.11 231.08v65.56a71 71 0 0 0 10.83 14.28v-80a10.93 10.93 0 0 1-10.83.16z"/>
         <g opacity=".4">
-          <path fill="url(#linear-gradient-2)" d="M290.79 447.74l-173.33-99.81V148.3l173.33 99.82v199.62z"/>
-          <path fill="url(#linear-gradient-3)" opacity=".3" d="M290.79 447.74l-173.33-99.81L0 397.83l173.33 99.81 117.46-49.9z"/>
+          <path fill="url(#linear-gradient-2)" d="M290.79 447.74l-173.33-99.81V148.3l173.33 99.82v199.62z"/>          
           <path fill="url(#linear-gradient-4)" d="M463.6 148.3l-173.34 99.82v199.62l173.34-99.81V148.3z"/>
           <path fill="url(#linear-gradient-5)" opacity=".3" d="M550.26 397.83l-173.33 99.81-86.67-49.9 173.34-99.81 86.66 49.9z"/>
           <path fill="url(#linear-gradient-6)" d="M290.79 248.12L117.46 148.3l173.33-99.81h-.53L463.6 148.3l-173.34 99.82"/>
