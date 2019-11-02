@@ -1,7 +1,8 @@
 import React from "react";
 import "./styles.css";
-
+import dynamics_logo from "../../../assets/dynamics-logo.png";
 export default function Services() {
+  
   return (
     <section className="services-section">
       <h1 className="services-title">Services</h1>
@@ -18,8 +19,9 @@ export default function Services() {
 
         <div className="services-right">
           <Item
-            title="Service 1"
+            title="Microsoft dynamics"
             desc="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus placeat doloremque dignissimos"
+            img={dynamics_logo}
           />
           <Item
             title="Service 2"
@@ -40,7 +42,7 @@ export default function Services() {
   );
 }
 
-function Item({ title, desc, icon,last }) {
+function Item({ title, desc, img,last }) {
   return (
     <div className="services-right-item">
       <div data-aos='fade-up'>
@@ -49,7 +51,7 @@ function Item({ title, desc, icon,last }) {
         {!last && <div className="services-right-item-border" />}
       </div>
       <div data-aos='fade-up' className="services-right-item-img">
-        <img width="200px" src="" alt="icon" />
+        <img width="140px" height="140px" src={img} alt="service" />
       </div>
     </div>
   );

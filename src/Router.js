@@ -14,8 +14,12 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+AOS.init({
+  duration : 500
+})
 
 function App() {
+  AOS.refresh(); 
   const location = useLocation();
   const [slideVisible, setSlideVisible] = React.useState(true);
   const [mountSlide, setMountSlide] = React.useState(true);
@@ -29,23 +33,13 @@ function App() {
       }, 1000);
     }
   }
-  
   React.useEffect(()=>{
     setVisible(true)
   },[location]);
-
-  React.useEffect(()=>{
-    AOS.init({
-      duration : 500
-    })
-  },[]);
-
   window.scrollTo(0, 0);
-
   return (
     <>
       <Header light={slideVisible && location.pathname === "/"} />
-
       <Switch>
         <Route exact path="/">
           <Accueil slideVisible={slideVisible} setVisible={setVisible} mountSlide={mountSlide} />

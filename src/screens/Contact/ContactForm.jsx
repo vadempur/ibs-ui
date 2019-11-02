@@ -53,20 +53,20 @@ function ContactForm() {
       onSubmit={handleSubmit}
     >
       {({ isSubmitting, setFieldValue }) => (
-        <Form className="contact-form-container"  data-aos='fade-up'>
+        <Form className="contact-form-container" data-aos='fade-up'>
           
           <h1 className="contact-form-title">
             Contactez <span>Nous</span>
           </h1>
 
           <div className="field-container">
-            <Field className="field" name="name" placeholder="Nom et Prenom" type="text" spellcheck="false" />
+            <Field className="field" name="name" placeholder="Nom et Prenom" type="text" spellCheck="false" />
             <div className="border" />
             <ErrorMessage className="error-msg" name="name" component="div" />
           </div>
 
           <div className="field-container">
-            <Field className="field" name="email" placeholder="Email" type="email" spellcheck="false" />
+            <Field className="field" name="email" placeholder="Email" type="email" spellCheck="false" />
             <div className="border" />
             <ErrorMessage className="error-msg" name="email" component="div" />
           </div>
@@ -79,7 +79,7 @@ function ContactForm() {
               name="message"
               placeholder="Votre message"
               type="text"
-              spellcheck="false"
+              spellCheck="false"
             />
             <div className="border" />
             <ErrorMessage className="error-msg" name="message" component="div" />

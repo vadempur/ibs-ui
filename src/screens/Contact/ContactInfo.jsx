@@ -4,7 +4,7 @@ import "./ContactInfo.css";
 
 export default function ContactInfo() {
   return (
-    <div className="contact-info-container">
+    <div className="contact-info-container" data-aos='fade-up'>
       <img src={logo} alt="logo" className="contact-info-logo" />
       <h1 className="contact-info-title">IB Solutions</h1>
       <span> </span>

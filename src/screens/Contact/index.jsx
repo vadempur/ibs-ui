@@ -3,9 +3,11 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import "./Contact.css";
 import ContactForm from "./ContactForm";
 import ContactInfo from "./ContactInfo";
-
+import marker from "../../assets/marker.svg";
 import { googleMapsKey } from "../../helpers/constants";
+
 function Contact({ google }) {
+
   function showOnMaps() {
     const url =
       "https://www.google.com/maps/place/IB+Solutions/@36.7031033,3.0954719,17z/data=!3m1!4b1!4m5!3m4!1s0x128fadca42152b6f:0x55b9bedd495002d6!8m2!3d36.703099!4d3.0976606";
@@ -21,7 +23,7 @@ function Contact({ google }) {
           zoom={16}
           initialCenter={{ lat: 36.7031033, lng: 3.0954719 }}
           scrollwheel={false}
-          // gestureHandling='none'          
+          // gestureHandling='none'
           mapTypeControl={false}
           streetViewControl={false}
         >
@@ -30,6 +32,7 @@ function Contact({ google }) {
             title={"IB Solutions"}
             name={"IBS"}
             position={{ lat: 36.7031033, lng: 3.0954719 }}
+            icon={marker}
           />
         </Map>
         <div className="contact-container">
