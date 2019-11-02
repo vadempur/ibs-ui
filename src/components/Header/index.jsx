@@ -107,13 +107,13 @@ function Header({ light }) {
   );
 }
 
-function MenuItem() {
-  return (
-    <li className="menu-item selected">
-      <Link to="/">Accueil</Link>
-    </li>
-  );
-}
+// function MenuItem() {
+//   return (
+//     <li className="menu-item selected">
+//       <Link to="/">Accueil</Link>
+//     </li>
+//   );
+// }
 
 function SubMenu(props) {
   return (
