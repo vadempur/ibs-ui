@@ -1,3 +1,14 @@
+.about-container{
+  padding-top:50px;
+  position:relative;
+}
+.diagoo{
+  position: absolute;
+  top:0px;
+  right: 0;
+  z-index: -1;
+}
+
 .societe-container {
   padding: 30px 5%;
   transition: all 500ms;
@@ -18,7 +29,7 @@
   align-self: flex-start;
 }
 .societe-colum-right {
-  padding: 1vw;
+  /* padding: 1vw; */
   width: 25vw;
   min-width: 300px;
 }

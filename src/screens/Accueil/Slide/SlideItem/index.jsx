@@ -14,7 +14,7 @@ export default function SlideItem ({ img, title, description }) {
   return (
     <div className="slide-item" style={{ width, height }}>
       <img className="slide-img" src={img} alt="slide_image" />
-      <div className="slide-text">
+      <div className="slide-text"  data-aos='fade-up'>
         <div>
           <h1 className="slide-text-title">{title}</h1>
           <p className="slide-text-description">{description}</p>

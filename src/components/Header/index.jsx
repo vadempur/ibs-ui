@@ -7,7 +7,6 @@ import { useMobile, useEventListener } from "../../helpers/customHooks";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 
-
 function Header({ light }) {
   const isMobile = useMobile(1080);
   const [onTop, setOnTop] = useState(true);
@@ -74,24 +73,21 @@ function Header({ light }) {
       )}
       {(showMenu || !isMobile) && (
         <ul className={classNames({ "header-menu": true, "header-menu-light": light })}>
-          <li className="selected">
-            <Link
-              to="/"
-              onClick={() => {
-                window.scrollTo(0, 0);
-              }}
-            >
-              Accueil
-            </Link>
+          <li className="menu-item selected">
+            <Link to="/">Accueil</Link>
+            <div className="menu-item-border" />
           </li>
-          <li>
+          <li className="menu-item">
             <Link to="/services">Services</Link>
+            <div className="menu-item-border" />
           </li>
-          <li>
+          <li className="menu-item">
             <Link to="/products">Produits</Link>
+            <div className="menu-item-border" />
           </li>
-          <li onMouseEnter={handleEnter} onMouseLeave={handleExit}>
+          <li className="menu-item" onMouseEnter={handleEnter} onMouseLeave={handleExit}>
             <Link to="/about">Socièté</Link>
+            <div className="menu-item-border" />
             {toggleSubMenu === 1 && (
               <SubMenu>
                 <li> Qui sommes nous </li>
@@ -101,12 +97,21 @@ function Header({ light }) {
               </SubMenu>
             )}
           </li>
-          <li>
+          <li className="menu-item">
             <Link to="/contact">Contact</Link>
+            <div className="menu-item-border" />
           </li>
         </ul>
       )}
     </header>
+  );
+}
+
+function MenuItem() {
+  return (
+    <li className="menu-item selected">
+      <Link to="/">Accueil</Link>
+    </li>
   );
 }
 

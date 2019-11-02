@@ -18,7 +18,7 @@
 }
 .header-container-light {
   background-color: rgba(0, 0, 0, 0.15);
-  padding: 20px 10% 20px 10%;
+  padding: 30px 10% 20px 10%;
 }
 .header-menu {
   display: flex;
@@ -27,30 +27,34 @@
   align-items: center;
   color: var(--header-text-color);
 }
-.header-menu > li {
+.menu-item {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
   padding: 0 20px;
-  border-radius: 20px;
-  transition: background 0.4s ease-in-out;
 }
-.header-menu-light > li {
+.menu-item-border {
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.2s;
+  transform-origin: 0% 50%;
+  margin-top: 7px;
+  margin-bottom: -14px;
+}
+.menu-item:hover > .menu-item-border {
+  width: 100%;
+}
+
+.header-menu-light > .menu-item {
   color: white;
   opacity: 1;
   transition: opacity 300ms;
 }
-.header-menu > li:hover {
-  background: var(--very-light-gray);
-}
-.header-menu-light > li:hover {
-  background: none;
-  opacity: 0.7;
+.header-menu-light > .menu-item:hover > .menu-item-border {
+  background: white;
+  opacity: 0.5;
 }
 
-.header-menu > li > a {
+.menu-item > a {
   text-align: center;
   font-size: 15px;
   color: inherit;

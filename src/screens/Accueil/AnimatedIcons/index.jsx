@@ -58,7 +58,7 @@ function AnimatedIcons() {
 
   return (
     <section className="section-1">
-      <h1 className="section-1-title">Et Si Solutions Rimaient Avec Integration</h1>
+      <h1 className="section-1-title" data-aos='fade-up'>Et Si Solutions Rimaient Avec Integration</h1>
       <div className="svg-icons-container">
         <Link to="/about" className="page1-column">
           <div
