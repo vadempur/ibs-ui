@@ -8,7 +8,7 @@ export default function Societe() {
   return (
     <div className="about-container">
 
-      <img src={bg} className="diagoo" />
+      <img src={bg} className="diagoo" alt="societe-bg" />
 
       <section className="about-section">
         <div className="societe-container">

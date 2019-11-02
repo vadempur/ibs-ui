@@ -1,0 +1,11 @@
+.loader-container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader-image{
+  opacity: 0.2;
+  width: 110px;
+}

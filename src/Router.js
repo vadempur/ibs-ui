@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Loader from "./components/Loader";
 
 const Accueil = React.lazy(() => import("./screens/Accueil"));
 const Contact = React.lazy(() => import("./screens/Contact"));
@@ -43,33 +44,31 @@ function App() {
   window.scrollTo(0, 0);
   return (
     <>
-      <Header light={slideVisible && location.pathname === "/"} />
-      <React.Suspense fallback={<p>loading</p>}>
-
-
-      <Switch>
-        <Route exact path="/">
-          <Accueil slideVisible={slideVisible} setVisible={setVisible} mountSlide={mountSlide} />
-        </Route>
-        <Route path="/services">
-          <WorkInProgress />
-        </Route>
-        <Route path="/products">
-          <WorkInProgress />
-        </Route>
-        <Route path="/contact">
-          <div style={{ background: "white", height: "95px" }} />
-          <Contact />
-        </Route>
-        <Route path="/about">
-          <Societe />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
+      <React.Suspense fallback={<Loader />}>
+        <Header light={slideVisible && location.pathname === "/"} />
+        <Switch>
+          <Route exact path="/">
+            <Accueil slideVisible={slideVisible} setVisible={setVisible} mountSlide={mountSlide} />
+          </Route>
+          <Route path="/services">
+            <WorkInProgress />
+          </Route>
+          <Route path="/products">
+            <WorkInProgress />
+          </Route>
+          <Route path="/contact">
+            <div style={{ background: "white", height: "95px" }} />
+            <Contact />
+          </Route>
+          <Route path="/about">
+            <Societe />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+        <Footer />
       </React.Suspense>
-      <Footer />
       <ToastContainer autoClose={6000} />
     </>
   );
