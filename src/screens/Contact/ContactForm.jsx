@@ -95,11 +95,11 @@ function ContactForm() {
 
           <div>
             <button className="contact-form-btn" type="submit" disabled={isSubmitting}>
-              <div>
-                {" "}
+              <div>                
                 {isSubmitting && <img width="50px" src={loader} alt="loader" style={{ marginInlineStart: -20 }} />}
                 ENVOYER
               </div>
+              <div className="border inside-positioned-border" />
             </button>
           </div>
           

@@ -1,0 +1,12 @@
+.products-section {
+  background-color: white;
+  padding: 140px 10%;
+}
+.products-title {
+  text-align: center;
+  margin-bottom: 70px;
+}
+.products-container {
+  display: flex;
+  justify-content: space-between  
+}

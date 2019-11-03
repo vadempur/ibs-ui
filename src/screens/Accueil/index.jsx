@@ -4,6 +4,7 @@ import Banner from "./Banner";
 import Contact from "../Contact";
 import Slide from "./Slide";
 import Services from "./Services";
+import Products from "./Products";
 
 export default function Accueil({ slideVisible, setVisible, mountSlide }) {
   return (
@@ -13,9 +14,7 @@ export default function Accueil({ slideVisible, setVisible, mountSlide }) {
       <>
         <AnimatedIcons />
         <Services />
-        <div style={{ padding: "60px 0", display: "flex", alignItems: "center", flexDirection: "column" }}>
-          <p>Produits...</p>
-        </div>
+        <Products />
         <Contact />
       </>
     </>
