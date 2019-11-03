@@ -1,10 +1,12 @@
 import React from "react";
 import "./styles.css";
 import dynamics_logo from "../../../assets/dynamics-logo.png";
+import bg from "../../../assets/bg.svg";
 export default function Services() {
   
   return (
     <section className="services-section">
+      <img className="services-bg" src={bg} alt="bg"/>
       <h1 className="services-title">Services</h1>
       <div className="services-container">
         <div className="services-left">

@@ -68,8 +68,8 @@ function App() {
           </Route>
         </Switch>
         <Footer />
-      </React.Suspense>
       <ToastContainer autoClose={6000} />
+      </React.Suspense>
     </>
   );
 }

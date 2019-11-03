@@ -6,6 +6,6 @@
   align-items: center;
 }
 .loader-image{
-  opacity: 0.2;
+  opacity: 0.5;
   width: 110px;
 }
