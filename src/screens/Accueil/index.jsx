@@ -6,6 +6,7 @@ import Slide from "./Slide";
 import Services from "./Services";
 import Products from "./Products";
 
+
 export default function Accueil({ slideVisible, setVisible, mountSlide }) {
   return (
     <>
@@ -13,7 +14,7 @@ export default function Accueil({ slideVisible, setVisible, mountSlide }) {
       {!slideVisible && <Banner />}
       <>
         <AnimatedIcons />
-        <Services />
+        <Services />        
         <Products />
         <Contact />
       </>

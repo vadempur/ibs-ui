@@ -73,18 +73,13 @@ function Header({ light }) {
       )}
       {(showMenu || !isMobile) && (
         <ul className={classNames({ "header-menu": true, "header-menu-light": light })}>
-          <li className="menu-item selected">
-            <Link to="/">Accueil</Link>
-            <div className="menu-item-border" />
-          </li>
-          <li className="menu-item">
-            <Link to="/services">Services</Link>
-            <div className="menu-item-border" />
-          </li>
-          <li className="menu-item">
-            <Link to="/products">Produits</Link>
-            <div className="menu-item-border" />
-          </li>
+         
+          <MenuItem path="/" value="Accueil" />
+
+          <MenuItem path="/services" value="Services" />
+
+          <MenuItem path="/products" value="Produits" />
+          
           <li className="menu-item" onMouseEnter={handleEnter} onMouseLeave={handleExit}>
             <Link to="/about">Socièté</Link>
             <div className="menu-item-border" />
@@ -97,23 +92,22 @@ function Header({ light }) {
               </SubMenu>
             )}
           </li>
-          <li className="menu-item">
-            <Link to="/contact">Contact</Link>
-            <div className="menu-item-border" />
-          </li>
+          <MenuItem path="/contact" value="Contact" />          
         </ul>
       )}
     </header>
   );
 }
 
-// function MenuItem() {
-//   return (
-//     <li className="menu-item selected">
-//       <Link to="/">Accueil</Link>
-//     </li>
-//   );
-// }
+function MenuItem({path,value,children}) {
+  return (
+    <li className="menu-item">
+      <Link to={path}>{value}</Link>
+      <div className="menu-item-border" />
+      {children}
+    </li>
+  );
+}
 
 function SubMenu(props) {
   return (

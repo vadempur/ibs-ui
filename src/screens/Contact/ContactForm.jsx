@@ -48,25 +48,38 @@ function ContactForm() {
           .email("Adresse e-mail invalide")
           .required("Veillez entrer votre email"),
         message: yup.string().required("Veuillez écrire un message"),
-        recaptcha: yup.string().required("Veuillez valider que vous etes pas un robot")
+        recaptcha: yup
+          .string()
+          .required("Veuillez valider que vous etes pas un robot")
       })}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting, setFieldValue }) => (
-        <Form className="contact-form-container" data-aos='fade-up'>
-          
+        <Form className="contact-form-container" data-aos="fade-up">
           <h1 className="contact-form-title">
             Contactez <span>Nous</span>
           </h1>
 
           <div className="field-container">
-            <Field className="field" name="name" placeholder="Nom et Prenom" type="text" spellCheck="false" />
+            <Field
+              className="field"
+              name="name"
+              placeholder="Nom et Prenom"
+              type="text"
+              spellCheck="false"
+            />
             <div className="border" />
             <ErrorMessage className="error-msg" name="name" component="div" />
           </div>
 
           <div className="field-container">
-            <Field className="field" name="email" placeholder="Email" type="email" spellCheck="false" />
+            <Field
+              className="field"
+              name="email"
+              placeholder="Email"
+              type="email"
+              spellCheck="false"
+            />
             <div className="border" />
             <ErrorMessage className="error-msg" name="email" component="div" />
           </div>
@@ -82,7 +95,11 @@ function ContactForm() {
               spellCheck="false"
             />
             <div className="border" />
-            <ErrorMessage className="error-msg" name="message" component="div" />
+            <ErrorMessage
+              className="error-msg"
+              name="message"
+              component="div"
+            />
           </div>
 
           <ReCAPTCHA
@@ -94,15 +111,25 @@ function ContactForm() {
           />
 
           <div>
-            <button className="contact-form-btn" type="submit" disabled={isSubmitting}>
-              <div>                
-                {isSubmitting && <img width="50px" src={loader} alt="loader" style={{ marginInlineStart: -20 }} />}
+            <button
+              className="contact-form-btn"
+              type="submit"
+              disabled={isSubmitting}
+            >
+              <div>
+                {isSubmitting && (
+                  <img
+                    width="50px"
+                    src={loader}
+                    alt="loader"
+                    style={{ marginInlineStart: -20 }}
+                  />
+                )}
                 ENVOYER
               </div>
               <div className="border inside-positioned-border" />
             </button>
           </div>
-          
         </Form>
       )}
     </Formik>
