@@ -1,4 +1,4 @@
-import React, { createRef, useState, useCallback, useRef } from "react";
+import React, { createRef, useState, useRef } from "react";
 import "./styles.css";
 import { useEventListener, useMobile } from "../../../helpers/customHooks";
 import NumberOneIcon from "./NumberOneIcon";
@@ -14,7 +14,7 @@ function AnimatedIcons() {
   const refs = useRef([createRef(), createRef(), createRef(), createRef()]);
   const isMobile = useMobile(1080);
 
-  const isElementOnViewPort = useCallback(() => {
+  const isElementOnViewPort = () => {
     if (!isMobile) return;
 
     let new_play = [];
@@ -27,11 +27,11 @@ function AnimatedIcons() {
     });
 
     if (changed) setIconsToPlay(new_play);
-  });
+  };
 
   useEventListener("scroll", isElementOnViewPort);
 
-  const slideInListener = useCallback(() => {
+  const slideInListener = () => {
     let new_play = [];
     let changed = false;
     refs.current.forEach((e, index) => {
@@ -42,7 +42,7 @@ function AnimatedIcons() {
     });
 
     if (changed) setIconsToSlide(new_play);
-  });
+  }
   useEventListener("scroll", slideInListener);
 
   const handlePlayOnMouse = index => {

@@ -10,7 +10,7 @@
     height: 220px;
     overflow: hidden;
     border-radius: 8px;
-    background-color: rgb(255, 56, 56);    
+    background-color: var(--very-light-gray);    
 }
 
 .product-img>img{

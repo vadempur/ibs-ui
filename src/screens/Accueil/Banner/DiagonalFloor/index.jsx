@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback } from "react";
+import React, { useRef, useState } from "react";
 import "./styles.css";
 import { useEventListener, map } from "../../../../helpers/customHooks";
 
@@ -14,7 +14,7 @@ function DiagonalFloor() {
   const diago2 = useRef(null);
   const diago3 = useRef(null);
 
-  const handleScroll = useCallback(() => {
+  const handleScroll = () => {
     if (window.scrollY < 500) {
       // let new_rotation = rotation + (window.scrollY - lastScrollY) / 20;
 
@@ -30,7 +30,7 @@ function DiagonalFloor() {
       setRotation2(0);
       setRotation3(0);
     }
-  });
+  };
 
   useEventListener("scroll", handleScroll);
 

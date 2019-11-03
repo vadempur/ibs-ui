@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../assets/logo.svg";
 import logo_icon from "../../assets/logo_icon.svg";
 import logo_light from "../../assets/logo-footer.svg";
@@ -21,21 +21,21 @@ function Header({ light }) {
     }
   }, [isMobile]);
 
-  const handleOutSideClick = useCallback(e => {
+  const handleOutSideClick = e => {
     if (e.target.className !== "hamburger" && e.target.className !== "hamburger-piece")
       if (showMenu) setShowMenu(false);
-  });
+  }
 
   useEventListener("click", handleOutSideClick, document.getElementById("root"));
 
-  const handleHeaderOnTop = useCallback(() => {
+  const handleHeaderOnTop = () => {
     // console.log( window.scrollY );
     if (window.scrollY < 60) {
       if (!onTop) setOnTop(true);
     } else {
       if (onTop) setOnTop(false);
     }
-  });
+  };
 
   useEventListener("scroll", handleHeaderOnTop);
 

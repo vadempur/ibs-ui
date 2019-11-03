@@ -1,0 +1,11 @@
+.partners-section {
+  background-color: var(--very-light-gray);
+  padding: 140px 10%;
+}
+.partners-title {
+  text-align: center;
+  margin-bottom: 70px;
+}
+.partners-container {
+  display: flex;
+}
